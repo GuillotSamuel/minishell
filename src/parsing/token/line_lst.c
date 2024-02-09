@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:00:21 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/09 15:42:24 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:10:27 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	create_cmd(char *line, t_cmd_line **cmd_list, t_data **data)
 				exit_error(*data);
 			cmd[i] = '\0';
 			ft_strlcpy(cmd, line, i);
-			if ((*cmd_list)->cmd == NULL)
+			if (*cmd_list == NULL)
 				*cmd_list = ft_stacknew_cmd(cmd);
 			else
 				ft_stackaddback_cmd(cmd_list, ft_stacknew_cmd(cmd));
@@ -75,7 +75,7 @@ int	create_cmd(char *line, t_cmd_line **cmd_list, t_data **data)
 		if (!cmd)
 			exit_error(*data);
 		ft_strlcpy(cmd, line, i + 1);
-		if ((*cmd_list)->cmd == NULL)
+		if (*cmd_list == NULL)
 			*cmd_list = ft_stacknew_cmd(cmd);
 		else
 			ft_stackaddback_cmd(cmd_list, ft_stacknew_cmd(cmd));

@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/09 15:24:14 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/09 16:17:11 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	main(int ac, char **av /*  , char **envp */)
 	if (!data)
 		return (-1);
 	// env = init_env(envp);
+	//signal(SIGINT, SIG_IGN); // ignore ctrl-c
+
 	execute_command(line, data /* , env */);
 	/* Revoir le free */
 	free(line);

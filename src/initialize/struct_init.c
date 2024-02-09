@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:00:01 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/09 11:55:31 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:08:17 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ void	init_struct(t_data *data)
 	data->cmd_list = malloc(sizeof(t_cmd_line));
 	if (!data->cmd_list)
 		exit_error(data);
+	data->cmd_list = NULL;
     initialize_t_cmp(&data);
 }

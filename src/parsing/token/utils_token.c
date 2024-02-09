@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:58:17 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/09 11:20:53 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/09 20:14:06 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,9 @@ int ft_strcmp_space(const char *s1, const char *s2)
 
 int	ft_charcmp_array(char c, const char **array)
 {
+	ft_printf("ft_charcmp_array\n"); // DEBUG'
+	ft_printf("c: %c\n", c); // DEBUG
+	ft_printf("array[0]: %s\n", array[0]); // DEBUG
 	size_t i;
 
 	i = 0;
@@ -115,5 +118,6 @@ int	ft_charcmp_array(char c, const char **array)
 			return (0);
 		i++;
 	}
+	ft_printf("ft_charcmp_array: %c\n", c); // DEBUG
 	return (1);
 }

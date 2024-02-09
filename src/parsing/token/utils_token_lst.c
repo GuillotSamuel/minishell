@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:54:54 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/09 15:53:19 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/09 19:00:05 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ void	create_token(t_cmd_line **cmd_list, t_data **data)
 					exit_error(*data);
 				token[i] = '\0';
 				ft_strlcpy(token, token_dup, i + 1);
-				ft_stackaddback_token(&((*cmd_list)->token_list), ft_stacknew_token(token));
+				if (current_cmd->token_list == NULL)
+					current_cmd->token_list = ft_stacknew_token(token);
+				else
+					ft_stackaddback_token(&(current_cmd->token_list), ft_stacknew_token(token));
 				token_dup = ft_remove_nchar_fromstr(token_dup, i + 1);
 				i = 0;
 			}
@@ -73,8 +76,10 @@ void	create_token(t_cmd_line **cmd_list, t_data **data)
 			if (!token)
 				exit_error(*data);
 			ft_strlcpy(token, token_dup, i + 1);
-			ft_stackaddback_token(&((*cmd_list)->token_list), ft_stacknew_token(token));
-		}
+			if (current_cmd->token_list == NULL)
+				current_cmd->token_list = ft_stacknew_token(token);
+			else
+				ft_stackaddback_token(&(current_cmd->token_list), ft_stacknew_token(token));		}
 		free(token_dup);
 		current_cmd = current_cmd->next;
 	}

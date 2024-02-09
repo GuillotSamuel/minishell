@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_control.c                                     :+:      :+:    :+:   */
+/*   line_ctrl.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:31:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/07 19:35:40 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/09 20:15:22 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	last_char_ctrl(char *line, t_data *data)
 {
+	ft_printf("last_char_ctrl\n"); // DEBUG
 	int i;
 
 	i = 0;
@@ -33,11 +34,14 @@ static int	last_char_ctrl(char *line, t_data *data)
 
 static int	first_char_ctrl(char *line, t_data *data)
 {
+	ft_printf("first_char_ctrl\n"); // DEBUG
 	int i;
 
 	i = 0;
 	while(line[i] == ' ')
 		i++;
+	ft_printf("first_char_ctrl: %c\n", line[i]); // DEBUG
+	ft_printf("start_end_ctrl: %s\n", data->cmp->start_end_ctrl); // DEBUG
 	if (ft_charcmp_array(line[i], data->cmp->start_end_ctrl) == 0)
 	{
 		ft_printf("bash: parse error near `%c'\n", line[i]);
@@ -49,6 +53,7 @@ static int	first_char_ctrl(char *line, t_data *data)
 
 static int	consecutive_pipes_ctrl(char *line, t_data *data)
 {
+	ft_printf("consecutive_pipes_ctrl\n"); // DEBUG
 	int	i;
 
 	i = 0;
@@ -75,6 +80,7 @@ static int	consecutive_pipes_ctrl(char *line, t_data *data)
 
 int	line_ctrl(char *line, t_data *data)
 {
+	ft_printf("line_ctrl\n"); // DEBUG
 	if (first_char_ctrl(line, data) == -1
 			|| last_char_ctrl(line, data) == -1
 			|| consecutive_pipes_ctrl(line, data) == -1)
