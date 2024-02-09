@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:58:17 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/07 19:58:31 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:20:53 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	end_ctrl(char *str)
 	return (0);
 }
 
-int	ft_strcmp_array_space(const char *str, char * const *array)
+int	ft_strcmp_array_space(const char *str, const char **array)
 {
 	size_t i;
 	size_t j;
@@ -92,7 +92,6 @@ int	ft_strcmp_array_space(const char *str, char * const *array)
 int ft_strcmp_space(const char *s1, const char *s2)
 {
 	size_t i;
-	size_t j;
 
 	i = 0;
 	while (s1[i] == ' ')
@@ -105,7 +104,7 @@ int ft_strcmp_space(const char *s1, const char *s2)
 	return (1);
 }
 
-int	ft_charcmp_array(char c, char **array)
+int	ft_charcmp_array(char c, const char **array)
 {
 	size_t i;
 

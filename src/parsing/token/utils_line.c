@@ -6,11 +6,11 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:04:59 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/07 20:05:13 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:20:19 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
 int	cut_cmd(char *str , t_data *data)
 {

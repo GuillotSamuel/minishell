@@ -6,11 +6,11 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:00:21 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/07 20:08:37 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:42:24 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
 t_cmd_line	*ft_stacknew_cmd(char *content)
 {
@@ -57,7 +57,10 @@ int	create_cmd(char *line, t_cmd_line **cmd_list, t_data **data)
 				exit_error(*data);
 			cmd[i] = '\0';
 			ft_strlcpy(cmd, line, i);
-			ft_stackaddback_cmd(cmd_list, ft_stacknew_cmd(cmd));
+			if ((*cmd_list)->cmd == NULL)
+				*cmd_list = ft_stacknew_cmd(cmd);
+			else
+				ft_stackaddback_cmd(cmd_list, ft_stacknew_cmd(cmd));
 			new_cmd_line = ft_remove_nchar_fromstr(line, i);
 			free(line);
 			line = new_cmd_line;
@@ -72,16 +75,11 @@ int	create_cmd(char *line, t_cmd_line **cmd_list, t_data **data)
 		if (!cmd)
 			exit_error(*data);
 		ft_strlcpy(cmd, line, i + 1);
-		ft_stackaddback_cmd(cmd_list, ft_stacknew_cmd(cmd));
+		if ((*cmd_list)->cmd == NULL)
+			*cmd_list = ft_stacknew_cmd(cmd);
+		else
+			ft_stackaddback_cmd(cmd_list, ft_stacknew_cmd(cmd));
 	}
 	free(line);
-	/* START OF TEST */
-	while ((*cmd_list) != NULL)
-	{
-		printf("cmd_list->cmd = %s\n", (*cmd_list)->cmd);
-		fflush(stdout);
-		cmd_list = &(*cmd_list)->next;
-	}
-	/* END OF TEST */
 	return (0);
 }

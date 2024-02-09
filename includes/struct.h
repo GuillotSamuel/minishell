@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 18:13:12 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/07 18:37:35 by sguillot         ###   ########.fr       */
+/*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
+/*   Updated: 2024/02/08 19:17:18 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,23 @@
 
 typedef struct s_cmp
 {
-    char	*chevron_list[4];
-    char	*builtin_list[7];
-    char    *start_end_ctrl[1];
-    char    *consec_list_1[10]; // # << < >> > | & ( ) ;
-    char    *consec_list_2[8]; // # << < >> > ( ) ;
-    char    *consec_list_3[6]; // << < >> > ( )
-    char    *consec_list_4[2]; // ? *
-    char    *consec_list_5[3]; // ? * |
-    char    *consec_list_6[5]; // ? * | & ;
-    char    *consec_list_7[4]; // ? * # ;
-    char    *consec_list_8[5]; // ? * | & ;
-} t_cmp;
+	char const	**chevron_list;
+	char const	**builtin_list;
+	char const	**start_end_ctrl;
+	char const	**consec_list_1;
+	char const	**consec_list_2;
+	char const	**consec_list_3;
+	char const	**consec_list_4;
+	char const	**consec_list_5;
+	char const	**consec_list_6;
+	char const	**consec_list_7;
+	char const	**consec_list_8;
+    char const  **consec_list_9;
+    char const  **consec_list_10;
+    char const  **consec_list_11;
+    char const  **consec_list_12;
+    char const  **consec_list_13;
+}	t_cmp;
 
 typedef enum type
 {

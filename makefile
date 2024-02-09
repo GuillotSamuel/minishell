@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/02/08 10:56:20 by sguillot         ###   ########.fr        #
+#    Updated: 2024/02/09 11:27:30 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,21 +30,28 @@ SRC_DIR = ./src
 #                                  SOURCES                                     #
 ################################################################################
 
-SRC := main.c \
+SRC :=	main.c \
 		builtins/cd.c \
 		builtins/pwd.c \
 		\
 		initialize/struct_init.c \
-		initialize/struct_init_consec_1.c \
-		initialize/struct_init_consec_2.c \
 		\
-		parsing/expand/expand.c \
-		parsing/expand/environnement.c \
+		parsing/parsing.c \
 		\
-		parsing/token/
+		parsing/token/check_token_list_1.c \
+		parsing/token/check_token_list_2.c \
+		parsing/token/line_ctrl.c \
+		parsing/token/line_lst.c \
+		parsing/token/token.c \
+		parsing/token/type.c \
+		parsing/token/utils_line.c \
+		parsing/token/utils_token_ft.c \
+		parsing/token/utils_token_lst.c \
+		parsing/token/utils_token.c \
 		\
 		utils/free_all.c \
 		utils/exit_error.c
+
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC))
 

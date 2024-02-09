@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:53:31 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/07 19:53:54 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:11:57 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static void	chevron(char *token, t_token *token_list)
 {
+	/* TO REMOVE : TEST */
+	(void)token;
+	/* END TEST */
 	if (ft_strcmp_space(token_list->token, ">") == 0)
 		token_list->type = FILE_OUT;
 	else if (ft_strcmp_space(token_list->token, ">>") == 0)
