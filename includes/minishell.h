@@ -6,12 +6,16 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/09 16:00:31 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/10 19:41:23 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+/* -------------------------------------------------------------------------- */
+/*                                    INCLUDES                                */
+/* -------------------------------------------------------------------------- */
 
 #include "../libft/libft.h"
 #include "struct.h"
@@ -21,11 +25,20 @@
 #include <readline/history.h>
 #include <string.h>
 #include <signal.h>
+#include <stdlib.h>
 
 /* TESTS */
 #include <stdio.h>
 
-#define ERROR_MALLOC 1
+/* -------------------------------------------------------------------------- */
+/*                                    DEFINE                                  */
+/* -------------------------------------------------------------------------- */
+
+#define SUCCESS 0
+
+#define ERROR -1
+#define ERROR_SYNTAX -2
+#define ERROR_MALLOC -3
 
 /* -------------------------------------------------------------------------- */
 /*                                    BUILTIN                                 */
@@ -97,8 +110,11 @@ char		*ft_remove_nchar_fromstr(char *cmd_line, int n);
 void		exit_error(t_data *data);
 void	    two_pipes_error(t_data *data);
 
-/* free_all */
+/* free_all_1 */
 void	    clear_lists(t_data *data);
 void		free_all(t_data *data);
+
+/* free_all_2 */
+void	    clear_consec_lists_3(t_data *data);
 
 #endif

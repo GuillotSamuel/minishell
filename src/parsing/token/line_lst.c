@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:00:21 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/09 17:10:27 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/11 22:08:48 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_cmd_line	*ft_stacknew_cmd(char *content)
 	if (!new_element)
 		return (NULL);
 	new_element->cmd = content;
+	new_element->token_list = NULL;
 	new_element->next = NULL;
 	return (new_element);
 }
@@ -48,8 +49,6 @@ int	create_cmd(char *line, t_cmd_line **cmd_list, t_data **data)
 	i = 0;
 	while (line[i] != '\0')
 	{
-		if (line[0] == '|')
-			return (two_pipes_error(*data), -1);
 		if (end_ctrl(line) == 1 && i == cut_cmd(line, (*data)))
 		{
 			cmd = malloc(sizeof(char) * (i + 1));
@@ -81,5 +80,5 @@ int	create_cmd(char *line, t_cmd_line **cmd_list, t_data **data)
 			ft_stackaddback_cmd(cmd_list, ft_stacknew_cmd(cmd));
 	}
 	free(line);
-	return (0);
+	return (SUCCESS);
 }

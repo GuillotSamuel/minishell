@@ -1,4 +1,4 @@
-obj/utils/free_all.o: src/utils/free_all.c \
+obj/utils/free_all_1.o: src/utils/free_all_1.c \
  src/utils/../../includes/minishell.h \
  src/utils/../../includes/../libft/libft.h \
  src/utils/../../includes/../libft/GNL/get_next_line.h \

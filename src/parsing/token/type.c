@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:53:31 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/09 11:11:57 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:46:20 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ static void	word_chevron(char *prev_token, t_token *token_list)
 		token_list->type = LIMITOR;
 }
 
-static void	put_type2(t_token *token_list_dup1, t_token *token_list_dup2, t_cmp *cmp)
+static void	put_type2(t_token *token_list_dup1, t_token *token_list_dup2)
 {
-	if (ft_strcmp_array_space(token_list_dup2->token, cmp->chevron_list) == 0)
+	const char *chevron_list[] = {">", ">>", "<", "<<", NULL};
+	const char *builtin_list[] = {"echo", "cd", "pwd", "export", "unset", "env", "exit", NULL};
+	
+	if (ft_strcmp_array_space(token_list_dup2->token, chevron_list) == 0)
 		word_chevron(token_list_dup2->token, token_list_dup1);
-	else if (ft_strcmp_array_space(token_list_dup1->token, cmp->builtin_list) == 0)
+	else if (ft_strcmp_array_space(token_list_dup1->token, builtin_list) == 0)
 		token_list_dup1->type = BUILTIN;
 	else
 		token_list_dup1->type = ARG;
@@ -54,7 +57,10 @@ void	put_type(t_cmd_line **cmd_list, t_data **data)
 	t_cmd_line	*cmd_list_dup;
 	t_token		*token_list_dup1;
 	t_token		*token_list_dup2;
+	const char	*chevron_list[] = {">", ">>", "<", "<<", NULL};
+	const char	*builtin_list[] = {"echo", "cd", "pwd", "export", "unset", "env", "exit", NULL};
 
+	(void)data; // TO REMOVE
 	cmd_list_dup = *cmd_list;
 	while (cmd_list_dup)
 	{
@@ -62,11 +68,11 @@ void	put_type(t_cmd_line **cmd_list, t_data **data)
 		token_list_dup2 = NULL;
 		while (token_list_dup1)
 		{
-			if (ft_strcmp_array_space(token_list_dup1->token, (*data)->cmp->chevron_list) == 0)
+			if (ft_strcmp_array_space(token_list_dup1->token, chevron_list) == 0)
 				chevron(token_list_dup1->token, token_list_dup1);
 			else if (token_list_dup2 != NULL)
-				put_type2(token_list_dup1, token_list_dup2, (*data)->cmp);
-			else if (ft_strcmp_array_space(token_list_dup1->token, (*data)->cmp->builtin_list) == 0)
+				put_type2(token_list_dup1, token_list_dup2);
+			else if (ft_strcmp_array_space(token_list_dup1->token, builtin_list) == 0)
 				token_list_dup1->type = BUILTIN;
 			else
 				token_list_dup1->type = ARG;

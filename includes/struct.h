@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/08 19:17:18 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/10 18:36:07 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 
 typedef struct s_cmp
 {
-	char const	**chevron_list;
-	char const	**builtin_list;
-	char const	**start_end_ctrl;
-	char const	**consec_list_1;
-	char const	**consec_list_2;
-	char const	**consec_list_3;
-	char const	**consec_list_4;
-	char const	**consec_list_5;
-	char const	**consec_list_6;
-	char const	**consec_list_7;
-	char const	**consec_list_8;
-    char const  **consec_list_9;
-    char const  **consec_list_10;
-    char const  **consec_list_11;
-    char const  **consec_list_12;
-    char const  **consec_list_13;
+	char **chevron_list;
+	char **builtin_list;
+	char **start_end_ctrl;
+	char **consec_list_1;
+	char **consec_list_2;
+	char **consec_list_3;
+	char **consec_list_4;
+	char **consec_list_5;
+	char **consec_list_6;
+	char **consec_list_7;
+	char **consec_list_8;
+    char **consec_list_9;
+    char **consec_list_10;
+    char **consec_list_11;
+    char **consec_list_12;
+    char **consec_list_13;
 }	t_cmp;
 
 typedef enum type
@@ -69,7 +69,6 @@ typedef struct s_data
 {
 	t_token		*t;
 	t_cmd_line	*cmd_list;
-    t_cmp		*cmp;
 } t_data;
 
 #endif

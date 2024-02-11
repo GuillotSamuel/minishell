@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/02/09 11:27:30 by sguillot         ###   ########.fr        #
+#    Updated: 2024/02/10 18:37:16 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ SRC :=	main.c \
 		parsing/token/utils_token_lst.c \
 		parsing/token/utils_token.c \
 		\
-		utils/free_all.c \
+		utils/free_all_1.c \
 		utils/exit_error.c
 
 
