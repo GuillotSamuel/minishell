@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:36:34 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/08 15:35:18 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:19:57 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,3 @@ typedef struct s_cmp
 	char const	**consec_list_7;
 	char const	**consec_list_8;
 }	t_cmp;
-
-
