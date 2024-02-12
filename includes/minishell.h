@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/10 19:41:23 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:24:32 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			check_token_list(t_cmd_line **cmd_list, t_data **data);
 /* int         ft_array_cmp_consec(t_token **token_list_dup, t_data **data);
  */
 /* line_ctrl */
-int			line_ctrl(char *line, t_data *data);
+int			line_ctrl(char *line);
 
 /* line_lst */
 t_cmd_line	*ft_stacknew_cmd(char *content);

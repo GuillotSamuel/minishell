@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:12:02 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/11 20:45:37 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:28:11 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	parsing(char *line, t_data *data)
 {
 	if (token(line, data) == -1)
 		return;
-	/* START OF TEST */
+	/* START OF TEST : display cmds, tokens and types */
 	t_data *tmp = data;
 	while (tmp->cmd_list)
 	{
@@ -29,4 +29,5 @@ void	parsing(char *line, t_data *data)
 		}
 		tmp->cmd_list = tmp->cmd_list->next;
 	}
+	/* END OF TEST */
 }
