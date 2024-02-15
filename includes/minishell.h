@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/15 16:37:19 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:19:46 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 /* -------------------------------------------------------------------------- */
 
 #define SUCCESS 0
-#define ERROR -1
+#define ERROR_G -1
 #define ERROR_SYNTAX -2
 #define ERROR_MALLOC -3
 

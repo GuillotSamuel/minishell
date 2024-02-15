@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:04:59 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/12 15:15:10 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:18:38 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	cut_cmd(char *str)
 			while (str[i] != '\'' && str[i] != '\0')
 				i++;
 			if (str[i] == '\0')
-				return (ft_printf("bash: parse error near `\''\n"), ERROR);
+				return (ft_printf("bash: parse error near `\''\n"), ERROR_G);
 		}
 		if (str[i] == '\"')
 		{
@@ -33,7 +33,7 @@ int	cut_cmd(char *str)
 			while (str[i] != '\"' && str[i] != '\0')
 				i++;
 			if (str[i] == '\0')
-				return (ft_printf("bash: parse error near `\"'\n"), ERROR);
+				return (ft_printf("bash: parse error near `\"'\n"), ERROR_G);
 		}
 		i++;
 	}

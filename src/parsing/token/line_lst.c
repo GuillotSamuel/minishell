@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:00:21 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/12 15:16:06 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:18:38 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	create_cmd(char *line, t_cmd_line **cmd_list, t_data **data)
 	i = 0;
 	while (line[i] != '\0')
 	{
-		if (cut_cmd(line) == ERROR)
-			return (ERROR);
+		if (cut_cmd(line) == ERROR_G)
+			return (ERROR_G);
 		if (end_ctrl(line) == 1 && i == cut_cmd(line))
 		{
 			cmd = malloc(sizeof(char) * (i + 1));

@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/10 19:37:00 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:18:38 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int ac, char **av /*  , char **envp */)
 		return (0);
 	data = malloc(sizeof(t_data));
 	if (!data)
-		return (ERROR);
+		return (ERROR_G);
 	// env = init_env(envp);
 	//signal(SIGINT, SIG_IGN); // ignore ctrl-c
 
