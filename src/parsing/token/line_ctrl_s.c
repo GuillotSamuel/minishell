@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:52:35 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/15 15:38:10 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:38:05 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,20 @@ int control_s1(char *line)
 				  cmp1[-ft_strcmp_array_space_2(line, cmp1, ">") - 1]);
 		return (ERROR_SYNTAX);
 	}
+	if (ft_space_ctrl_1(line, '>', '&') == ERROR_SYNTAX)
+	{
+		ft_printf("bash: syntax error near unexpected token `&'\n");
+		return (ERROR_SYNTAX);
+	}
+	if (ft_space_ctrl_1(line, '>', '|') == ERROR_SYNTAX)
+	{
+		ft_printf("bash: syntax error near unexpected token `|'\n");
+		return (ERROR_SYNTAX);
+	}
 	return (SUCCESS);
 }
 
-int control_s2(char *line) // KO
+int control_s2(char *line)
 {
 	const char *cmp1[] = {"<", ">", "|", "(", ")", NULL};
 

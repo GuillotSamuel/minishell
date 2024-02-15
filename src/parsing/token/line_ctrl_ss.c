@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:52:35 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/14 15:00:06 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/15 15:50:09 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int control_ss1(char *line)
 	return (SUCCESS);
 }
 
-int control_ss2(char *line) //KO
+int control_ss2(char *line)
 {
 	const char *cmp1[] = {"<", ">", "|", "(", ")", NULL};
 

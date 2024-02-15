@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/12 21:28:39 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:37:19 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int			line_ctrl(char *line);
 int         forbiden_consecutive(char *line);
 int         ft_strcmp_array_space_2(char *line, const char **cmp_arr, char *cmp_str);
 int         ft_strcmp_array_space_3(char *line, const char **cmp_arr, char *cmp_str);
+int         ft_space_ctrl_1(char *line, char cmp_str, char cmp_str2);
 
 /* line_ctrl_i */
 int         control_i1(char *line);

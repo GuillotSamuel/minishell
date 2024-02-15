@@ -6,11 +6,31 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:51:04 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/15 15:44:23 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:39:24 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+int	ft_space_ctrl_1(char *line, char cmp_str, char cmp_str2)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] && line[i] == cmp_str && line[i + 1] != cmp_str2)
+		{
+			i++;
+			while (line[i] && line[i] == ' ')
+				i++;
+			if (line[i] && line[i] == cmp_str2)
+				return (ERROR_SYNTAX);
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
 
 int	ft_strcmp_array_space_3(char *line, const char **cmp_arr, char *cmp_str)
 {
