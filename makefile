@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/02/10 18:37:16 by sguillot         ###   ########.fr        #
+#    Updated: 2024/02/12 17:34:53 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,12 @@ SRC :=	main.c \
 		parsing/parsing.c \
 		\
 		parsing/token/check_token_list_1.c \
-		parsing/token/check_token_list_2.c \
-		parsing/token/line_ctrl.c \
+		parsing/token/line_ctrl_1.c \
+		parsing/token/line_ctrl_2.c \
+		parsing/token/line_ctrl_i.c \
+		parsing/token/line_ctrl_ii.c \
+		parsing/token/line_ctrl_s.c \
+		parsing/token/line_ctrl_ss.c \
 		parsing/token/line_lst.c \
 		parsing/token/token.c \
 		parsing/token/type.c \

@@ -1,4 +1,4 @@
-obj/parsing/token/line_ctrl.o: src/parsing/token/line_ctrl.c \
+obj/parsing/token/line_ctrl_ii.o: src/parsing/token/line_ctrl_ii.c \
  src/parsing/token/../../../includes/minishell.h \
  src/parsing/token/../../../includes/../libft/libft.h \
  src/parsing/token/../../../includes/../libft/GNL/get_next_line.h \

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_ctrl.c                                        :+:      :+:    :+:   */
+/*   line_ctrl_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:31:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/12 12:35:35 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:55:37 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int	line_ctrl(char *line)
 {
 	if (first_char_ctrl(line) == ERROR_SYNTAX
 			|| last_char_ctrl(line) == ERROR_SYNTAX
-			|| consecutive_pipes_ctrl(line) == ERROR_SYNTAX)
+			|| consecutive_pipes_ctrl(line) == ERROR_SYNTAX
+			|| forbiden_consecutive(line) == ERROR_SYNTAX)
 		return (ERROR_SYNTAX);
 	return (SUCCESS);
 }

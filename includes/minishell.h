@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/12 15:15:24 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/12 21:28:39 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 /* -------------------------------------------------------------------------- */
 
 #define SUCCESS 0
-
 #define ERROR -1
 #define ERROR_SYNTAX -2
 #define ERROR_MALLOC -3
@@ -66,11 +65,29 @@ void		parsing(char *line, t_data *data);
 /* check_token_list */
 int			check_token_list(t_cmd_line **cmd_list, t_data **data);
 
-/* check_token_list_2 */
-/* int         ft_array_cmp_consec(t_token **token_list_dup, t_data **data);
- */
-/* line_ctrl */
+/* line_ctrl_1 */
 int			line_ctrl(char *line);
+
+/* line_ctrl_2 */
+int         forbiden_consecutive(char *line);
+int         ft_strcmp_array_space_2(char *line, const char **cmp_arr, char *cmp_str);
+int         ft_strcmp_array_space_3(char *line, const char **cmp_arr, char *cmp_str);
+
+/* line_ctrl_i */
+int         control_i1(char *line);
+int	        control_i2(char *line);
+
+/* line_ctrl_ii */
+int         control_ii1(char *line);
+int	        control_ii2(char *line);
+
+/* line_ctrl_s */
+int     	control_s1(char *line);
+int     	control_s2(char *line);
+
+/* line_ctrl_ss */
+int        	control_ss1(char *line);
+int     	control_ss2(char *line);
 
 /* line_lst */
 t_cmd_line	*ft_stacknew_cmd(char *content);

@@ -6,13 +6,11 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:48:54 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/12 15:21:33 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:51:28 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-
-
 
 static void	empty_token_ctrl(char *token, t_token **token_list_dup, t_token **token_list_dup_prev)
 {
@@ -39,8 +37,6 @@ int	check_token_list(t_cmd_line **cmd_list, t_data **data)
 		
 		token_list_dup = cmd_list_dup->token_list;
 		token_list_dup_prev = NULL;
-/* 		if (forbiden_consecutive_token(&token_list_dup, data) == 1)
-			return (ERROR); */
 		while (token_list_dup)
 		{
 			token = token_list_dup->token;
