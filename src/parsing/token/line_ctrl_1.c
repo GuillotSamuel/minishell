@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:31:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/19 08:06:54 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:31:57 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,11 @@ static int	consecutive_pipes_ctrl(char *line)
 	while (line[i] != '\0')
 	{
 		if (line[i] == '\"')
-		{
 			while (line[i] != '\"' && line[i] != '\0')
 				i++;
-		}
 		else if (line[i] == '\'')
-		{
 			while (line[i] != '\'' && line[i] != '\0')
 				i++;
-		}
 		if (line[i] == '|')
 		{
 			i++;

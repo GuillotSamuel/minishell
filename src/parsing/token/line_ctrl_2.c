@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:51:04 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/19 08:16:49 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:33:17 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,80 +32,31 @@ int	ft_space_ctrl_1(char *line, char cmp_str, char cmp_str2)
 	return (SUCCESS);
 }
 
-int	ft_strcmp_array_space_3(char *line, const char **cmp_arr, char *cmp_str)
+int	ft_strcmp_array_space_3(char *l, const char **ca, char *cs)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	j = 0;
-	while (line[i])
+	i = -1;
+	while (l[++i])
 	{
-		while (cmp_arr[j] && cmp_arr[j][0] != line[i])
+		j = 0;
+		while (ca[j] && ca[j][0] != l[i])
 			j++;
-		if (cmp_arr[j] && cmp_arr[j][0] == line[i])
+		if (ca[j] && ca[j][0] == l[i])
 		{
-			i++;
-			if ((ft_strlen(cmp_str) == 1 && line[i] != cmp_str[0])
-				|| ft_strlen(cmp_str) == 2)
+			if ((ft_strlen(cs) == 1 && l[++i] != cs[0])
+				|| ft_strlen(cs) == 2)
 			{
-				while (line[i] && line[i] == ' ')
+				while (l[i] && l[i] == ' ')
 					i++;
-				if (ft_strlen(cmp_str) == 2 && line[i] && line[i + 1]
-					&& line[i] == cmp_str[0] && line[i + 1] == cmp_str[1])
+				if (ft_strlen(cs) == 2 && l[i] && l[i + 1] && l[i] == cs[0]
+					&& l[i + 1] == cs[1])
 					return (2);
-				else if (cmp_arr[j] && ft_strlen(cmp_str) == 1
-					&& line[i] && line[i] == cmp_str[0])
+				else if (ca[j] && ft_strlen(cs) == 1 && l[i] && l[i] == cs[0])
 					return (1);
 			}
 		}
-		j = 0;
-		i++;
-	}
-	return (SUCCESS);
-}
-
-int	ft_strcmp_array_space_2(char *line, const char **cmp_arr, char *cmp_str)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (line[i])
-	{
-		if (line[i] && line[i + 1] && ft_strlen(cmp_str) == 2
-			&& line[i] == cmp_str[0] && line[i + 1] == cmp_str[1])
-		{
-			i += 2;
-			while (line[i] && line[i] == ' ')
-				i++;
-			while (cmp_arr[j] && cmp_arr[j][0] != line[i])
-				j++;
-			if (cmp_arr[j] && cmp_arr[j][0] == line[i]
-				&& (line[i + 1] == '<' || line[i + 1] == '>'))
-				return (-(j + 1));
-			else if (cmp_arr[j] && cmp_arr[j][0] == line[i])
-				return (j + 1);
-			j = 0;
-		}
-		else if (line[i] && line[i] == cmp_str[0] && ft_strlen(cmp_str) == 1)
-		{
-			i++;
-			if (line[i] == cmp_str[0])
-				i++;
-			while (line[i] && line[i] == ' ')
-				i++;
-			while (cmp_arr[j] && cmp_arr[j][0] != line[i])
-				j++;
-			if (cmp_arr[j] && cmp_arr[j][0] == line[i]
-				&& (line[i + 1] == '<' || line[i + 1] == '>'))
-				return (-(j + 1));
-			else if (cmp_arr[j] && cmp_arr[j][0] == line[i])
-				return (j + 1);
-			j = 0;
-		}
-		i++;
 	}
 	return (SUCCESS);
 }

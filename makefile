@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/02/19 10:36:59 by sguillot         ###   ########.fr        #
+#    Updated: 2024/02/19 14:33:56 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,18 +41,21 @@ SRC :=	main.c \
 		parsing/token/check_token_list_1.c \
 		parsing/token/line_ctrl_1.c \
 		parsing/token/line_ctrl_2.c \
+		parsing/token/line_ctrl_3.c \
 		parsing/token/line_ctrl_i.c \
 		parsing/token/line_ctrl_ii.c \
 		parsing/token/line_ctrl_s.c \
 		parsing/token/line_ctrl_ss.c \
 		parsing/token/line_lst.c \
 		parsing/token/token.c \
-		parsing/token/type.c \
+		parsing/token/type_1.c \
+		parsing/token/type_2.c \
 		parsing/token/utils_line.c \
 		parsing/token/utils_token_ft.c \
 		parsing/token/utils_token_lst_1.c \
 		parsing/token/utils_token_lst_2.c \
-		parsing/token/utils_token.c \
+		parsing/token/utils_token_1.c \
+		parsing/token/utils_token_2.c \
 		\
 		utils/free_all_1.c \
 		utils/exit_error.c

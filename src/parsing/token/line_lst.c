@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:00:21 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/19 10:02:02 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:04:10 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	create_cmd_1(char *line, t_cmd_line **cmd_list, t_data **data)
 	{
 		if (cut_cmd(line) == ERROR_G)
 			return (ERROR_G);
-		if (end_ctrl(line) == 1 && i == cut_cmd(line))
+		if (end_ctrl_1(line) == 1 && i == cut_cmd(line))
 		{
 			if (create_cmd_3(&cmd, cmd_list, &line, &i) == ERROR_G)
 				exit_error(*data);

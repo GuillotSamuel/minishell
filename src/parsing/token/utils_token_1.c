@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_token.c                                      :+:      :+:    :+:   */
+/*   utils_token_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:58:17 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/19 08:03:14 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:58:05 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,6 @@ char	*ft_remove_nchar_fromstr(char *cmd_line, int n)
 	}
 	str[i] = '\0';
 	return (str);
-}
-
-int	end_ctrl(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '\'')
-		{
-			i++;
-			while (str[i] != '\'' && str[i] != '\0')
-				i++;
-			if (str[i] == '\0')
-				return (0);
-		}
-		if (str[i] == '\"')
-		{
-			i++;
-			while (str[i] != '\"' && str[i] != '\0')
-				i++;
-			if (str[i] == '\0')
-				return (0);
-		}
-		if (str[i] == '|')
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 int	ft_strcmp_array_space(const char *str, const char **array)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type.c                                             :+:      :+:    :+:   */
+/*   type_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:53:31 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/19 10:45:56 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:54:23 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ void	put_type_1(t_cmd_line **cmd_list)
 	cmd_list_dup = *cmd_list;
 	while (cmd_list_dup)
 	{
-		token_list_dup1 = cmd_list_dup->token_list;
-		token_list_dup2 = NULL;
+		put_type_3(&token_list_dup1, &token_list_dup2, &cmd_list_dup);
 		while (token_list_dup1)
 		{
 			if (ft_strcmp_array_space(token_list_dup1->token, chev_list) == 0)
@@ -75,8 +74,7 @@ void	put_type_1(t_cmd_line **cmd_list)
 				token_list_dup1->type = BUILTIN;
 			else
 				token_list_dup1->type = ARG;
-			token_list_dup2 = token_list_dup1;
-			token_list_dup1 = token_list_dup1->next;
+			put_type_4(&token_list_dup1, &token_list_dup2);
 		}
 		cmd_list_dup = cmd_list_dup->next;
 	}

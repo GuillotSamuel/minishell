@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/10 19:05:43 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:09:55 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	clear_lists(t_data *data)
 {
-	t_cmd_line *cmd;
-	t_cmd_line *tmp_cmd;
-	t_token *token;
-	t_token *tmp_token;
+	t_cmd_line	*cmd;
+	t_cmd_line	*tmp_cmd;
+	t_token		*token;
+	t_token		*tmp_token;
+
 	cmd = data->cmd_list;
 	while (cmd)
 	{
