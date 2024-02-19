@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/02/12 17:34:53 by sguillot         ###   ########.fr        #
+#    Updated: 2024/02/19 10:36:59 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ SRC :=	main.c \
 		parsing/token/type.c \
 		parsing/token/utils_line.c \
 		parsing/token/utils_token_ft.c \
-		parsing/token/utils_token_lst.c \
+		parsing/token/utils_token_lst_1.c \
+		parsing/token/utils_token_lst_2.c \
 		parsing/token/utils_token.c \
 		\
 		utils/free_all_1.c \

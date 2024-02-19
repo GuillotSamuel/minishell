@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/19 08:47:13 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:36:36 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int     	control_ss2(char *line);
 /* line_lst */
 t_cmd_line	*ft_stacknew_cmd(char *content);
 void		ft_stackaddback_cmd(t_cmd_line **cmd_lst, t_cmd_line *new);
-int			create_cmd(char *line, t_cmd_line **cmd_list, t_data **data);
+int			create_cmd_1(char *line, t_cmd_line **cmd_list, t_data **data);
 
 /* token */
 int			token(char *line, t_data *data);
@@ -104,12 +104,14 @@ void		put_type(t_cmd_line **cmd_list, t_data **data);
 /* utils_line */
 int			cut_cmd(char *str);
 
-/* utils_token_ft.c */
+/* utils_token_ft */
 int 		cut_token_1(char *str, t_data *data);
 void		rm_node(t_token **token_list_dup, t_token **token_list_dup_prev);
 
-/* utils_token_lst.c */
-void		create_token(t_cmd_line **cmd_list, t_data **data);
+/* utils_token_lst_1 */
+void		create_token_1(t_cmd_line **cmd_list, t_data **data);
+
+/* utils_token_lst_2 */
 void		ft_stackaddback_token(t_token **lst, t_token *new);
 t_token		*ft_stacknew_token(char *content);
 

@@ -1,4 +1,5 @@
-obj/parsing/token/utils_token_lst.o: src/parsing/token/utils_token_lst.c \
+obj/parsing/token/utils_token_lst_2.o: \
+ src/parsing/token/utils_token_lst_2.c \
  src/parsing/token/../../../includes/minishell.h \
  src/parsing/token/../../../includes/../libft/libft.h \
  src/parsing/token/../../../includes/../libft/GNL/get_next_line.h \
