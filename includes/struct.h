@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/15 17:21:25 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:47:05 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,20 @@ typedef struct s_cmd_line
 	t_token				*token_list;
 	char				**args;
 	struct s_cmd_line	*next;
-    char			    **env;
 } t_cmd_line;
+
+typedef struct s_env
+{
+    char *key;
+    char *value;
+    struct s_env *next;    
+} t_env;
 
 typedef struct s_data
 {
 	t_token		*t;
 	t_cmd_line	*cmd_list;
+    char	    **env;
 } t_data;
 
 #endif

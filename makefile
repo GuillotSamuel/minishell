@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/02/19 14:33:56 by sguillot         ###   ########.fr        #
+#    Updated: 2024/02/19 15:25:04 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 #                                  CLEAN / FCLEAN                              #
 ################################################################################
 
-
 clean:
 	@echo "\n$(RED)Removing: $(OBJ) $(OBJ_DIR) $(DEF_COLOR)$(RESET)\n"
 	@$(MAKE) -C ./libft clean
@@ -117,6 +116,9 @@ clean:
 fclean: clean
 	@$(MAKE) -C ./libft fclean
 	@rm -f $(NAME)
+
+valgrind : all
+	valgrind --suppressions=readline_leak.txt --leak-check=full --show-leak-kinds=all --track-fds=yes ./${NAME}
 
 re: fclean all
 

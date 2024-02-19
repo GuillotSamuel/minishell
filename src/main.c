@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/15 17:18:38 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:12:31 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	execute_command(char *line, t_data *data /* , char **env */)
 	free_all(data /* , env */);
 }
 
-int	main(int ac, char **av /*  , char **envp */)
+int	main(int ac, char **av/* , char **envp */)
 {
 	t_data *data;
 	// char **env;
@@ -47,6 +47,16 @@ int	main(int ac, char **av /*  , char **envp */)
 	if (ac == 0 || !av)
 		return (0);
 	data = malloc(sizeof(t_data));
+	// recupere la value grace a la key echo $PATH
+	// ajoute une key value export bonjour=test
+	// change la value grace a la key export bonjour=bonjour
+	// supprime un maillon grace a la key unset bonjour
+/* 	t_env **head;
+	ft_envaddback(*head, "bonjour", "test");
+	ft_envgetvalue(*head, "bonjour");
+	ft_envchangevalue(*head, "bonjour", "bonjour");
+	ft_envdelone(*head, "bonjour");
+	data->env = head; */
 	if (!data)
 		return (ERROR_G);
 	// env = init_env(envp);
