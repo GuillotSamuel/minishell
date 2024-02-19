@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/19 10:36:36 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:45:56 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int			create_cmd_1(char *line, t_cmd_line **cmd_list, t_data **data);
 int			token(char *line, t_data *data);
 
 /* type */
-void		put_type(t_cmd_line **cmd_list, t_data **data);
+void		put_type_1(t_cmd_line **cmd_list);
 
 /* utils_line */
 int			cut_cmd(char *str);

@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:53:31 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/19 07:58:53 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:45:56 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	word_chevron(char *prev_token, t_token *token_list)
 		token_list->type = LIMITOR;
 }
 
-static void	put_type2(t_token *token_list_dup1, t_token *token_list_dup2)
+static void	put_type_2(t_token *token_list_dup1, t_token *token_list_dup2)
 {
 	const char	*chevron_list[] = {">", ">>", "<", "<<", NULL};
 	const char	*builtin_list[]
@@ -51,7 +51,7 @@ static void	put_type2(t_token *token_list_dup1, t_token *token_list_dup2)
 		token_list_dup1->type = ARG;
 }
 
-void	put_type(t_cmd_line **cmd_list, t_data **data)
+void	put_type_1(t_cmd_line **cmd_list)
 {
 	t_cmd_line	*cmd_list_dup;
 	t_token		*token_list_dup1;
@@ -60,7 +60,6 @@ void	put_type(t_cmd_line **cmd_list, t_data **data)
 	const char	*b_list[]
 		= {"echo", "cd", "pwd", "export", "unset", "env", "exit", NULL};
 
-	(void)data;
 	cmd_list_dup = *cmd_list;
 	while (cmd_list_dup)
 	{
@@ -71,7 +70,7 @@ void	put_type(t_cmd_line **cmd_list, t_data **data)
 			if (ft_strcmp_array_space(token_list_dup1->token, chev_list) == 0)
 				chevron(token_list_dup1->token, token_list_dup1);
 			else if (token_list_dup2 != NULL)
-				put_type2(token_list_dup1, token_list_dup2);
+				put_type_2(token_list_dup1, token_list_dup2);
 			else if (ft_strcmp_array_space(token_list_dup1->token, b_list) == 0)
 				token_list_dup1->type = BUILTIN;
 			else
