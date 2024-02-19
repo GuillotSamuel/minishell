@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:58:17 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/11 21:10:32 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 08:03:14 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_remove_nchar_fromstr(char *cmd_line, int n)
 {
-	int cmd_line_len;
-	char *str;
-	int i;
+	int		cmd_line_len;
+	char	*str;
+	int		i;
 
 	i = 0;
 	cmd_line_len = ft_strlen(cmd_line);
@@ -34,7 +34,7 @@ char	*ft_remove_nchar_fromstr(char *cmd_line, int n)
 
 int	end_ctrl(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -45,7 +45,7 @@ int	end_ctrl(char *str)
 			while (str[i] != '\'' && str[i] != '\0')
 				i++;
 			if (str[i] == '\0')
-				return (0);// A REVOIR
+				return (0);
 		}
 		if (str[i] == '\"')
 		{
@@ -53,7 +53,7 @@ int	end_ctrl(char *str)
 			while (str[i] != '\"' && str[i] != '\0')
 				i++;
 			if (str[i] == '\0')
-				return (0);// A REVOIR
+				return (0);
 		}
 		if (str[i] == '|')
 			return (1);
@@ -64,16 +64,16 @@ int	end_ctrl(char *str)
 
 int	ft_strcmp_array_space(const char *str, const char **array)
 {
-	size_t i;
-	size_t j;
-	size_t k;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
 	j = 0;
 	while (array[j])
 	{
 		i = 0;
 		while (str[i] == ' ')
-		i++;
+			i++;
 		k = 0;
 		while (array[j][k] == ' ')
 			k++;
@@ -89,9 +89,9 @@ int	ft_strcmp_array_space(const char *str, const char **array)
 	return (1);
 }
 
-int ft_strcmp_space(const char *s1, const char *s2)
+int	ft_strcmp_space(const char *s1, const char *s2)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s1[i] == ' ')
@@ -106,7 +106,7 @@ int ft_strcmp_space(const char *s1, const char *s2)
 
 int	ft_charcmp_array(char c, const char **array)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (array[i])

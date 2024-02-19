@@ -6,28 +6,26 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:55:35 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/12 15:10:32 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 07:50:17 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int cut_token(char *str, t_data *data)
+int	cut_token(char *str, t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (str[i] == ' ') // REVOIR LES WHITE SPACES
+	while (str[i] == ' ')
 		i++;
-	while (str[i] != ' ' && str[i] != '\0') // REVOIR LES WHITE SPACES
+	while (str[i] != ' ' && str[i] != '\0')
 	{
 		if (str[i] == '\'')
 		{
 			i++;
 			while (str[i] != '\'' && str[i] != '\0')
-			{
 				i++;
-			}
 			if (str[i] == '\0')
 				exit_error(data);
 		}
@@ -35,9 +33,7 @@ int cut_token(char *str, t_data *data)
 		{
 			i++;
 			while (str[i] != '\"' && str[i] != '\0')
-			{
 				i++;
-			}
 			if (str[i] == '\0')
 				exit_error(data);
 		}

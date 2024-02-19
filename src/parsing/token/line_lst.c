@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:00:21 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/15 17:18:38 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 07:55:49 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_cmd_line	*ft_stacknew_cmd(char *content)
 {
-	t_cmd_line *new_element;
+	t_cmd_line	*new_element;
 
 	new_element = (t_cmd_line *)malloc(sizeof(t_cmd_line));
 	if (!new_element)
@@ -27,7 +27,7 @@ t_cmd_line	*ft_stacknew_cmd(char *content)
 
 void	ft_stackaddback_cmd(t_cmd_line **line, t_cmd_line *new)
 {
-	t_cmd_line *tmp;
+	t_cmd_line	*tmp;
 
 	if (*line == NULL)
 		*line = new;
