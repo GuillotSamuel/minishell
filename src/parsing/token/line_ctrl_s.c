@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:52:35 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/19 08:27:30 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 08:30:11 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,11 @@ int	control_s1(char *line)
 		return (ERROR_SYNTAX);
 	}
 	if (ft_space_ctrl_1(line, '>', '&') == ERROR_SYNTAX)
-	{
-		ft_printf("bash: syntax error near unexpected token `&'\n");
-		return (ERROR_SYNTAX);
-	}
+		return (ft_printf("bash: syntax error near unexpected token `&'\n"),
+			ERROR_SYNTAX);
 	if (ft_space_ctrl_1(line, '>', '|') == ERROR_SYNTAX)
-	{
-		ft_printf("bash: syntax error near unexpected token `|'\n");
-		return (ERROR_SYNTAX);
-	}
+		return (ft_printf("bash: syntax error near unexpected token `|'\n"),
+			ERROR_SYNTAX);
 	return (SUCCESS);
 }
 

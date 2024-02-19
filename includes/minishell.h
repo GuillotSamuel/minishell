@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/15 17:19:46 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 08:47:13 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void		put_type(t_cmd_line **cmd_list, t_data **data);
 int			cut_cmd(char *str);
 
 /* utils_token_ft.c */
-int 		cut_token(char *str, t_data *data);
+int 		cut_token_1(char *str, t_data *data);
 void		rm_node(t_token **token_list_dup, t_token **token_list_dup_prev);
 
 /* utils_token_lst.c */

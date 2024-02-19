@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:54:54 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/19 07:55:02 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 08:47:13 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	create_token(t_cmd_line **cmd_list, t_data **data)
 		token_dup = ft_strdup(current_cmd->cmd);
 		while (token_dup[i] != '\0')
 		{
-			if (i == cut_token(token_dup, (*data)))
+			if (i == cut_token_1(token_dup, (*data)))
 			{
 				token = malloc(sizeof(char) * (i + 1));
 				if (!token)

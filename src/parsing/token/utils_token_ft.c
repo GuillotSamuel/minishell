@@ -6,13 +6,22 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:55:35 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/19 07:50:17 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/19 08:47:57 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int	cut_token(char *str, t_data *data)
+static int	cut_token_2(char *str, t_data *data, int i)
+{
+	while (str[i] != '\'' && str[i] != '\0')
+		i++;
+	if (str[i] == '\0')
+		exit_error(data);
+	return (i);
+}
+
+int	cut_token_1(char *str, t_data *data)
 {
 	int	i;
 
@@ -24,10 +33,7 @@ int	cut_token(char *str, t_data *data)
 		if (str[i] == '\'')
 		{
 			i++;
-			while (str[i] != '\'' && str[i] != '\0')
-				i++;
-			if (str[i] == '\0')
-				exit_error(data);
+			i = cut_token_2(str, data, i);
 		}
 		if (str[i] == '\"')
 		{
