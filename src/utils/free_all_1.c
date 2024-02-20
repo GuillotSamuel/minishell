@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 19:38:40 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:47:45 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@ void	clear_lists(t_data *data)
 	t_cmd_line	*cmd;
 	t_cmd_line	*tmp_cmd;
 	t_token		*token;
-	t_token		*tmp_token;
+	t_token	*tmp_token;
 
 	cmd = data->cmd_list;
 	while (cmd)
 	{
-		if (cmd->token_list)
-			token = cmd->token_list;
+		token = cmd->token_list;
 		while (token)
 		{
 			tmp_token = token;
@@ -36,12 +35,11 @@ void	clear_lists(t_data *data)
 		cmd = cmd->next;
 		if (tmp_cmd->cmd)
 			free(tmp_cmd->cmd);
-		if (tmp_cmd)
-			free(tmp_cmd);
+		free(tmp_cmd);
 	}
 }
 
-void	free_all(t_data *data)
+void free_all(t_data *data)
 {
 	clear_lists(data);
 	if (data)
