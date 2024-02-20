@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/20 17:12:31 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:49:46 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ extern int	g_exit_status;
 /*                                    INITIALISATION                          */
 /* -------------------------------------------------------------------------- */
 
-/* struct_init */
-void		init_struct(t_data *data);
 
 /* -------------------------------------------------------------------------- */
 /*                                    UTILS                                   */
@@ -59,7 +57,6 @@ void		init_struct(t_data *data);
 
 /* exit_error */
 void		exit_error(t_data *data);
-void	    two_pipes_error(t_data *data);
 
 /* free_all_1 */
 void	    clear_lists(t_data *data);

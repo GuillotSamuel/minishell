@@ -6,36 +6,31 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/20 17:16:28 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:01:48 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
-int	g_exit_status = 0;
 
-void	minishell(char *line, t_data *data)
+void	minishell(char *line, t_data *data/* , char **env */)
 {
 	while (true)
 	{
 		line = readline("\001\033[1;33m\002MonMinishell>\001\033[0m\002 ");
 		if (line == NULL || ft_strncmp(line, "exit", 5) == 0)
 		{
+			ft_printf("exit\n");
+			free_all(data);
 			free(line);
 			break;
 		}
 		if (line != NULL && strlen(line) > 0)
-		{			add_history(line);
+		{
+			add_history(line);
 			parsing(line, data);
 			clear_lists(data);
 		}
 	}
-}
-
-void	execute_command(char *line, t_data *data /* , char **env */)
-{
-	init_struct(data);
-	minishell(line, data /* , env */);
-	free_all(data /* , env */);
 }
 
 int	main(int ac, char **av/* , char **envp */)
@@ -60,11 +55,10 @@ int	main(int ac, char **av/* , char **envp */)
 	data->env = head; */
 	if (!data)
 		return (ERROR_G);
+	data->cmd_list = NULL;
+	data->env = NULL;
 	// env = init_env(envp);
-	//signal(SIGINT, SIG_IGN); // ignore ctrl-c
-
-	execute_command(line, data /* , env */);
-	/* Revoir le free */
-	free(line);
+	signal(SIGINT, SIG_IGN); // ignore ctrl-c
+	minishell(line, data /* , env */);
 	return (0);
 }

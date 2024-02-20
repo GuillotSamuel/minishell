@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:29:48 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 17:06:03 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:32:03 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_is_positive_llong(char *str)
 {
 	unsigned long long	nb;
-	int			i;
+	int					i;
 
 	nb = 0;
 	i = -1;

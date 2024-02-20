@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:12:02 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/19 15:15:57 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:36:18 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	parsing(char *line, t_data *data)
 {
 	if (token(line, data) == -1)
 		return ;
+	free_all(data);
 	/* START OF TEST : display cmds, tokens and types */
 	t_data *tmp = data;
 	while (tmp->cmd_list)

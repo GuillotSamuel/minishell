@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 15:28:06 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:09:55 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ typedef struct s_env
 
 typedef struct s_data
 {
-	t_token		*t;
 	t_cmd_line	*cmd_list;
 	char		**env;
 } t_data;
