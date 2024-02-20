@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/02/19 15:25:04 by sguillot         ###   ########.fr        #
+#    Updated: 2024/02/20 14:58:53 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,24 +38,29 @@ SRC :=	main.c \
 		\
 		parsing/parsing.c \
 		\
-		parsing/token/check_token_list_1.c \
-		parsing/token/line_ctrl_1.c \
-		parsing/token/line_ctrl_2.c \
-		parsing/token/line_ctrl_3.c \
-		parsing/token/line_ctrl_i.c \
-		parsing/token/line_ctrl_ii.c \
-		parsing/token/line_ctrl_s.c \
-		parsing/token/line_ctrl_ss.c \
-		parsing/token/line_lst.c \
 		parsing/token/token.c \
-		parsing/token/type_1.c \
-		parsing/token/type_2.c \
-		parsing/token/utils_line.c \
-		parsing/token/utils_token_ft.c \
-		parsing/token/utils_token_lst_1.c \
-		parsing/token/utils_token_lst_2.c \
-		parsing/token/utils_token_1.c \
-		parsing/token/utils_token_2.c \
+		\
+		parsing/token/command_assignement/command_assign_1.c \
+		parsing/token/command_assignement/command_assign_utils.c \
+		\
+		parsing/token/line_control/line_ctrl_1.c \
+		parsing/token/line_control/line_ctrl_2.c \
+		parsing/token/line_control/line_ctrl_1inferior.c \
+		parsing/token/line_control/line_ctrl_2inferior.c \
+		parsing/token/line_control/line_ctrl_1superior.c \
+		parsing/token/line_control/line_ctrl_2superior.c \
+		parsing/token/line_control/line_ctrl_utils.c \
+		\
+		parsing/token/token_assignement/token_assign_1.c \
+		parsing/token/token_assignement/token_utils_1.c \
+		parsing/token/token_assignement/token_utils_2.c \
+		parsing/token/token_assignement/token_utils_3.c \
+		parsing/token/token_assignement/token_utils_4.c \
+		\
+		parsing/token/token_control/token_list_control_1.c \
+		\
+		parsing/token/type_assignement/type_assign_1.c \
+		parsing/token/type_assignement/type_assign_2.c \
 		\
 		utils/free_all_1.c \
 		utils/exit_error.c

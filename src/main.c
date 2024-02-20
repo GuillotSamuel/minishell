@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/19 17:12:31 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:12:59 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	execute_command(char *line, t_data *data /* , char **env */)
 
 int	main(int ac, char **av/* , char **envp */)
 {
-	t_data *data;
-	// char **env;
-	char *line;
+	t_data	*data;
+	// char	**env;
+	char	*line;
 
 	line = NULL;
 	if (ac == 0 || !av)

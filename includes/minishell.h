@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/19 14:33:49 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:57:10 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@
 #define ERROR_MALLOC -3
 
 /* -------------------------------------------------------------------------- */
+/*                                    VARIABLE                                */
+/* -------------------------------------------------------------------------- */
+
+extern int	g_exit_status;
+
+/* -------------------------------------------------------------------------- */
 /*                                    BUILTIN                                 */
 /* -------------------------------------------------------------------------- */
 
@@ -62,73 +68,73 @@ void		parsing(char *line, t_data *data);
 
 /* ---------------------------------- TOKEN --------------------------------- */
 
-/* check_token_list */
-int			check_token_list(t_cmd_line **cmd_list, t_data **data);
+/* token */
+int			token(char *line, t_data *data);
+
+/* command_assign_1 */
+int			create_cmd_1(char *line, t_cmd_line **cmd_list, t_data **data);
+
+/* command_assign_utils */
+void		ft_stackaddback_cmd(t_cmd_line **line, t_cmd_line *new);
+t_cmd_line	*ft_stacknew_cmd(char *content);
+int			cut_cmd(char *str);
 
 /* line_ctrl_1 */
 int			line_ctrl(char *line);
 
 /* line_ctrl_2 */
-int         forbiden_consecutive(char *line);
-int         ft_strcmp_array_space_3(char *line, const char **cmp_arr, char *cmp_str);
-int         ft_space_ctrl_1(char *line, char cmp_str, char cmp_str2);
+int			ft_space_ctrl_1(char *line, char cmp_str, char cmp_str2);
+int			ft_strcmp_array_space_3(char *l, const char **ca, char *cs);
+int			forbiden_consecutive(char *line);
 
-/* line_ctrl_3 */
-int         ft_strcmp_array_space_2(char *line, const char **cmp_arr, char *cmp_str);
+/* line_ctrl_1inferior */
+int			control_i1(char *line);
+int			control_i2(char *line);
 
-/* line_ctrl_i */
-int         control_i1(char *line);
-int	        control_i2(char *line);
-
-/* line_ctrl_ii */
-int         control_ii1(char *line);
-int			control_ii2(char *line);
-
-/* line_ctrl_s */
+/* line_ctrl_1superior */
 int			control_s1(char *line);
 int			control_s2(char *line);
 
-/* line_ctrl_ss */
+/* line_ctrl_2inferior */
+int			control_ii1(char *line);
+int			control_ii2(char *line);
+
+/* line_ctrl_2superior */
 int			control_ss1(char *line);
 int			control_ss2(char *line);
 
-/* line_lst */
-t_cmd_line	*ft_stacknew_cmd(char *content);
-void		ft_stackaddback_cmd(t_cmd_line **cmd_lst, t_cmd_line *new);
-int			create_cmd_1(char *line, t_cmd_line **cmd_list, t_data **data);
+/* line_ctrl_utils */
+int			ft_strcmp_array_space_2(char *l, const char **cmp_arr, char *cmp_str);
 
-/* token */
-int			token(char *line, t_data *data);
-
-/* type_1 */
-void		put_type_1(t_cmd_line **cmd_list);
-
-/* type_2 */
-void		put_type_3(t_token **token_list_dup1, t_token **token_list_dup2, t_cmd_line **cmd_list_dup);
-void		put_type_4(t_token **token_list_dup1, t_token **token_list_dup2);
-
-/* utils_line */
-int			cut_cmd(char *str);
-
-/* utils_token_ft */
-int 		cut_token_1(char *str, t_data *data);
-void		rm_node(t_token **token_list_dup, t_token **token_list_dup_prev);
-
-/* utils_token_lst_1 */
+/* token_assign_1 */
 void		create_token_1(t_cmd_line **cmd_list, t_data **data);
 
-/* utils_token_lst_2 */
-void		ft_stackaddback_token(t_token **lst, t_token *new);
-t_token		*ft_stacknew_token(char *content);
-
-/* utils_token_1 */
-int			ft_charcmp_array(char c, const char **array);
-int			ft_strcmp_space(const char *s1, const char *s2);
-int			ft_strcmp_array_space(const char *str, const char **array);
+/* token_utils_1 */
 char		*ft_remove_nchar_fromstr(char *cmd_line, int n);
+int			ft_strcmp_array_space(const char *str, const char **array);
+int			ft_strcmp_space(const char *s1, const char *s2);
+int			ft_charcmp_array(char c, const char **array);
 
-/* utils_token_2 */
+/* token_utils_2 */
 int			end_ctrl_1(char *str);
+
+/* token_utils_3 */
+int			cut_token_1(char *str, t_data *data);
+void		rm_node(t_token **token_list_dup, t_token **token_list_dup_prev);
+
+/* token_utils_4 */
+t_token		*ft_stacknew_token(char *content);
+void		ft_stackaddback_token(t_token **lst, t_token *new);
+
+/* token_list_control_1 */
+int			check_token_list(t_cmd_line **cmd_list, t_data **data);
+
+/* type_assign_1 */
+void		put_type_1(t_cmd_line **cmd_list);
+
+/* type_assign_2 */
+void		word_chevron(char *prev_token, t_token *token_list);
+void		chevron(char *token, t_token *token_list);
 
 /* -------------------------------------------------------------------------- */
 /*                                    UTILS                                   */
