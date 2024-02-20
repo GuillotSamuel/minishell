@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_lst.c                                         :+:      :+:    :+:   */
+/*   command_assign_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:00:21 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 14:06:36 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:22:31 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	create_cmd_3(char **cmd, t_cmd_line **cmd_list, char **line, int *i)
 		*cmd_list = ft_stacknew_cmd(*cmd);
 	else
 		ft_stackaddback_cmd(cmd_list, ft_stacknew_cmd(*cmd));
-	new_cmd_line = ft_remove_nchar_fromstr(*line, *i);
+	new_cmd_line = ft_remove_nchar_from_str(*line, *i);
 	free(*line);
 	*line = new_cmd_line;
 	*i = 0;

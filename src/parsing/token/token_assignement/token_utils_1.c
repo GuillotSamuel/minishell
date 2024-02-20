@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_token_1.c                                    :+:      :+:    :+:   */
+/*   token_utils_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:58:17 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 14:05:00 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:22:31 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
 
-char	*ft_remove_nchar_fromstr(char *cmd_line, int n)
+char	*ft_remove_nchar_from_str(char *cmd_line, int n)
 {
 	int		cmd_line_len;
 	char	*str;

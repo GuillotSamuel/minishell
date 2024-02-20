@@ -6,11 +6,12 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/20 11:12:59 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:16:28 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+int	g_exit_status = 0;
 
 void	minishell(char *line, t_data *data)
 {

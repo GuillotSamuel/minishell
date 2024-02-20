@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_token_lst_1.c                                :+:      :+:    :+:   */
+/*   token_assign_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:54:54 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 14:05:09 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:22:31 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	create_token_3(char **token, char **token_dup, int *i,
 	else
 		ft_stackaddback_token(&((*current_cmd)->token_list),
 			ft_stacknew_token(*token));
-	*token_dup = ft_remove_nchar_fromstr(*token_dup, *i + 1);
+	*token_dup = ft_remove_nchar_from_str(*token_dup, *i + 1);
 	*i = 0;
 	return (SUCCESS);
 }

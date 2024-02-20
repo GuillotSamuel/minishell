@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/02/20 14:58:53 by sguillot         ###   ########.fr        #
+#    Updated: 2024/02/20 17:10:08 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,10 @@ SRC_DIR = ./src
 ################################################################################
 
 SRC :=	main.c \
+		\
 		builtins/cd.c \
+		builtins/exit_utils.c \
+		builtins/exit.c \
 		builtins/pwd.c \
 		\
 		initialize/struct_init.c \
