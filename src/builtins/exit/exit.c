@@ -6,13 +6,13 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:07:50 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 16:28:33 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:34:23 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int	g_exit_status = 0;
+extern int	g_exit_status;
 
 static void	exit_multiple_num(void)
 {
