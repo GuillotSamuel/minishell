@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 13:51:28 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:44:26 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	clear_lists(t_data *data)
 		if (tmp_cmd->cmd)
 			free(tmp_cmd->cmd);
 		free(tmp_cmd);
-		data->cmd_list = NULL;
 	}
+	data->cmd_list = NULL;
 }
 
 void free_all(t_data *data)

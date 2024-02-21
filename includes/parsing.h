@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/20 15:34:23 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:48:39 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int			ft_strcmp_array_space_2(char *l, const char **cmp_arr, char *cmp_str);
 void		create_token_1(t_cmd_line **cmd_list, t_data **data);
 
 /* token_utils_1 */
+char        *ft_remove_nchar_from_str_2(char *cmd_line, int n);
 char		*ft_remove_nchar_from_str(char *cmd_line, int n);
 int			ft_strcmp_array_space(const char *str, const char **array);
 int			ft_strcmp_space(const char *s1, const char *s2);

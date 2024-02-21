@@ -6,11 +6,32 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:58:17 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 15:22:31 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:48:12 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
+
+char	*ft_remove_nchar_from_str_2(char *cmd_line, int n)
+{
+	int		cmd_line_len;
+	char	*str;
+	int		i;
+
+	i = 0;
+	cmd_line_len = ft_strlen(cmd_line);
+	str = malloc(sizeof(char) * (cmd_line_len - n + 1));
+	if (!str)
+		return (NULL);
+	while (cmd_line[n + i])
+	{
+		str[i] = cmd_line[n + i];
+		i++;
+	}
+	free(cmd_line);
+	str[i] = '\0';
+	return (str);
+}
 
 char	*ft_remove_nchar_from_str(char *cmd_line, int n)
 {

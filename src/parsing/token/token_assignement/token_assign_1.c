@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:54:54 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 15:26:22 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:47:46 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	create_token_3(char **token, char **token_dup, int *i,
 	else
 		ft_stackaddback_token(&((*current_cmd)->token_list),
 			ft_stacknew_token(*token));
-	*token_dup = ft_remove_nchar_from_str(*token_dup, *i + 1);
+	*token_dup = ft_remove_nchar_from_str_2(*token_dup, *i + 1);
 	*i = 0;
 	return (SUCCESS);
 }
