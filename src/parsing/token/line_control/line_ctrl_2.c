@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:51:04 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 14:04:38 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:34:48 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ int	ft_strcmp_array_space_3(char *l, const char **ca, char *cs)
 			j++;
 		if (ca[j] && ca[j][0] == l[i])
 		{
-			if ((ft_strlen(cs) == 1 && l[++i] != cs[0])
-				|| ft_strlen(cs) == 2)
+			i++;
+			if ((ft_strlen(cs) == 1 && l[i] != cs[0]) || ft_strlen(cs) == 2)
 			{
 				while (l[i] && l[i] == ' ')
 					i++;
-				if (ft_strlen(cs) == 2 && l[i] && l[i + 1] && l[i] == cs[0]
-					&& l[i + 1] == cs[1])
+				if (ft_strlen(cs) == 2 && l[i] && l[i + 1]
+					&& l[i] == cs[0] && l[i + 1] == cs[1])
 					return (2);
 				else if (ca[j] && ft_strlen(cs) == 1 && l[i] && l[i] == cs[0])
 					return (1);

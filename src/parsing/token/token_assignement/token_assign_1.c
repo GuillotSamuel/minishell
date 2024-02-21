@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:54:54 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 13:36:09 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:26:22 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,20 @@ void	create_token_1(t_cmd_line **cmd_list, t_data **data)
 			if (i == cut_token_1(tok_dup, (*data)))
 			{
 				if (create_token_3(&token, &tok_dup, &i, &cur_cmd) == ERROR_G)
+				{
+					free(tok_dup);
 					exit_error(*data);
+				}
 			}
 			else
 				i++;
 		}
 		if (i > 0)
 			if (create_token_2(&token, tok_dup, i, cur_cmd) == ERROR_G)
+			{
+				free(tok_dup);
 				exit_error(*data);
+			}
 		cur_cmd = cur_cmd->next;
 		free(tok_dup);
 	}
