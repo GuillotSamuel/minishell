@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 19:47:45 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:51:28 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 void	clear_lists(t_data *data)
 {
-	t_cmd_line	*cmd;
+	t_cmd_line	*cmd_list_dup;
 	t_cmd_line	*tmp_cmd;
-	t_token		*token;
-	t_token	*tmp_token;
+	t_token		*token_list_dup;
+	t_token		*tmp_token;
 
-	cmd = data->cmd_list;
-	while (cmd)
+	cmd_list_dup = data->cmd_list;
+	while (cmd_list_dup)
 	{
-		token = cmd->token_list;
-		while (token)
+		token_list_dup = cmd_list_dup->token_list;
+		while (token_list_dup)
 		{
-			tmp_token = token;
-			token = token->next;
-			if (tmp_token->token)
-				free(tmp_token->token);
-			free(tmp_token);
+			tmp_token = token_list_dup;
+			token_list_dup = token_list_dup->next;
+			free(tmp_token->token);
+			if (tmp_token)
+				free(tmp_token);
 		}
-		tmp_cmd = cmd;
-		cmd = cmd->next;
+		tmp_cmd = cmd_list_dup;
+		cmd_list_dup = cmd_list_dup->next;
 		if (tmp_cmd->cmd)
 			free(tmp_cmd->cmd);
 		free(tmp_cmd);
+		data->cmd_list = NULL;
 	}
 }
 

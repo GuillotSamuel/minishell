@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/20 19:01:48 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 10:47:08 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,14 @@ void	minishell(char *line, t_data *data/* , char **env */)
 		if (line == NULL || ft_strncmp(line, "exit", 5) == 0)
 		{
 			ft_printf("exit\n");
-			free_all(data);
+			free(data);
 			free(line);
 			break;
 		}
-		if (line != NULL && strlen(line) > 0)
+		else if (line != NULL && strlen(line) > 0)
 		{
 			add_history(line);
 			parsing(line, data);
-			clear_lists(data);
 		}
 	}
 }

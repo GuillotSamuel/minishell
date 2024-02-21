@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_line.c                                       :+:      :+:    :+:   */
+/*   command_assign_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:04:59 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 14:06:44 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:56:35 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ void	ft_stackaddback_cmd(t_cmd_line **line, t_cmd_line *new)
 			tmp = tmp->next;
 		tmp->next = new;
 	}
+	new->next = NULL;
 }

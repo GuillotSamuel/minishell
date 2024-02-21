@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:54:54 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 15:22:31 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:36:09 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static int	create_token_3(char **token, char **token_dup, int *i,
 	*token = malloc(sizeof(char) * (*i + 1));
 	if (!*token)
 		return (ERROR_G);
-	(*token)[*i] = '\0';
+	*token = ft_memset(*token, '\0', *i + 1);
+	//(*token)[*i] = '\0';
 	ft_strlcpy(*token, *token_dup, *i + 1);
 	if ((*current_cmd)->token_list == NULL)
 		(*current_cmd)->token_list = ft_stacknew_token(*token);
@@ -42,6 +43,7 @@ static int	create_token_2(char **token, char *token_dup, int i,
 	*token = malloc(sizeof(char) * (i + 2));
 	if (!*token)
 		return (ERROR_G);
+	*token = ft_memset(*token, '\0', i + 2);
 	ft_strlcpy(*token, token_dup, i + 1);
 	if (current_cmd->token_list == NULL)
 		current_cmd->token_list = ft_stacknew_token(*token);
@@ -75,7 +77,7 @@ void	create_token_1(t_cmd_line **cmd_list, t_data **data)
 		if (i > 0)
 			if (create_token_2(&token, tok_dup, i, cur_cmd) == ERROR_G)
 				exit_error(*data);
-		free(tok_dup);
 		cur_cmd = cur_cmd->next;
+		free(tok_dup);
 	}
 }
