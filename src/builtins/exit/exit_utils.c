@@ -6,11 +6,11 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:29:48 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 17:32:03 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:28:37 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
 int	ft_is_positive_llong(char *str)
 {

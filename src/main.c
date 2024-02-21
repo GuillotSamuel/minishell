@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/21 10:47:08 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:43:28 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ void	minishell(char *line, t_data *data/* , char **env */)
 			parsing(line, data);
 		}
 	}
+}
+static void	handle_sigint(int sig) 
+{
+	(void) sig;
+	ft_printf("\n\001\033[1;33m\002MonMinishell>\001\033[0m\002 ");
 }
 
 int	main(int ac, char **av/* , char **envp */)
@@ -57,7 +62,8 @@ int	main(int ac, char **av/* , char **envp */)
 	data->cmd_list = NULL;
 	data->env = NULL;
 	// env = init_env(envp);
-	signal(SIGINT, SIG_IGN); // ignore ctrl-c
+	signal(SIGINT, handle_sigint);
+	signal(SIGQUIT, SIG_IGN);
 	minishell(line, data /* , env */);
 	return (0);
 }

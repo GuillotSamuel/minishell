@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/02/20 18:34:23 by sguillot         ###   ########.fr        #
+#    Updated: 2024/02/21 16:29:35 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,13 @@ SRC_DIR = ./src
 
 SRC :=	main.c \
 		\
-		builtins/cd.c \
-		builtins/exit_utils.c \
-		builtins/exit.c \
-		builtins/pwd.c \
+		builtins/cd/cd.c \
+		builtins/echo/echo.c \
+		builtins/exit/exit_utils.c \
+		builtins/exit/exit.c \
+		builtins/export/export.c \
+		builtins/pwd/pwd.c \
+		builtins/unset/unset.c \
 		\
 		parsing/parsing.c \
 		\

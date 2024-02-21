@@ -1,23 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 15:25:07 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/26 15:25:35 by azbk             ###   ########.fr       */
+/*   Created: 2024/02/21 16:26:39 by sguillot          #+#    #+#             */
+/*   Updated: 2024/02/21 16:26:50 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
-
-int     ft_pwd(void)
-{
-    char    *pwd;
-
-    pwd = getcwd(NULL, 0);
-    ft_printf("%s\n", pwd);
-    free(pwd);
-    return (0);
-}
+#include "../../../includes/minishell.h"
