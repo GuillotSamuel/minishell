@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:51:04 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 14:34:48 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:02:39 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,32 @@ int	ft_strcmp_array_space_3(char *l, const char **ca, char *cs)
 					return (1);
 			}
 		}
+	}
+	return (SUCCESS);
+}
+
+int	forbiden_char(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == '\"')
+		{
+			i++;
+			while (line[i] && line[i] != '\"')
+				i++;
+		}
+		else if (line[i] == '\'')
+		{
+			i++;
+			while (line[i] && line[i] != '\'')
+				i++;
+		}
+		else if (line[i] == ';' || line[i] == '&')
+			return (ft_printf("bash: syntax error\n"), ERROR_SYNTAX);
+		i++;
 	}
 	return (SUCCESS);
 }

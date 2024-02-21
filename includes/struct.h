@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 19:09:55 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:03:19 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,10 @@ typedef struct s_cmd_line
 
 typedef struct s_env
 {
-	char *key;
-	char *value;
-	struct s_env *next;
+	char				*str;
+	char				*key;
+	char				*value;
+	struct s_env		*next;
 } t_env;
 
 typedef struct s_data
