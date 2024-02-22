@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:00:54 by azbreak           #+#    #+#             */
-/*   Updated: 2024/02/22 17:54:10 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:40:44 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dst, const char *src, int n);
 
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);
+
+char	*ft_strcat(char *s1, const char *s2);
 
 void				*ft_memchr(const void *s, int c, size_t n);
 
