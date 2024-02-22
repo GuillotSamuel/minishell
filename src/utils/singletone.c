@@ -1,15 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_init.c                                      :+:      :+:    :+:   */
+/*   singletone.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 19:00:01 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 17:49:22 by sguillot         ###   ########.fr       */
+/*   Created: 2024/02/11 12:38:49 by emauduit          #+#    #+#             */
+/*   Updated: 2024/02/22 17:21:44 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
+t_env	**ft_singletone_env(void)
+{
+	static t_env	*singletone = NULL;
 
+	return (&singletone);
+}

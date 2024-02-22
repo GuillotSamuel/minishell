@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:12:02 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/22 16:01:36 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:11:48 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	parsing(char *line, t_data *data)
 {
 	if (token(line, data) == ERROR_G)
 		return ;
+	//start_expand();
 	/* START OF TEST : display cmds, tokens and types */
 /* 	t_data *tmp = data;
  	while (tmp->cmd_list)

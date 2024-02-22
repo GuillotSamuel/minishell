@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:20:25 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/21 16:28:42 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:15:32 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+t_env **dup_secret_env(t_env **env)
+{
+	t_env **secret_env;
+	t_env *current;
+
+	current = *env;
+	secret_env = malloc(sizeof(t_env*));
+	*secret_env = NULL;
+	while (current)
+	{
+		ft_lst_env(current->str, secret_env);
+		current = current->next;
+	}
+	return (secret_env);
+}
 
 bool	ft_init_baby_env(t_env **env)
 {
@@ -44,7 +60,7 @@ bool	ft_init_lst_env(const char **envp)
 	{
 		if (ft_init_baby_env(env) == false)
 		{
-			ft_free_env_list(env);
+			ft_free_env_singletone(env);
 			return (ERROR);
 		}
 	}
@@ -56,7 +72,5 @@ bool	ft_init_lst_env(const char **envp)
 			return (ERROR);
 		len--;
 	}
-	//ft_print_env(env);
-	//ft_free_env_list(env);
 	return (OK);
 }

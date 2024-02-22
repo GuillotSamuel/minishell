@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:29:14 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/22 16:51:43 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:09:26 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-extern int	g_exit_status;
+/* extern int	g_exit_status;
 
 void	ft_export(char *key, char *value, t_data **data)
 {
@@ -83,3 +83,4 @@ void	ft_export(char *key, char *value, t_data **data)
 		ft_export_value(key, value, data);
 	g_exit_status = 0;
 }
+ */

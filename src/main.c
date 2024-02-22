@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/21 17:37:16 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:34:07 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,23 @@ static void	handle_sigint(int sig)
 	ft_printf("\n\001\033[1;33m\002MonMinishell>\001\033[0m\002 ");
 }
 
-int	main(int ac, char **av/* , char **envp */)
+// START TEST 
+void ft_print_env(t_env **env)
+{
+    t_env *cur;
+
+    cur = *env;
+    while (cur)
+    {   
+        printf("%s\n", cur->str);
+        // printf("key = %s\n", cur->key);
+        // printf("value = %s\n", cur->value);
+        cur = cur->next;
+    }
+}
+// END TEST
+
+int	main(int ac, char **av, char **envp )
 {
 	t_data	*data;
 	// char	**env;
@@ -66,6 +82,9 @@ int	main(int ac, char **av/* , char **envp */)
 	// env = init_env(envp);
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
+	ft_init_lst_env((const char**)envp);
+	
+	
 	minishell(line, data /* , env */);
 	return (0);
 }
