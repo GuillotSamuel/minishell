@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   shlvl.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:29:54 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/12 11:24:36 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/22 12:00:25 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-bool    ft_update_shlvl(char *line, t_env **env_list, int level)
+/* bool    ft_update_shlvl(char *line, t_env **env_list, int level)
 {
 	t_env	*cur;
 
@@ -87,3 +87,4 @@ bool	ft_init_shlvl(t_env **env_list)
     free(new_str);
 	return (OK);
 }
+ */

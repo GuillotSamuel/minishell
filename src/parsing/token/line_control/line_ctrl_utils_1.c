@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line_ctrl_3.c                                      :+:      :+:    :+:   */
+/*   line_ctrl_utils_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:32:57 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/20 14:13:59 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:12:14 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_strcmp_array_space_2_4(const char **cmp_arr,
 	int j, int i, char *l)
 {
-	if (cmp_arr[j] && cmp_arr[j][0] == l[i]
+	if (l[i] != '\0' && l[i + 1] != '\0' && cmp_arr[j] && cmp_arr[j][0] == l[i]
 		&& (l[i + 1] == '<' || l[i + 1] == '>'))
 		return (-(j + 1));
 	else if (cmp_arr[j] && cmp_arr[j][0] == l[i])
@@ -62,17 +62,27 @@ int	ft_strcmp_array_space_2(char *l, const char **cmp_arr, char *cmp_str)
 	j = 0;
 	while (l[++i])
 	{
-		if (l[i] && l[i + 1] && ft_strlen(cmp_str) == 2
+		ft_ignore_quotes(l, &i);
+		if (l[i] != '\0' && l[i + 1] != '\0' && ft_strlen(cmp_str) == 2
 			&& l[i] == cmp_str[0] && l[i + 1] == cmp_str[1])
 		{
+			if (!l[i + 2])
+				break ;
 			ft_strcmp_array_space_2_1(&l, &i, &j, cmp_arr);
+			if (!l[i])
+				break ;
 			if (ft_strcmp_array_space_2_4(cmp_arr, j, i, l) != SUCCESS)
 				return (ft_strcmp_array_space_2_4(cmp_arr, j, i, l));
 			j = 0;
 		}
-		else if (l[i] && l[i] == cmp_str[0] && ft_strlen(cmp_str) == 1)
+		else if (l[i] != '\0' && l[i + 1] != '\0'
+			&& l[i] == cmp_str[0] && ft_strlen(cmp_str) == 1)
 		{
+			if (!l[i + 1])
+				break ;
 			ft_strcmp_array_space_2_2(&l, &i, cmp_str);
+			if (!l[i])
+				break ;
 			ft_strcmp_array_space_2_3(&l, &i, &j, cmp_arr);
 			if (ft_strcmp_array_space_2_4(cmp_arr, j, i, l) != SUCCESS)
 				return (ft_strcmp_array_space_2_4(cmp_arr, j, i, l));

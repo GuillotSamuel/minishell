@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/21 19:57:40 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 14:09:39 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,11 @@ int			control_ii2(char *line);
 int			control_ss1(char *line);
 int			control_ss2(char *line);
 
-/* line_ctrl_utils */
+/* line_ctrl_utils_1 */
 int			ft_strcmp_array_space_2(char *l, const char **cmp_arr, char *cmp_str);
+
+/* line_ctrl_utils_2 */
+void    	ft_ignore_quotes(char *l, int *i);
 
 /* token_assign_1 */
 void		create_token_1(t_cmd_line **cmd_list, t_data **data);

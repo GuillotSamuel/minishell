@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:26:39 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 17:43:56 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 12:01:43 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ extern int	g_exit_status;
 
 void	ft_echo(char **args)
 {
-	int i;
-	int n;
+	int	i;
+	int	n;
 
 	i = 1;
 	n = 0;

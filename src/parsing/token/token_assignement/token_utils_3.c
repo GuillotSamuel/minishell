@@ -6,19 +6,19 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:55:35 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 21:20:13 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 12:21:07 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
 
-static int	cut_token_2(char *str, t_data *data, int i)
+static void	cut_token_2(char *str, t_data *data, int *i)
 {
-	while (str[i] != '\'' && str[i] != '\0')
-		i++;
-	if (str[i] == '\0')
+	(*i)++;
+	while (str[*i] != '\'' && str[*i] != '\0')
+		(*i)++;
+	if (str[*i] == '\0')
 		exit_error(data);
-	return (i);
 }
 
 int	cut_token_1(char *str, t_data *data)
@@ -28,17 +28,15 @@ int	cut_token_1(char *str, t_data *data)
 	i = 0;
 	while (str[i] == ' ')
 		i++;
-	if (((str[i]) == '>' && str[i + 1] == '>') || ((str[i]) == '<' && str[i + 1] == '<'))
+	if (((str[i]) == '>' && str[i + 1] == '>')
+		|| ((str[i]) == '<' && str[i + 1] == '<'))
 		return (i + 2);
 	if ((str[i]) == '>' || (str[i]) == '<')
 		return (i + 1);
 	while (str[i] != ' ' && str[i] != '\0' && str[i] != '>' && str[i] != '<')
 	{
 		if (str[i] == '\'')
-		{
-			i++;
-			i = cut_token_2(str, data, i);
-		}
+			cut_token_2(str, data, (&i));
 		if (str[i] == '\"')
 		{
 			i++;

@@ -6,13 +6,13 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:29:14 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 18:45:24 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 12:02:20 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-extern int g_exit_status;
+extern int	g_exit_status;
 
 /* void	ft_export(char *key, char *value, t_data **data)
 {

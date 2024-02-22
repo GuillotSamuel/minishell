@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:31:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 19:58:35 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:09:56 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ static int	consecutive_pipes_ctrl(char *line)
 
 int	line_ctrl(char *line)
 {
-	if (first_char_ctrl(line) == ERROR_SYNTAX
+	if (empty_line(line) == ERROR_SYNTAX
+		|| first_char_ctrl(line) == ERROR_SYNTAX
 		|| last_char_ctrl(line) == ERROR_SYNTAX
 		|| consecutive_pipes_ctrl(line) == ERROR_SYNTAX
 		|| forbiden_consecutive(line) == ERROR_SYNTAX
-		|| empty_line(line) == ERROR_SYNTAX
 		|| forbiden_char(line) == ERROR_SYNTAX)
 		return (ERROR_SYNTAX);
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:00:21 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 11:27:50 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 12:10:36 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static int	create_cmd_3(char **cmd, t_cmd_line **cmd_list, char **line, int *i)
 	if (!*cmd)
 		return (ERROR_G);
 	*cmd = ft_memset(*cmd, '\0', *i + 1);
-	//(*cmd)[*i] = '\0';
 	ft_strlcpy(*cmd, *line, *i);
 	if (*cmd_list == NULL)
 		*cmd_list = ft_stacknew_cmd(*cmd);
@@ -32,7 +31,6 @@ static int	create_cmd_3(char **cmd, t_cmd_line **cmd_list, char **line, int *i)
 	*i = 0;
 	return (SUCCESS);
 }
-
 
 static int	create_cmd_2(char *cmd, t_cmd_line **cmd_list, char *line, int i)
 {

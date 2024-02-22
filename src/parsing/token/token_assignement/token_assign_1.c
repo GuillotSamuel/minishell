@@ -6,11 +6,17 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:54:54 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 21:17:38 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 12:07:36 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
+
+static void	create_token_5_exit_error(t_data **data, char *tok_dup)
+{
+	free(tok_dup);
+	exit_error(*data);
+}
 
 static void	create_token_4(int *i, char **tok_dup, t_cmd_line **cur_cmd)
 {
@@ -68,20 +74,14 @@ void	create_token_1(t_cmd_line **cmd_list, t_data **data)
 			if (i == cut_token_1(tok_dup, (*data)))
 			{
 				if (create_token_3(&token, &tok_dup, &i, &cur_cmd) == ERROR_G)
-				{
-					free(tok_dup);
-					exit_error(*data);
-				}
+					create_token_5_exit_error(data, tok_dup);
 			}
 			else
 				i++;
 		}
 		if (i > 0)
 			if (create_token_2(&token, tok_dup, i, cur_cmd) == ERROR_G)
-			{
-				free(tok_dup);
-				exit_error(*data);
-			}
+				create_token_5_exit_error(data, tok_dup);
 		cur_cmd = cur_cmd->next;
 		free(tok_dup);
 	}

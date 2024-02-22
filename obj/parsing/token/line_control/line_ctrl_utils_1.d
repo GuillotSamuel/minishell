@@ -1,5 +1,5 @@
-obj/parsing/token/line_control/line_ctrl_utils.o: \
-  src/parsing/token/line_control/line_ctrl_utils.c \
+obj/parsing/token/line_control/line_ctrl_utils_1.o: \
+  src/parsing/token/line_control/line_ctrl_utils_1.c \
   src/parsing/token/line_control/../../../../includes/minishell.h \
   src/parsing/token/line_control/../../../../includes/../libft/libft.h \
   src/parsing/token/line_control/../../../../includes/../libft/GNL/get_next_line.h \
