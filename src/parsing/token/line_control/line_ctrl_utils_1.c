@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:32:57 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/22 15:12:14 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:00:32 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_strcmp_array_space_2_4(const char **cmp_arr,
 	int j, int i, char *l)
 {
 	if (l[i] != '\0' && l[i + 1] != '\0' && cmp_arr[j] && cmp_arr[j][0] == l[i]
-		&& (l[i + 1] == '<' || l[i + 1] == '>'))
+		&& (l[i + 1] == '<' || l[i + 1] == '>') && l[i] == l[i + 1])
 		return (-(j + 1));
 	else if (cmp_arr[j] && cmp_arr[j][0] == l[i])
 		return (j + 1);
