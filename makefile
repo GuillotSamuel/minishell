@@ -6,7 +6,7 @@
 #    By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/02/22 17:24:45 by emauduit         ###   ########.fr        #
+#    Updated: 2024/02/22 17:57:03 by emauduit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 NAME = minishell
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Wextra -g
 CIFLAGS	= -Iincludes -I$(LIB_DIR)/includes
 CCLIED	= -L$(LIB_DIR) -lft -lreadline
 MAKEFLAGS += --no-print-directory
@@ -35,6 +35,7 @@ SRC :=	main.c \
 		builtins/cd/cd.c \
 		builtins/echo/echo.c \
 		builtins/env/env.c \
+		builtins/env/lst_env.c \
 		builtins/exit/exit_utils.c \
 		builtins/exit/exit.c \
 		builtins/export/export.c \
@@ -42,6 +43,7 @@ SRC :=	main.c \
 		builtins/unset/unset.c \
 		\
 		initialize/lst_env.c \
+		initialize/shlvl.c \
 		\
 		parsing/parsing.c \
 		\
@@ -71,6 +73,7 @@ SRC :=	main.c \
 		parsing/token/type_assignement/type_assign_2.c \
 		\
 		utils/free_all_1.c \
+		utils/free_env.c \
 		utils/exit_error.c \
 		utils/singletone.c
 

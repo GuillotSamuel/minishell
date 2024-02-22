@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:25:59 by azbk              #+#    #+#             */
-/*   Updated: 2024/02/22 17:18:21 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:52:04 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,15 @@ void	ft_echo(char **args);
 /*                                    ENV                                     */
 /* -------------------------------------------------------------------------- */
 
+/* env */ 
 t_env **dup_secret_env(t_env **env);
+bool	ft_init_baby_env(t_env **env);
+bool	ft_init_lst_env(const char **envp);
+
+/* lst_env */
+bool ft_lst_env(const char *line, t_env **env);
+size_t ft_len_env(const char **envp);
+
 
 /* -------------------------------------------------------------------------- */
 /*                                    EXIT                                    */

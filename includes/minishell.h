@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/22 17:34:57 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:15:54 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ bool	ft_lst_env(const char *line, t_env **env);
 bool	ft_init_baby_env(t_env **env);
 bool	ft_init_lst_env(const char **envp);
 
+/* shlvl */
+bool	ft_init_shlvl(t_env **env_list);
+char *find_env(char *line, t_env *env_list);
+bool    ft_update_shlvl(char *line, t_env **env_list, int level);
+
 /* -------------------------------------------------------------------------- */
 /*                                    UTILS                                   */
 /* -------------------------------------------------------------------------- */
@@ -64,6 +69,10 @@ void	exit_error(t_data *data);
 /* free_all_1 */
 void	clear_lists(t_data *data);
 void	free_all(t_data *data);
+
+/* free_env */
+void ft_free_both_env(t_data *data);
+void	ft_free_env_singletone(t_env **env);
 
 /* singletone */
 t_env	**ft_singletone_env(void);

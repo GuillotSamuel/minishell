@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:20:25 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/22 17:16:29 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:56:52 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static char *ft_dup_value(const char *line)
         return (MALLOC_ERROR);
     return (value);
 }
-
 bool ft_lst_env(const char *line, t_env **env)
 {
     t_env *new;

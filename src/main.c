@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/22 17:34:07 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:24:47 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	minishell(char *line, t_data *data/* , char **env */)
 		if (line == NULL || ft_strncmp(line, "exit", 5) == 0)
 		{
 			ft_printf("exit\n");
+			//free env
 			free(data);
 			free(line);
 			break;
@@ -83,6 +84,9 @@ int	main(int ac, char **av, char **envp )
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
 	ft_init_lst_env((const char**)envp);
+	t_env **env = ft_singletone_env();
+	t_env **secret = dup_secret_env(env);
+	data->secret_env = secret;
 	
 	
 	minishell(line, data /* , env */);

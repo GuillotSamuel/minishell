@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/22 17:28:13 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:10:48 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_data
 {
 	t_cmd_line	*cmd_list;
 	t_env		**env;
-	t_env		**dup_secret_env;
+	t_env		**secret_env;
 } t_data;
 
 #endif
