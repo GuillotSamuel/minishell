@@ -1,6 +1,6 @@
-# *.o
-# *.d
-# minishell
-# test_push_swap.ods
-# *.a
-# .vscode/
+*.o
+*.d
+minishell
+test_push_swap.ods
+*.a
+.vscode/
