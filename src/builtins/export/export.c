@@ -3,75 +3,117 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:29:14 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/22 17:09:26 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/25 14:08:18 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-/* extern int	g_exit_status;
-
-void	ft_export(char *key, char *value, t_data **data)
+static char	*ft_generate_env_str(char *key, char *value)
 {
-	t_data	*data_tmp;
-
-	data_tmp = (*data)->env;
-	while (data_tmp)
-	{
-		if (ft_strcmp(data_tmp->key, key) == SUCCESS)
-		{
-			free(data_tmp->value);
-			data_tmp->value = ft_strdup(value);
-			(*data)->env = data_tmp;
-			return;
-		}
-		data_tmp = data_tmp->next;
-	}
-	t_env *new_env = malloc(sizeof(t_env));
-	if (!new_env)
-	{
-		g_exit_status = 1;
-		free_all(data);
-		exit(g_exit_status);
-	}
-	data_tmp = data_tmp;
-	new_env->key = ft_strdup(key);
-	new_env->value = ft_strdup(value);
-	new_env->next = data_tmp;
-	(*data)->env = new_env;
-	g_exit_status = 0;
-}
-
-static void	ft_export_value(char *key, char *value, t_data **data)
-{
+	char	*env_str;
+	int		i;
+	int		j;
 	
+	i = 0;
+	j = 0;
+	env_str = malloc(sizeof(char) * (ft_strlen(key) + ft_strlen(value) + 2));
+	while (key[j])
+	{
+		env_str[i] = key[j];
+		i++;
+		j++;
+	}
+	env_str[i] = '=';
+	i++;
+	while (value[j])
+	{
+		env_str[i] = value[j];
+		i++;
+		j++;
+	}
+	env_str[i] = '\0';
+	return (env_str);
 }
 
-static void	ft_export_no_value(char *key, t_data **data)
+static void	ft_export_value_2(char *key, char *value, t_data **data)
+{
+	t_env	*secret_env_tmp;
+	t_env	*new_secret_env;
+
+	secret_env_tmp = (*data)->env;
+	while (secret_env_tmp)
+	{
+		if (ft_strcmp(secret_env_tmp->key, key) == SUCCESS)
+		{
+			free(secret_env_tmp->value);
+			secret_env_tmp->value = NULL;
+			return ;
+		}
+		secret_env_tmp = secret_env_tmp->next;
+	}
+	new_secret_env = malloc(sizeof(t_env));
+	if (!new_secret_env)
+		exit_error(*data);
+	new_secret_env->key = ft_strdup(key);
+	new_secret_env->value = value;
+	new_secret_env->next = (*data)->env;
+	(*data)->env = new_secret_env;
+}
+
+static void	ft_export_value_1(char *key, char *value, t_data **data)
 {
 	t_env	*env_tmp;
+	t_env	*new_env;
 
-	env_tmp = (*data)->dup_secret_env;
+	ft_export_value_2(key, value, data);
+	env_tmp = (*data)->env;
 	while (env_tmp)
 	{
 		if (ft_strcmp(env_tmp->key, key) == SUCCESS)
 		{
 			free(env_tmp->value);
-			env_tmp->value = NULL;
+			env_tmp->value = value;
 			return ;
 		}
 		env_tmp = env_tmp->next;
 	}
-	t_env *new_env = malloc(sizeof(t_env));
+	new_env = malloc(sizeof(t_env));
 	if (!new_env)
 		exit_error(*data);
 	new_env->key = ft_strdup(key);
-	new_env->value = NULL;
-	new_env->next = (*data)->dup_secret_env;
-	(*data)->dup_secret_env = new_env;
+	new_env->value = value;
+	new_env->next = (*data)->env;
+	(*data)->env = new_env;
+	g_exit_status = 0;
+}
+
+static void	ft_export_no_value(char *key, t_data **data)
+{
+	t_env	*secret_env_tmp;
+	t_env	*new_secret_env;
+
+	secret_env_tmp = (*data)->env;
+	while (secret_env_tmp)
+	{
+		if (ft_strcmp(secret_env_tmp->key, key) == SUCCESS)
+		{
+			free(secret_env_tmp->value);
+			secret_env_tmp->value = NULL;
+			return ;
+		}
+		secret_env_tmp = secret_env_tmp->next;
+	}
+	new_secret_env = malloc(sizeof(t_env));
+	if (!new_secret_env)
+		exit_error(*data);
+	new_secret_env->key = ft_strdup(key);
+	new_secret_env->value = NULL;
+	new_secret_env->next = (*data)->env;
+	(*data)->env = new_secret_env;
 	g_exit_status = 0;
 }
 
@@ -83,4 +125,3 @@ void	ft_export(char *key, char *value, t_data **data)
 		ft_export_value(key, value, data);
 	g_exit_status = 0;
 }
- */
