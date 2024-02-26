@@ -6,13 +6,14 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/22 18:34:12 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:23:11 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 int	g_exit_status;
+
 
 void	minishell(char *line, t_data *data/* , char **env */)
 {

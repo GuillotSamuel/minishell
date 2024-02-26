@@ -6,11 +6,11 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:38:03 by emauduit          #+#    #+#             */
-/*   Updated: 2023/11/07 11:38:04 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/12 11:22:43 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

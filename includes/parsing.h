@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/22 14:09:39 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:55:27 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,47 @@
 /* parsing */
 void		parsing(char *line, t_data *data);
 
-/* ---------------------------------- EXPAND -------------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                                    EXPAND                                  */
+/* -------------------------------------------------------------------------- */
+
+bool	expand_all_tokens(t_data *data);
+char	*expand_smpl_quotes(const char *line, char *str_expand, int *i);
+char	*expand_no_quote(t_token **tok, const char *line, char *str_expand, int *i);
+char	*expand_dbl_quotes(const char *line, char *str_expand, int *i);
+char	*init_exp_with_dollar(const char *line, char *str_expand,
+			int *i);
+char	*exp_without_dollar(const char *line, char *str_expand, int *i);
+char	*exp_with_dollar(const char *line, int *i);
+char	*exp_no_quote_no_dol(const char *line, char *str_expand, int *i);
+bool	prepare_execution(t_data *data);
+
+char *init_no_quote_with_dollar(t_token **token ,const char *line, char *str_expand, int *i);
+
+/* -------------------------------------------------------------------------- */
+/*                                  UTILS                                     */
+/* -------------------------------------------------------------------------- */
+size_t	find_len_var(const char *line);
+char	*get_value_env(const char *variable);
+
+/* -------------------------------------------------------------------------- */
+/*                                  DEL QUOTES                                     */
+/* -------------------------------------------------------------------------- */
+
+void	delete_quote(char *new_str, char *line, int i, int j);
+bool	init_delete_quote(t_token *lst_token, char *line);
+
+// FREE A VOIR SI ON DEL
+void print_cmd(t_data *data);
+void	ft_free_data(t_data *data);
+void	ft_free_commands(t_cmd_line *command);
+void	ft_free_cmd(t_cmd_line *cmd);
+void	ft_free_array(char **tab);
+void	ft_free_tokens(t_token *tokens);
+
+
+
+
 
 
 /* ---------------------------------- TOKEN --------------------------------- */
