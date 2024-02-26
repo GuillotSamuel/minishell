@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/22 18:22:56 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:57:55 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	clear_lists(t_data *data)
 	cmd_list_dup = data->cmd_list;
 	while (cmd_list_dup)
 	{
+		ft_free_array(cmd_list_dup->args);
 		token_list_dup = cmd_list_dup->token_list;
 		while (token_list_dup)
 		{

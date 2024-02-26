@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/26 16:23:11 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:45:45 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,7 @@ static void	handle_sigint(int sig)
 	ft_printf("\n\001\033[1;33m\002MonMinishell>\001\033[0m\002 ");
 }
 
-// START TEST 
-void ft_print_env(t_env **env)
-{
-    t_env *cur;
 
-    cur = *env;
-    while (cur)
-    {   
-        printf("%s\n", cur->str);
-        // printf("key = %s\n", cur->key);
-        // printf("value = %s\n", cur->value);
-        cur = cur->next;
-    }
-}
-// END TEST
 
 int	main(int ac, char **av, char **envp )
 {
