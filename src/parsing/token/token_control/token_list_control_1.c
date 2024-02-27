@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:48:54 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/26 22:11:28 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:11:43 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ static char	*trim_spaces_token(char *token, t_data **data)
 	while (token[i])
 		i++;
 	while (token[--i] == ' ')
-		spaces_counter++;
-	ft_printf("spaces_counter: %d\n", spaces_counter);
+	{
+		if (token[i] == ' ')
+			spaces_counter++;
+	}
 	new_token = malloc(sizeof(char) * (i - spaces_counter + 1));
 	if (!new_token)
 		exit_error(*data);

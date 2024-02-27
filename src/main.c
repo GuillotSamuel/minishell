@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/25 13:55:18 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:34:12 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,14 @@ int	main(int ac, char **av, char **envp )
 		return (ERROR_G);
 	data->cmd_list = NULL;
 	data->env = NULL;
-	//env = init_env(envp);
+	// env = init_env(envp);
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
 	ft_init_lst_env((const char**)envp);
 	t_env **env = ft_singletone_env();
 	t_env **secret = dup_secret_env(env);
-	data->env = secret;
-	/* TEST */
-	// ft_print_env(env);
-	// ft_printf("--------------------------------------------------------------------------------\n");
-	// ft_print_env(secret);
-	/* END TEST */
+	data->secret_env = secret;
+	
 	minishell(line, data /* , env */);
 	return (0);
 }

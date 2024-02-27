@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:54:54 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/26 22:10:38 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/22 12:07:36 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static int	create_token_3(char **token, char **token_dup, int *i,
 	if (!*token)
 		return (ERROR_G);
 	*token = ft_memset(*token, '\0', *i + 1);
+	ft_strlcpy(*token, *token_dup, *i + 1);
 	if ((*current_cmd)->token_list == NULL)
 		(*current_cmd)->token_list = ft_stacknew_token(*token);
 	else
