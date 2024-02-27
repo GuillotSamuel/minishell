@@ -6,11 +6,13 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:29:14 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/25 14:08:18 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:01:33 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+/* extern int	g_exit_status;
 
 static char	*ft_generate_env_str(char *key, char *value)
 {
@@ -124,4 +126,4 @@ void	ft_export(char *key, char *value, t_data **data)
 	else
 		ft_export_value(key, value, data);
 	g_exit_status = 0;
-}
+} */
