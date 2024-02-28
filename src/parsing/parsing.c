@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:12:02 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/27 18:26:03 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:34:54 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	parsing(char *line, t_data *data)
 		return ;
 	//start_expand();
 	/* START OF TEST : display cmds, tokens and types */
-/* 	t_data *tmp = data;
- 	while (tmp->cmd_list)
+	t_data *tmp = data;
+/*  	while (tmp->cmd_list)
 	{
 		ft_printf("cmd:[%s]\n", tmp->cmd_list->cmd);
 		while (tmp->cmd_list->token_list)
