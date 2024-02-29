@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/26 16:01:13 by emauduit         ###   ########.fr       */
+/*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */ 
+/*   Updated: 2024/02/27 18:09:38 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ typedef struct s_env
 	struct s_env		*next;
 } t_env;
 
-// echo $USER$LOL"mdr $USER"salut'bonjour' > txt | bonjour
 typedef struct s_data
 {
 	t_cmd_line	*cmd_list;

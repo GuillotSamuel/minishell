@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:31:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/22 15:09:56 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:32:04 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	empty_line(char *line)
 static int	last_char_ctrl(char *line)
 {
 	int			i;
-	const char	*cmp[] = {"|", NULL};
+	const char	*cmp[] = {"|", ">", "<", NULL};
 
 	i = 0;
 	while (line[i] != '\0')
