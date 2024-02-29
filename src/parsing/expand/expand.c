@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:32:31 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/26 16:24:52 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:17:44 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,16 @@ static bool	expand_token(t_token **lst_token, char *line, enum_type type)
 		if (init_delete_quote(*lst_token, line) == ERROR)
 			return (ERROR);
 	}
-	new_str = ft_strdup(line);
-	if (new_str == NULL)
-		return (ERROR);
-	free(line);
-	(*lst_token)->token = NULL;
-	if (start_expand(lst_token, new_str, str_expand, &i) == ERROR)
-		return (ERROR);
+	else
+	{
+		new_str = ft_strdup(line);
+		if (new_str == NULL)
+			return (ERROR);
+		free(line);
+		(*lst_token)->token = NULL;
+		if (start_expand(lst_token, new_str, str_expand, &i) == ERROR)
+			return (ERROR);
+	}
 	return (OK);
 }
 

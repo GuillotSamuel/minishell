@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_assign_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:04:59 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 11:56:35 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/02/28 13:46:30 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_cmd_line	*ft_stacknew_cmd(char *content)
 		return (NULL);
 	new_element->cmd = content;
 	new_element->token_list = NULL;
+	new_element->args = NULL;
 	new_element->next = NULL;
 	return (new_element);
 }

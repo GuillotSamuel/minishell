@@ -32,6 +32,7 @@ void print_token(t_data *data)
 		while (current_token)
 		{
 			printf("token[%d] = %s\n", ++i, current_token->token);
+			printf("Type = %d\n", current_token->type);
 			current_token = current_token->next;
 		}
 		command = command->next;
