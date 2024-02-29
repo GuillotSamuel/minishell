@@ -6,7 +6,7 @@
 #    By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/02/22 17:57:03 by emauduit         ###   ########.fr        #
+#    Updated: 2024/02/26 16:46:31 by emauduit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC_DIR = ./src
 ################################################################################
 
 SRC :=	main.c \
+		print_a_suppr.c \
 		\
 		builtins/cd/cd.c \
 		builtins/echo/echo.c \
@@ -60,6 +61,15 @@ SRC :=	main.c \
 		parsing/token/line_control/line_ctrl_2superior.c \
 		parsing/token/line_control/line_ctrl_utils_1.c \
 		parsing/token/line_control/line_ctrl_utils_2.c \
+		\
+		parsing/expand/delete_quotes.c \
+		parsing/expand/exp_dollar.c \
+		parsing/expand/expand.c \
+		parsing/expand/find_count_len.c \
+		parsing/expand/exp_quotes.c \
+		parsing/expand/prep_exec.c \
+		parsing/expand/no_quot_w_dollar.c \
+		parsing/expand/free_exp.c \
 		\
 		parsing/token/token_assignement/token_assign_1.c \
 		parsing/token/token_assignement/token_utils_1.c \

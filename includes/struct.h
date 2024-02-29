@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
+/*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */ 
 /*   Updated: 2024/02/27 18:09:38 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -33,7 +33,6 @@ typedef enum type
 typedef struct s_token
 {
 	char			*token;
-	int				jump;
 	enum_type		type;
 	struct s_token	*next;
 } t_token;

@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/22 18:15:54 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:24:27 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@
 # define VAR_EMPTY NULL
 # define ERROR false
 # define OK true
+
+extern int g_exit_status;
+
+//A SUUPRRR
+void print_token(t_data *data);
 
 /* -------------------------------------------------------------------------- */
 /*                                    INITIALISATION                          */

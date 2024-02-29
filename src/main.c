@@ -14,6 +14,7 @@
 
 int	g_exit_status;
 
+
 void	minishell(char *line, t_data *data/* , char **env */)
 {
 	while (true)
@@ -40,21 +41,7 @@ static void	handle_sigint(int sig)
 	ft_printf("\n\001\033[1;33m\002MonMinishell>\001\033[0m\002 ");
 }
 
-// START TEST 
-void ft_print_env(t_env **env)
-{
-    t_env *cur;
 
-    cur = *env;
-    while (cur)
-    {   
-        printf("%s\n", cur->str);
-        // printf("key = %s\n", cur->key);
-        // printf("value = %s\n", cur->value);
-        cur = cur->next;
-    }
-}
-// END TEST
 
 int	main(int ac, char **av, char **envp )
 {

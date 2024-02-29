@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   singletone.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 07:58:45 by azbreak           #+#    #+#             */
-/*   Updated: 2024/02/06 12:18:50 by emauduit         ###   ########.fr       */
+/*   Created: 2024/02/11 12:38:49 by emauduit          #+#    #+#             */
+/*   Updated: 2024/02/22 17:05:20 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/minishell.h"
 
-void	ft_putstr_fd(const char *s, int fd)
+t_env	**ft_singletone_env(void)
 {
-	int	i;
+	static t_env	*singletone = NULL;
 
-	i = 0;
-	while (s[i])
-	{
-		ft_putchar_fd(s[i], fd);
-		i++;
-	}
+	return (&singletone);
 }
