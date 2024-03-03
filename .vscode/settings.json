@@ -3,6 +3,7 @@
     "files.associations": {
         "minishell.h": "c",
         "builtin.h": "c",
-        "libft.h": "c"
+        "libft.h": "c",
+        "parsing.h": "c"
     }
 }
