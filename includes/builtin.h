@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:25:59 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/03 16:54:22 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/06 16:53:40 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 /* -------------------------------------------------------------------------- */
 
 /* pwd */
+char	*find_key_in_env(char *key);
 void	ft_pwd(void);
 
 /* -------------------------------------------------------------------------- */
@@ -26,7 +27,14 @@ void	ft_pwd(void);
 /* -------------------------------------------------------------------------- */
 
 /* cd */
-//int		ft_cd(char **args);
+int	ft_cd(char **args, t_data *data);
+
+/* update_pwd */
+int	ft_pwd_exist(t_env **env, char *key, char *pwd);
+int	ft_change_pwd(t_env **env);
+int	check_oldpwd(t_env **env, char *pwd);
+size_t	ft_len_tab(char **tab);
+
 
 /* -------------------------------------------------------------------------- */
 /*                                    ECHO                                    */
@@ -44,6 +52,7 @@ void	ft_echo(char **args);
 t_env **dup_secret_env(t_env **env);
 bool	ft_init_baby_env(t_env **env);
 bool	ft_init_lst_env(const char **envp);
+void	ft_print_secret_env(t_env **env);
 
 /* lst_env */
 bool ft_lst_env(const char *line, t_env **env);
