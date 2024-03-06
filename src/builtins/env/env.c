@@ -3,22 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:20:25 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/22 17:15:32 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:39:40 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-t_env **dup_secret_env(t_env **env)
+void	ft_print_secret_env(t_env **env)
 {
-	t_env **secret_env;
-	t_env *current;
+	t_env	*cur;
+
+	cur = *env;
+	while (cur)
+	{
+		printf("declare -x ");
+		printf("%s=", cur->key);
+		printf("\"%s\"\n", cur->value);
+		cur = cur->next;
+	}
+}
+
+t_env	**dup_secret_env(t_env **env)
+{
+	t_env	**secret_env;
+	t_env	*current;
 
 	current = *env;
-	secret_env = malloc(sizeof(t_env*));
+	secret_env = malloc(sizeof(t_env *));
 	*secret_env = NULL;
 	while (current)
 	{

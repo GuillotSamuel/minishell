@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 17:44:01 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/25 13:55:18 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:21:17 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,11 @@ static void	ft_free_secret_env(t_env **secret_env)
 	free(secret_env);
 }
 
-void ft_free_both_env(t_data *data)
+void	ft_free_both_env(t_data *data)
 {
-    t_env **env;
+	t_env **env;
 
-    env = ft_singletone_env();
-    ft_free_env_singletone(env);
-    
-    ft_free_secret_env(data->env);
+	env = ft_singletone_env();
+	ft_free_env_singletone(env);
+	ft_free_secret_env(data->secret_env);
 }

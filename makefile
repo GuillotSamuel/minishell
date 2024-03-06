@@ -6,7 +6,7 @@
 #    By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/03 15:35:58 by azbk             ###   ########.fr        #
+#    Updated: 2024/03/06 16:58:31 by azbk             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC :=	main.c \
 		print_a_suppr.c \
 		\
 		builtins/cd/cd.c \
+		builtins/cd/update_pwd.c \
 		builtins/echo/echo.c \
 		builtins/env/env.c \
 		builtins/env/lst_env.c \

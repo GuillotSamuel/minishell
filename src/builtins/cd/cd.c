@@ -3,11 +3,92 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:14:10 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/22 12:01:51 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:14:52 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+extern int	g_exit_status;
+
+static char	*prepare_path(char **args, t_env **env)
+{
+	char	*path;
+
+	if (args[0] == NULL || args[0][0] == '~')
+	{
+		path = ft_strdup(ft_get_env("HOME", *env));
+		if (path == NULL)
+		{
+			ft_putstr_fd("Minishell: cd: HOME not set\n", 2);
+			g_exit_status = 1;
+			return (NULL);
+		}
+	}
+	else
+	{
+		path = ft_strdup(args[0]);
+	}
+	return (path);
+}
+
+static int	execute_cd_and_update_env(char *path, t_env **env,
+		t_env **secret_env)
+{
+	char	*pwd;
+
+	pwd = getcwd(NULL, 0);
+	if (pwd == NULL)
+		pwd = find_key_in_env("PWD");
+	if (pwd == NULL)
+		return (FAIL);
+	if (chdir(path) == -1)
+	{
+		ft_putstr_fd("Minishell: cd: %s: No such file or directory\n", 2);
+		g_exit_status = 1;
+		free(pwd);
+		free(path);
+		return (FAIL);
+	}
+	check_oldpwd(env, pwd);
+	check_oldpwd(secret_env, pwd);
+	free(path);
+	free(pwd);
+	return (OK);
+}
+
+static int	ft_exec_cd(char **args, t_env **env, t_env **secret_env)
+{
+	char	*path;
+
+	path = prepare_path(args, env);
+	if (path == NULL)
+		return (FAIL);
+	return (execute_cd_and_update_env(path, env, secret_env));
+}
+
+int	ft_cd(char **args, t_data *data)
+{
+	t_env	**env;
+	t_env	**secret_env;
+
+	env = ft_singletone_env();
+	secret_env = data->secret_env;
+	if (ft_len_tab(args) > 1)
+	{
+		ft_putstr_fd("Minishell: cd: too many arguments", 2);
+		g_exit_status = 1;
+		return (FAIL);
+	}
+	if (ft_exec_cd(args, env, secret_env) == -1)
+		return (FAIL);
+	if (ft_change_pwd(env) == -1)
+		return (FAIL);
+	if (ft_change_pwd(secret_env) == -1)
+		return (FAIL);
+	g_exit_status = 0;
+	return (OK);
+}
