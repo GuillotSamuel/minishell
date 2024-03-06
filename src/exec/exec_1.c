@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:47:10 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/06 17:47:13 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:42:06 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,44 @@
 
 static void	exec_builtin_or_external(t_cmd_line *cmd, t_data *data)
 {
-	if (ft_strcmp(cmd->command, "cd") == 0
-	|| ft_strcmp(cmd->command, "echo") == 0
-	|| ft_strcmp(cmd->command, "env") == 0
-	|| ft_strcmp(cmd->command, "exit") == 0
-	|| ft_strcmp(cmd->command, "export") == 0
-	|| ft_strcmp(cmd->command, "pwd") == 0
-	|| ft_strcmp(cmd->command, "unset") == 0)
-		exec_builtin(cmd, data);
+	if (ft_strcmp(cmd->token_list->token, "cd") == 0
+		|| ft_strcmp(cmd->token_list->token, "echo") == 0
+		|| ft_strcmp(cmd->token_list->token, "env") == 0
+		|| ft_strcmp(cmd->token_list->token, "exit") == 0
+		|| ft_strcmp(cmd->token_list->token, "export") == 0
+		|| ft_strcmp(cmd->token_list->token, "pwd") == 0
+		|| ft_strcmp(cmd->token_list->token, "unset") == 0)
+		exec_builtins(cmd, data);
 	else
-		exec_external(cmd, data);
+		exec_externals(cmd, data);
 }
 
 static void	child_process(int pipe_fd[2], t_cmd_line *cmd_list_dup, t_data *data)
 {
 	close(pipe_fd[0]);
-	    dup2(pipe_fd[1], STDOUT_FILENO);
-    execve(cmd_list_dup->command, cmd_list_dup->args, data->env);
+		dup2(pipe_fd[1], STDOUT_FILENO);
+	execve(cmd_list_dup->token_list->token, cmd_list_dup->args, data->env_array);
 }
 
 static void	parent_process(int pipe_fd[2], t_cmd_line *cmd_list_dup, t_data *data)
 {
-    char buffer[1024];
-    int bytes_read;
-	    close(pipe_fd[1]);
+	char	buffer[1024];
+	int	bytes_read;
+		close(pipe_fd[1]);
 	while ((bytes_read = read(pipe_fd[0], buffer, sizeof(buffer) - 1)) > 0)
 	{
 		buffer[bytes_read] = '\0';
-		printf("%s", buffer);
-    }
+		ft_printf("%s", buffer);
+	}
 		close(pipe_fd[0]);
 }
 
 void	exec_commands(t_cmd_line *cmd_list_dup, t_data *data)
 {
-	int	pipe_fd[2];
+	int		pipe_fd[2];
 	pid_t	pid;
 
+	convert_env_to_array(data->env, data);
 	while (cmd_list_dup != NULL)
 	{
 		if (cmd_list_dup->next != NULL)

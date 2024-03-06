@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/26 16:57:55 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:33:25 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void free_all(t_data *data)
 {
 	ft_free_both_env(data);
 	clear_lists(data);
+	if (data->env_array)
+		free(data->env_array);
 	if (data)
 		free(data);
 	// free_env(env);

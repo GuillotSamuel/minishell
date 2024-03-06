@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+         #
+#    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/03 15:35:58 by azbk             ###   ########.fr        #
+#    Updated: 2024/03/06 21:11:19 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,10 @@ SRC :=	main.c \
 		builtins/export/export.c \
 		builtins/pwd/pwd.c \
 		builtins/unset/unset.c \
+		\
+		exec/exec_1.c \
+		exec/exec_2.c \
+		exec/cmd_exist/exist.c \
 		\
 		initialize/lst_env.c \
 		initialize/shlvl.c \
