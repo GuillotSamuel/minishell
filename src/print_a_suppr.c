@@ -18,6 +18,22 @@ void ft_print_env(t_env **env)
 // END TEST
 
 
+void ft_print_pwd_oldpwd(t_env **env)
+{
+	t_env *cur;
+
+	cur = *env;
+	while (cur)
+	{
+		if (strcmp(cur->key, "PWD") == 0)
+			ft_printf("ENV PWD = %s\n", cur->value);
+		if (strcmp(cur->key, "OLDPWD") == 0)
+			ft_printf("ENV OLDPWD = %s\n", cur->value);
+		cur = cur->next;
+	}
+}
+
+
 void print_token(t_data *data)
 {
 	t_cmd_line	*command;

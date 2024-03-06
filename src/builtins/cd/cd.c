@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:14:10 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/06 17:05:16 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/06 17:14:52 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int	ft_cd(char **args, t_data *data)
 	if (ft_exec_cd(args, env, secret_env) == -1)
 		return (FAIL);
 	if (ft_change_pwd(env) == -1)
+		return (FAIL);
+	if (ft_change_pwd(secret_env) == -1)
 		return (FAIL);
 	g_exit_status = 0;
 	return (OK);
