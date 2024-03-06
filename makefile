@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+         #
+#    By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/02/26 16:46:31 by emauduit         ###   ########.fr        #
+#    Updated: 2024/03/03 15:35:58 by azbk             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,8 @@ SRC :=	main.c \
 		\
 		initialize/lst_env.c \
 		initialize/shlvl.c \
+		\
+		exec/cmd_exist/exist.c \
 		\
 		parsing/parsing.c \
 		\

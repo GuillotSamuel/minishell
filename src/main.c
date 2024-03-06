@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/25 13:55:18 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/03 16:59:13 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	handle_sigint(int sig)
 }
 
 
-
 int	main(int ac, char **av, char **envp )
 {
 	t_data	*data;
@@ -74,11 +73,7 @@ int	main(int ac, char **av, char **envp )
 	t_env **env = ft_singletone_env();
 	t_env **secret = dup_secret_env(env);
 	data->env = secret;
-	/* TEST */
-	// ft_print_env(env);
-	// ft_printf("--------------------------------------------------------------------------------\n");
-	// ft_print_env(secret);
-	/* END TEST */
+	
 	minishell(line, data /* , env */);
 	return (0);
 }

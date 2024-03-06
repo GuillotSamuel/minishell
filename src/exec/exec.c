@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_env.c                                          :+:      :+:    :+:   */
+/*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 10:20:25 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/03 16:43:42 by azbk             ###   ########.fr       */
+/*   Created: 2024/03/01 13:41:44 by sguillot          #+#    #+#             */
+/*   Updated: 2024/03/01 14:01:41 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-size_t ft_len_env(const char **envp)
+void	exec_commands(t_cmd_line *cmd_list_dup, t_data *data)
 {
-    size_t i;
     
-    i = 0;
-    if (!envp)
-        return (0);
-    while (envp[i])
-        i++;
-    return (i);
 }
-
-
-
+```
