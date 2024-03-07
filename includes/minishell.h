@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/06 21:36:09 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:05:23 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ extern int	g_exit_status;
 
 // A SUUPRRR
 void		print_token(t_data *data);
-void ft_print_env(t_env **env);
+void		ft_print_env(t_env **env);
 
 /* -------------------------------------------------------------------------- */
 /*                                    INITIALISATION                          */
@@ -75,6 +75,8 @@ bool		ft_update_shlvl(char *line, t_env **env_list, int level);
 
 /* exit_error */
 void		exit_error(t_data *data);
+void		free_data_env_array(t_data *data);
+void		free_data_args(t_data *data);
 
 /* free_all_1 */
 void		clear_lists(t_data *data);

@@ -6,13 +6,13 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:29:14 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/27 18:09:30 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:21:09 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
+/* #include "../../../includes/minishell.h"
 
-/* static char	*ft_generate_env_str(char *key, char *value)
+static char	*ft_generate_env_str(char *key, char *value)
 {
 	char	*env_str;
 	int		i;

@@ -58,6 +58,7 @@ typedef struct s_data
 	t_cmd_line	*cmd_list;
 	t_env		**env;
 	char		**env_array;
+	char		**args;
 	t_env		**secret_env;
 } t_data;
 

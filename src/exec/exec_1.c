@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:47:10 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/06 21:42:06 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:27:02 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,18 @@ static void	child_process(int pipe_fd[2], t_cmd_line *cmd_list_dup, t_data *data
 {
 	close(pipe_fd[0]);
 		dup2(pipe_fd[1], STDOUT_FILENO);
-	execve(cmd_list_dup->token_list->token, cmd_list_dup->args, data->env_array);
+	exec_builtin_or_external(cmd_list_dup, data);
 }
 
 static void	parent_process(int pipe_fd[2], t_cmd_line *cmd_list_dup, t_data *data)
 {
 	char	buffer[1024];
-	int	bytes_read;
-		close(pipe_fd[1]);
+	int		bytes_read;
+	
+	(void)cmd_list_dup; // TO REMOVE
+	(void)data; // TO REMOVE
+	
+	close(pipe_fd[1]);
 	while ((bytes_read = read(pipe_fd[0], buffer, sizeof(buffer) - 1)) > 0)
 	{
 		buffer[bytes_read] = '\0';
