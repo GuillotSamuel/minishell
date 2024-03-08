@@ -6,7 +6,7 @@
 #    By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/06 16:58:31 by azbk             ###   ########.fr        #
+#    Updated: 2024/03/08 14:50:37 by azbk             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,11 @@ SRC :=	main.c \
 		initialize/shlvl.c \
 		\
 		exec/cmd_exist/exist.c \
+		\
+		exec/here_doc/heredoc.c \
+		exec/here_doc/create_random.c \
+		\
+		exec/redirection/redir.c \
 		\
 		parsing/parsing.c \
 		\

@@ -33,7 +33,6 @@ void ft_print_pwd_oldpwd(t_env **env)
 	}
 }
 
-
 void print_token(t_data *data)
 {
 	t_cmd_line	*command;
@@ -52,5 +51,18 @@ void print_token(t_data *data)
 			current_token = current_token->next;
 		}
 		command = command->next;
+	}
+}
+
+void start_exec(t_data *data)
+{
+	t_cmd_line *cmd;
+
+	cmd = data->cmd_list;
+	while (cmd)
+	{
+		if (open_all_redirections(cmd) == -1)
+			return ;
+		cmd = cmd->next;
 	}
 }
