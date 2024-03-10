@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_assign_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:04:59 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/28 13:46:30 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:40:50 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_cmd_line	*ft_stacknew_cmd(char *content)
 	new_element->token_list = NULL;
 	new_element->args = NULL;
 	new_element->next = NULL;
+	new_element->redir = NULL;
 	return (new_element);
 }
 
