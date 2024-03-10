@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:47:10 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/10 14:17:52 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/10 16:52:54 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,65 +44,14 @@ static void	exec_builtin_or_external(t_cmd_line *cmd, t_data *data)
 static void	child_process(int pipe_fd[2], t_cmd_line *cmd_list_dup, t_data *data)
 {
 	(void)pipe_fd;
-	ft_printf("\nchild process\n");
 	exec_builtin_or_external(cmd_list_dup, data);
 }
 
 static void	parent_process(int pipe_fd[2], t_cmd_line *cmd_list_dup, t_data *data)
 {
 	(void)pipe_fd;
-	ft_printf("\nparent process\n");
 	exec_builtin_or_external(cmd_list_dup, data);
 }
-
-/* void	exec_commands(t_cmd_line *cmd_list_dup, t_data *data)
-{
-	int			pipe_fd[2];
-	pid_t		pid;
-	t_cmd_line	*cmd_list_dup_prev;
-
-
-
-	if (pipe(pipe_fd) == -1)
-		exit_error(data);
-
-	if (cmd_list_dup->next == NULL)
-	{
-		exec_builtin_or_external(cmd_list_dup, data);
-	}
-	else
-	{
-		while (cmd_list_dup != NULL)
-		{
-			cmd_list_dup_prev = cmd_list_dup;
-			cmd_list_dup = cmd_list_dup->next;
-		}
-		cmd_list_dup = cmd_list_dup_prev;
-		while (cmd_list_dup != NULL)
-		{
-			
-			if (cmd_list_dup->prev != NULL)
-			{
-				pid = fork();
-				if (pid < 0)
-				{
-					exit_error(data);
-				}
-				else if (pid == 0)
-				{
-					child_process(pipe_fd, cmd_list_dup, data);
-				}
-				else
-				{
-					waitpid(pid, NULL, 0);
-					//ft_printf("PARENT PROCESS\n");
-					parent_process(pipe_fd, cmd_list_dup, data);
-				}
-			}
-			cmd_list_dup = cmd_list_dup->prev;
-		}
-	}	
-} */
 
 static void	exec_commands_2(t_cmd_line *cmd_list_dup, t_data *data, int pipe_fd[2], int cmd_count)
 {
@@ -110,7 +59,6 @@ static void	exec_commands_2(t_cmd_line *cmd_list_dup, t_data *data, int pipe_fd[
 	
 	if (cmd_count == 0)
 	{
-		ft_printf("cmd_list_dup->cmd = %s\n", cmd_list_dup->cmd);
 		child_process(pipe_fd, cmd_list_dup, data);
 		exit(0);
 	}
@@ -127,7 +75,6 @@ static void	exec_commands_2(t_cmd_line *cmd_list_dup, t_data *data, int pipe_fd[
 	else
 	{
 		waitpid(pid, NULL, 0);
-		ft_printf("cmd_list_dup->cmd = %s\n", cmd_list_dup->cmd);
 		parent_process(pipe_fd, cmd_list_dup, data);
 	}
 }
@@ -137,7 +84,9 @@ void	exec_commands_1(t_cmd_line *cmd_list_dup, t_data *data)
 	t_cmd_line	*cmd_list_dup_prev;
 	int			pipe_fd[2];
 	int			cmd_count;
-
+	int			stdout_save;
+	int			file;
+	
 	convert_env_to_array(data->env, data);
 	fill_prev_cmd_node(data);
 	while (cmd_list_dup != NULL)
@@ -146,7 +95,18 @@ void	exec_commands_1(t_cmd_line *cmd_list_dup, t_data *data)
 		cmd_list_dup = cmd_list_dup->next;
 		cmd_count++;
 	}
-	if (pipe(pipe_fd) == -1)
+
+/* 	stdout_save = dup(1);
+	file = open("exec.txt", O_WRONLY | O_CREAT, 0777);
+	if (file < 0)
 		exit_error(data);
+	if (dup2(file, 1) == -1)
+		exit_error(data);
+	if (pipe(pipe_fd) == -1)
+		exit_error(data); */
+		
 	exec_commands_2(cmd_list_dup_prev, data, pipe_fd, cmd_count);
+	
+/* 	dup2(stdout_save, 1);
+	close(file); */
 }

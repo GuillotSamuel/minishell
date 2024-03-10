@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:46:53 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/08 19:27:25 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/10 17:19:38 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,42 @@ static void	convert_token_list_to_array(t_cmd_line *cmd, t_data *data)
 	data->args_array[i] = NULL;
 }
 
+void ft_print_args_array(char **args_array)
+{
+	int i;
+
+	i = 0;
+	ft_printf("\n");
+	while (args_array[i] != NULL)
+	{
+		ft_printf("data->args_array[%d] = %s\n", i, args_array[i]);
+		i++;
+	}
+	ft_printf("data->args_array[%d] = %s\n\n", i, args_array[i]);
+}
+
+void ft_print_env_array(char **env_array)
+{
+	int i;
+
+	i = 0;
+	ft_printf("\n");
+	while (env_array[i] != NULL)
+	{
+		ft_printf("data->env_array[%d] = %s\n", i, env_array[i]);
+		i++;
+	}
+	ft_printf("data->env_array[%d] = %s\n\n", i, env_array[i]);
+}
+
 void	exec_externals(t_cmd_line *cmd, t_data *data)
 {
+	ft_print_env_array(data->env_array);
+	ft_print_args_array(cmd->args);
 	if (ft_cmd_exist(cmd->cmd) == OK)
 	{
-		execve(cmd->args[0], cmd->args, data->env_array);
+		if (execve(cmd->args[0], cmd->args, data->env_array) == -1)
+			exit_error(data);
 		g_exit_status = 0;
 	}
 	else

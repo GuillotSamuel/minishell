@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/07 13:05:23 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/10 14:43:12 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <string.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+#include <fcntl.h>
 
 /* TESTS */
 # include <stdio.h>

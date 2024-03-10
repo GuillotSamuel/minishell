@@ -1,0 +1,3 @@
+Command 'ls' not found
+42/minishell
+/home/sguillot/travail/42/minishell
