@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:46:45 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/06 17:48:44 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/10 17:56:21 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,15 @@ static char* join_path(char *path, char *cmd)
 {
     char *tmp;
     char *tmp2;
+    char *trimmed_path;
+    char *trimmed_cmd;
 
-    tmp = ft_strjoin(path, "/");
+    trimmed_path = ft_strtrim(path, " ");
+    trimmed_cmd = ft_strtrim(cmd, " ");
+    tmp = ft_strjoin(trimmed_path, "/");
     if (tmp == NULL)
         return (NULL);
-    tmp2 = ft_strjoin(tmp, cmd);
+    tmp2 = ft_strjoin(tmp, trimmed_cmd);
     free(tmp);
     return (tmp2);
 }

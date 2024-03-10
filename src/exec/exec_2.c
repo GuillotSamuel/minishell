@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:46:53 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/10 17:19:38 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/10 17:50:22 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,47 +51,44 @@ static void	convert_token_list_to_array(t_cmd_line *cmd, t_data *data)
 	data->args_array[i] = NULL;
 }
 
-void ft_print_args_array(char **args_array)
+static void	exec_externals_execve(char *cmd_path, t_cmd_line *cmd, t_data *data)
 {
-	int i;
+	pid_t		pid;
 
-	i = 0;
-	ft_printf("\n");
-	while (args_array[i] != NULL)
+	pid = fork();
+	if (pid == -1)
+		exit_error(data);
+	if (pid == 0)
 	{
-		ft_printf("data->args_array[%d] = %s\n", i, args_array[i]);
-		i++;
+		if (execve(cmd_path, cmd->args, data->env_array) == -1)
+		{
+			free(cmd_path);
+			exit_error(data);
+		}
 	}
-	ft_printf("data->args_array[%d] = %s\n\n", i, args_array[i]);
-}
-
-void ft_print_env_array(char **env_array)
-{
-	int i;
-
-	i = 0;
-	ft_printf("\n");
-	while (env_array[i] != NULL)
+	else
 	{
-		ft_printf("data->env_array[%d] = %s\n", i, env_array[i]);
-		i++;
+		waitpid(pid, &g_exit_status, 0);
+		g_exit_status = WEXITSTATUS(g_exit_status);
 	}
-	ft_printf("data->env_array[%d] = %s\n\n", i, env_array[i]);
 }
 
 void	exec_externals(t_cmd_line *cmd, t_data *data)
 {
-	ft_print_env_array(data->env_array);
-	ft_print_args_array(cmd->args);
+	char	*cmd_path;
+
+	cmd_path = ft_strjoin("/bin/", cmd->args[0]);	
 	if (ft_cmd_exist(cmd->cmd) == OK)
 	{
-		if (execve(cmd->args[0], cmd->args, data->env_array) == -1)
-			exit_error(data);
+		exec_externals_execve(cmd_path, cmd, data);
+		free(cmd_path);
 		g_exit_status = 0;
 	}
 	else
 	{
+		
 		ft_printf("Command '%s' not found\n", cmd->args[0]);
+		free(cmd_path);
 		g_exit_status = 127;
 	}
 }
