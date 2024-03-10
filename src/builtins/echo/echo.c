@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:26:39 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/22 12:01:43 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/08 19:29:01 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_echo(char **args)
 	int	i;
 	int	n;
 
-	i = 1;
+	i = 0;
 	n = 0;
 	while (args[i] && !ft_strcmp(args[i], "-n"))
 	{

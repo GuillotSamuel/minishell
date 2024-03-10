@@ -43,6 +43,7 @@ typedef struct s_cmd_line
 	t_token				*token_list;
 	char				**args;
 	struct s_cmd_line	*next;
+	struct s_cmd_line	*prev;
 } t_cmd_line;
 
 typedef struct s_env
@@ -58,7 +59,7 @@ typedef struct s_data
 	t_cmd_line	*cmd_list;
 	t_env		**env;
 	char		**env_array;
-	char		**args;
+	char		**args_array;
 	t_env		**secret_env;
 } t_data;
 

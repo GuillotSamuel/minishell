@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/03 16:59:13 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/08 12:40:36 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 int	g_exit_status;
 
-
 void	minishell(char *line, t_data *data/* , char **env */)
 {
 	while (true)
 	{
 		line = readline("\001\033[1;33m\002MonMinishell>\001\033[0m\002 ");
-		if (line == NULL || ft_strncmp(line, "exit", 5) == 0)
+		if (line == NULL/*  || ft_strncmp(line, "exit", 5) == 0 */)
 		{
-			ft_printf("exit\n");
+			/* ft_printf("exit\n"); */
 			ft_free_both_env(data);
 			free(data);
 			free(line);

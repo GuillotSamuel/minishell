@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/07 13:06:18 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:05:21 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ void	free_data_args(t_data *data)
 	int	i;
 
 	i = 0;
-	if (data->args)
+	if (data->args_array)
 	{
-		while (data->args[i])
+		while (data->args_array[i])
 		{
-			free(data->args[i]);
+			free(data->args_array[i]);
 			i++;
 		}
-		free(data->args);
+		free(data->args_array);
 	}
-	data->args = NULL;
+	data->args_array = NULL;
 }
 
 void	clear_lists(t_data *data)

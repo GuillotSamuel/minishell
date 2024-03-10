@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/06 21:11:19 by sguillot         ###   ########.fr        #
+#    Updated: 2024/03/07 15:18:00 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,8 +49,6 @@ SRC :=	main.c \
 		\
 		initialize/lst_env.c \
 		initialize/shlvl.c \
-		\
-		exec/cmd_exist/exist.c \
 		\
 		parsing/parsing.c \
 		\

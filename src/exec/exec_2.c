@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:46:53 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/07 13:34:36 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/08 19:27:25 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,27 @@ static void	convert_token_list_to_array(t_cmd_line *cmd, t_data *data)
 	int			i;
 
 	i = 0;
-	if (data->args != NULL)
+	if (data->args_array != NULL)
 		free_data_args(data);
 	token_list_dup = cmd->token_list;
 	ft_token_counter(token_list_dup, &token_counter);
 	token_list_dup = cmd->token_list;
 	token_list_dup = token_list_dup->next;
-	data->args = malloc(sizeof(char *) * (token_counter + 1));
-	if (data->args == NULL)
+	data->args_array = malloc(sizeof(char *) * (token_counter + 1));
+	if (data->args_array == NULL)
 		exit_error(data);
 	while (token_list_dup != NULL)
 	{
-		data->args[i] = ft_strdup(token_list_dup->token);
-		if (data->args[i] == NULL)
+		data->args_array[i] = ft_strdup(token_list_dup->token);
+		if (data->args_array[i] == NULL)
 			exit_error(data);
 		i++;
 		token_list_dup = token_list_dup->next;
 	}
-	data->args[i] = NULL;
+	data->args_array[i] = NULL;
 }
 
-void	exec_builtins(t_cmd_line *cmd, t_data *data)
+void	exec_externals(t_cmd_line *cmd, t_data *data)
 {
 	if (ft_cmd_exist(cmd->cmd) == OK)
 	{
@@ -65,21 +65,23 @@ void	exec_builtins(t_cmd_line *cmd, t_data *data)
 	}
 }
 
-void	exec_externals(t_cmd_line *cmd, t_data *data)
+void	exec_builtins(t_cmd_line *cmd, t_data *data)
 {
 	convert_token_list_to_array(cmd, data);
 /* 	if (ft_strcmp(cmd->command, "cd") == 0)
 		ft_cd(cmd, data);
 	else  */if (ft_strcmp(cmd->token_list->token, "echo") == 0)
-		ft_echo(data->args);
+		ft_echo(data->args_array);
 	else if (ft_strcmp(cmd->token_list->token, "exit") == 0)
-		ft_exit(data->args);
+		ft_exit(data->args_array);
 /* 	else if (ft_strcmp(cmd->token_list->token, "export") == 0)
 		ft_export(cmd, data); */
 	else if (ft_strcmp(cmd->token_list->token, "pwd") == 0)
 		ft_pwd();
 	else if (ft_strcmp(cmd->token_list->token, "unset") == 0)
-		ft_unset((*data->env)->key);
+		ft_unset(cmd->token_list->next->token);
+	else
+		ft_printf("Command '%s' not found\n", cmd->token_list->token);
 }
 
 void	convert_env_to_array(t_env **env, t_data *data)
@@ -98,6 +100,7 @@ void	convert_env_to_array(t_env **env, t_data *data)
 	env_array = malloc(sizeof(char *) * (i + 1));
 	if (env_array == NULL)
 		exit_error(data);
+	env_dup = *env;
 	i = 0;
 	while (env_dup != NULL)
 	{
