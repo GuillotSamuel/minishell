@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:57:57 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/07 14:32:07 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/10 13:55:07 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /* -------------------------------------------------------------------------- */
 
 /* exec_1 */
-void	exec_commands(t_cmd_line *cmd_list_dup, t_data *data);
+void	exec_commands_1(t_cmd_line *cmd_list_dup, t_data *data);
 
 /* exec_2 */
 void	exec_builtins(t_cmd_line *cmd, t_data *data);
