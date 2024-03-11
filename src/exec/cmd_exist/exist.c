@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:46:45 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/10 18:09:17 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:24:46 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static char *trim_cmd(char *cmd)
     int     i;
     
     i = 0;
+    cmd_len = 0;
     while (cmd[i] == ' ')
         i++;
     while (cmd[i] != ' ' && cmd[i] != '\0')
@@ -49,6 +50,7 @@ static char *trim_cmd(char *cmd)
         i++;
     }
     trimmed_cmd[i] = '\0';
+    ft_printf("trimmed_cmd: %s\n", trimmed_cmd);
     return (trimmed_cmd);
 }
 

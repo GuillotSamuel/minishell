@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:46:53 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/11 08:17:19 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:23:35 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	exec_externals(t_cmd_line *cmd, t_data *data)
 	}
 	else
 	{
-		
 		ft_printf("Command '%s' not found\n", cmd->args[0]);
 		free(cmd_path);
 		g_exit_status = 127;
