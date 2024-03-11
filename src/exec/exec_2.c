@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:46:53 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/11 15:23:35 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:27:59 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	exec_externals(t_cmd_line *cmd, t_data *data)
 	char	*cmd_path;
 
 	cmd_path = ft_strjoin("/bin/", cmd->args[0]);	
-	if (ft_cmd_exist(cmd->cmd) == OK)
+	if (ft_cmd_exist(cmd->args[0]) == OK)
 	{
 		exec_externals_execve(cmd_path, cmd, data);
 		free(cmd_path);

@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:46:45 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/11 15:24:46 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:27:11 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,50 +23,15 @@ char *ft_get_env(char *key, t_env *env)
     return (NULL);
 }
 
-static char *trim_cmd(char *cmd)
-{
-    char *trimmed_cmd;
-    int     cmd_len;
-    int     i;
-    
-    i = 0;
-    cmd_len = 0;
-    while (cmd[i] == ' ')
-        i++;
-    while (cmd[i] != ' ' && cmd[i] != '\0')
-    {
-        cmd_len++;
-        i++;
-    }
-    trimmed_cmd = malloc(sizeof(char) * (cmd_len + 1));
-    if (trimmed_cmd == NULL)
-        return (NULL);
-    i = 0;
-    while (cmd[i] == ' ')
-        i++;
-    while (cmd[i] != ' ' && cmd[i] != '\0')
-    {
-        trimmed_cmd[i] = cmd[i];
-        i++;
-    }
-    trimmed_cmd[i] = '\0';
-    ft_printf("trimmed_cmd: %s\n", trimmed_cmd);
-    return (trimmed_cmd);
-}
-
 static char* join_path(char *path, char *cmd)
 {
     char *tmp;
     char *tmp2;
-    char *trimmed_path;
-    char *trimmed_cmd;
 
-    trimmed_path = ft_strtrim(path, " ");
-    trimmed_cmd = trim_cmd(cmd);
-    tmp = ft_strjoin(trimmed_path, "/");
+    tmp = ft_strjoin(path, "/");
     if (tmp == NULL)
         return (NULL);
-    tmp2 = ft_strjoin(tmp, trimmed_cmd);
+    tmp2 = ft_strjoin(tmp, cmd);
     free(tmp);
     return (tmp2);
 }
@@ -125,4 +90,3 @@ int ft_cmd_exist(char *cmd)
         return (FAIL);
     }
 }
-
