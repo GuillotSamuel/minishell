@@ -1,3 +1,9 @@
-Command 'ls' not found
-42/minishell
-/home/sguillot/travail/42/minishell
+exec.txt
+includes
+libft
+makefile
+minishell
+obj
+readline_leak.txt
+src
+test_push_swap.ods

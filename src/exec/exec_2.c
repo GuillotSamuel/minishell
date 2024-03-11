@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:46:53 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/10 18:01:47 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/11 08:17:19 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ void	exec_builtins(t_cmd_line *cmd, t_data *data)
 		ft_echo(data->args_array);
 	else if (ft_strcmp(cmd->token_list->token, "exit") == 0)
 		ft_exit(data->args_array);
-/* 	else if (ft_strcmp(cmd->token_list->token, "export") == 0)
-		ft_export(cmd, data); */
+	else if (ft_strcmp(cmd->token_list->token, "export") == 0)
+		ft_export(data->args_array[0], data->args_array[1], data);
 	else if (ft_strcmp(cmd->token_list->token, "pwd") == 0)
 		ft_pwd();
 	else if (ft_strcmp(cmd->token_list->token, "unset") == 0)

@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:47:10 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/10 17:34:38 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/11 10:14:59 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,17 @@ static void	exec_builtin_or_external(t_cmd_line *cmd, t_data *data)
 
 static void	child_process(int pipe_fd[2], t_cmd_line *cmd_list_dup, t_data *data)
 {
-	(void)pipe_fd;
+	close(pipe_fd[0]);
+	dup2(pipe_fd[1], STDERR_FILENO);
+	close(pipe_fd[1]);
 	exec_builtin_or_external(cmd_list_dup, data);
 }
 
 static void	parent_process(int pipe_fd[2], t_cmd_line *cmd_list_dup, t_data *data)
 {
-	(void)pipe_fd;
+	close(pipe_fd[1]);
+	dup2(pipe_fd[0], STDIN_FILENO);
+	close(pipe_fd[0]);
 	exec_builtin_or_external(cmd_list_dup, data);
 }
 
@@ -96,17 +100,17 @@ void	exec_commands_1(t_cmd_line *cmd_list_dup, t_data *data)
 		cmd_count++;
 	}
 
-/* 	stdout_save = dup(1);
+	stdout_save = dup(1);
 	file = open("exec.txt", O_WRONLY | O_CREAT, 0777);
 	if (file < 0)
 		exit_error(data);
 	if (dup2(file, 1) == -1)
 		exit_error(data);
 	if (pipe(pipe_fd) == -1)
-		exit_error(data); */
+		exit_error(data);
 		
 	exec_commands_2(cmd_list_dup_prev, data, pipe_fd, cmd_count);
 	
-/* 	dup2(stdout_save, 1);
-	close(file); */
+	dup2(stdout_save, 1);
+	close(file);
 }
