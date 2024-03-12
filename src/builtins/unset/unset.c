@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:28:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/03 16:55:11 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/08 18:13:45 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	remove_node(t_env **env, t_env *prev, t_env *current)
 	free(current);
 }
 
-void	ft_unset(char *key)
+static void	ft_unset_env(char *key)
 {
 	t_env	**env;
 	t_env	*current;
@@ -42,5 +42,20 @@ void	ft_unset(char *key)
 		}
 		prev = current;
 		current = current->next;
+	}
+}
+void ft_unset(t_cmd_line *cmd)
+{
+	int i;
+
+	i = 1;
+	if (cmd->args[i] == NULL)
+	{
+		return ;
+	}
+	while (cmd->args[i])
+	{
+		ft_unset_env(cmd->args[i]);
+		i++;
 	}
 }

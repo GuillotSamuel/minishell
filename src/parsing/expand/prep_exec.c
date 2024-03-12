@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prep_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:48:33 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/26 15:03:01 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:42:13 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static size_t	count_args(t_cmd_line *cmd)
 	token_lst = cmd->token_list;
 	while (token_lst)
 	{
-		if (token_lst->type == ARG)
+		if (token_lst->type == ARG || token_lst->type == BUILTIN)
 			count++;
 		token_lst = token_lst->next;
 	}
@@ -42,7 +42,7 @@ static bool	init_tab_args(t_cmd_line *command)
 		token_lst = cmd->token_list;
 		while (token_lst)
 		{
-			if (token_lst->type == ARG)
+			if (token_lst->type == ARG || token_lst->type == BUILTIN)
 			{
 				cmd->args[i] = ft_strdup(token_lst->token);
 				if (cmd->args[i] == NULL)

@@ -1,22 +1,6 @@
 #include "../includes/minishell.h"
 
 
-// START TEST 
-void ft_print_env(t_env **env)
-{
-    t_env *cur;
-
-    cur = *env;
-    while (cur)
-    {   
-        printf("%s\n", cur->str);
-        // printf("key = %s\n", cur->key);
-        // printf("value = %s\n", cur->value);
-        cur = cur->next;
-    }
-}
-// END TEST
-
 
 void ft_print_pwd_oldpwd(t_env **env)
 {
@@ -57,6 +41,9 @@ void print_token(t_data *data)
 void start_exec(t_data *data)
 {
 	t_cmd_line *cmd;
+	int nb_cmd;
+	
+	nb_cmd = 0;
 
 	cmd = data->cmd_list;
 	while (cmd)
@@ -64,5 +51,12 @@ void start_exec(t_data *data)
 		if (open_all_redirections(cmd) == -1)
 			return ;
 		cmd = cmd->next;
+		nb_cmd ++;
 	}
+	if (nb_cmd == 1 && check_builtin(data->cmd_list->args[0]) == 1)
+	{
+		if (exec_builtin(data->cmd_list, data) == -1)
+			return ;
+	}
+
 }

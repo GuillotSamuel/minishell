@@ -6,7 +6,7 @@
 #    By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/08 14:50:37 by azbk             ###   ########.fr        #
+#    Updated: 2024/03/08 18:19:47 by azbk             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ SRC :=	main.c \
 		\
 		initialize/lst_env.c \
 		initialize/shlvl.c \
+		\
+		exec/check_builtin/check_builtin.c \
 		\
 		exec/cmd_exist/exist.c \
 		\
