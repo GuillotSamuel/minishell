@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   lst_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:20:25 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/22 17:56:52 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/12 22:46:23 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static char *ft_dup_key(const char *line)
+char *ft_dup_key(const char *line)
 {
     int i;
     char *key;
     
     i = 0;
-    while (line && line[i] && line[i] != '=')
+    while (line && line[i] && line[i] != '=' && line[i] != '+')
     {
         i++;
     }
@@ -31,7 +31,7 @@ static char *ft_dup_key(const char *line)
     return (key);
 }
 
-static char *ft_dup_value(const char *line)
+char *ft_dup_value(const char *line)
 {
     int i;
     char *value;

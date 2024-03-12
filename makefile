@@ -6,7 +6,7 @@
 #    By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/08 18:19:47 by azbk             ###   ########.fr        #
+#    Updated: 2024/03/12 23:12:03 by azbk             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ SRC :=	main.c \
 		builtins/env/lst_env.c \
 		builtins/exit/exit_utils.c \
 		builtins/exit/exit.c \
+		builtins/export/check_export.c \
+		builtins/export/export_tools.c \
 		builtins/export/export.c \
 		builtins/pwd/pwd.c \
 		builtins/unset/unset.c \

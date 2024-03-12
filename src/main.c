@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/05 19:30:20 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/12 23:27:44 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,12 @@ static void	handle_sigint(int sig)
 int	main(int ac, char **av, char **envp )
 {
 	t_data	*data;
-	// char	**env;
 	char	*line;
 
 	line = NULL;
 	if (ac == 0 || !av)
 		return (0);
 	data = malloc(sizeof(t_data));
-	// recupere la value grace a la key echo $PATH
-	// ajoute une key value export bonjour=test
-	// change la value grace a la key export bonjour=bonjour
-	// supprime un maillon grace a la key unset bonjour
-/* 	t_env **head;
-	ft_envaddback(*head, "bonjour", "test");
-	ft_envgetvalue(*head, "bonjour");
-	ft_envchangevalue(*head, "bonjour", "bonjour");
-	ft_envdelone(*head, "bonjour");
-	data->env = head; */
 	if (!data)
 		return (ERROR_G);
 	data->cmd_list = NULL;

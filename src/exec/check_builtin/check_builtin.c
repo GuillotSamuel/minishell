@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:49:29 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/12 18:54:29 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/12 23:25:09 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int exec_builtin(t_cmd_line *cmd, t_data *data)
         ft_cd(&cmd->args[1], data);
     if (ft_strcmp(cmd->args[0], "pwd") == 0)
         ft_pwd();
-    // if (ft_strcmp(cmd->args[0], "export") == 0)
-    //     ft_export();
+    if (ft_strcmp(cmd->args[0], "export") == 0)
+        ft_export(cmd->args, data);
     if (ft_strcmp(cmd->args[0], "unset") == 0)
         ft_unset(cmd);
     if (ft_strcmp(cmd->args[0], "env") == 0)
