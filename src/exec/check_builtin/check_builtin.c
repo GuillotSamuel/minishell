@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:49:29 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/13 11:10:59 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 12:52:38 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int    check_builtin(char *arg)
 {
+    if (!arg)
+        return (FAIL);
     if (ft_strcmp(arg, "echo") == 0)
         return (1);
     if (ft_strcmp(arg, "cd") == 0)

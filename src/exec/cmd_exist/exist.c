@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:46:45 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/12 23:27:03 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 12:08:20 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char *ft_cmd_exist(char *cmd)
     path = check_cmd(tab, cmd);
     if (path == NULL)
     {
-        ft_putstr_fd("minishell: %s: No such file or directory", 2);
+        ft_putstr_fd("minishell: " , 2);
         ft_putstr_fd(cmd, 2);
         ft_putstr_fd(": No such file or directory", 2);
         g_exit_status = 127;

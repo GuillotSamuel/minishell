@@ -38,25 +38,4 @@ void print_token(t_data *data)
 	}
 }
 
-void start_exec(t_data *data)
-{
-	t_cmd_line *cmd;
-	int nb_cmd;
-	
-	nb_cmd = 0;
 
-	cmd = data->cmd_list;
-	while (cmd)
-	{
-		if (open_all_redirections(cmd) == -1)
-			return ;
-		cmd = cmd->next;
-		nb_cmd ++;
-	}
-	if (nb_cmd == 1 && check_builtin(data->cmd_list->args[0]) == 1)
-	{
-		if (exec_builtin(data->cmd_list, data) == -1)
-			return ;
-	}
-
-}

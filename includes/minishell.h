@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/12 21:26:09 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 12:24:53 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ extern int	g_exit_status;
 void		print_token(t_data *data);
 void ft_print_env(t_env **env);
 void ft_print_pwd_oldpwd(t_env **env);
-void start_exec(t_data *data);
 // A SUPPRRRR
 
 /* -------------------------------------------------------------------------- */
