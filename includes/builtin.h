@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:25:59 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/13 11:07:03 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:23:23 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,7 @@ int		ft_create_var_env(char *key, char *value, t_env **env);
 int		ft_add_value_in_env(char *key, char *value, char *str, t_env **env);
 
 /* export */
-int		ft_export_plus_equal(char *key, char *value, t_data *data);
 void	ft_change_value_in_env(char *key, char *value, t_env **env);
-void	ft_export_value(char *key, char *value, t_data *data);
-void	ft_export_no_value(char *key, t_data *data);
 void	ft_export(char **args, t_data *data);
 
 /* -------------------------------------------------------------------------- */

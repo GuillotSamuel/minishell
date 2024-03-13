@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/12 23:27:44 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:13:09 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ int	main(int ac, char **av, char **envp )
 	data->env = env;
 	data->secret_env = secret;
 	
-	minishell(line, data /* , env */);
+	minishell(line, data);
 	return (0);
 }

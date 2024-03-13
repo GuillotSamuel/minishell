@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:23:31 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/13 11:01:11 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:18:08 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_generate_env_str(char *key, char *value)
 {
 	char	*str;
-	char *tmp;
+	char	*tmp;
 
 	str = ft_strdup(key);
 	if (str == NULL)
@@ -41,6 +41,25 @@ char	*ft_is_key_in_env(char *key, t_env **env)
 		current = current->next;
 	}
 	return (NULL);
+}
+
+void	ft_change_value_in_env(char *key, char *value, t_env **env)
+{
+	t_env	*current;
+
+	current = *env;
+	while (current)
+	{
+		if (ft_strcmp(current->key, key) == 0)
+		{
+			free(current->value);
+			current->value = ft_strdup(value);
+			free(current->str);
+			current->str = ft_generate_env_str(key, value);
+			return ;
+		}
+		current = current->next;
+	}
 }
 
 int	ft_create_var_env(char *key, char *value, t_env **env)

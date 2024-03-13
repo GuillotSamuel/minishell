@@ -6,15 +6,15 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:56:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/12 23:47:24 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:15:02 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int is_plus_equal(char *str)
+int	is_plus_equal(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (ft_isalnum(str[i]) || str[i] == '_' || str[i] == '+')
@@ -24,7 +24,7 @@ int is_plus_equal(char *str)
 			if (str[i + 1] == '=')
 				return (1);
 			else
-				return (FAIL);	
+				return (FAIL);
 		}
 		i++;
 	}
@@ -40,19 +40,20 @@ int	ft_export_is_incorrect(char *str)
 	i = 0;
 	while (str[i])
 	{
-        if(str[i] == '+')
-        {
-            if (str[i + 1] == '=')
-            {
-                return (OK);
-            }
-            else
-                return (FAIL);
-        }
-        if (ft_isalnum(str[i]) || str[i] == '_' || str[i] == '+' || str[i] == '=')
-            i++;
-        else
-            return (FAIL);
+		if (str[i] == '+')
+		{
+			if (str[i + 1] == '=')
+			{
+				return (OK);
+			}
+			else
+				return (FAIL);
+		}
+		if (ft_isalnum(str[i]) || str[i] == '_' || str[i] == '+'
+			|| str[i] == '=')
+			i++;
+		else
+			return (FAIL);
 	}
-	return (OK); 
+	return (OK);
 }

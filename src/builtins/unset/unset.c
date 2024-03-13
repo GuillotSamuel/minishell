@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:28:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/13 11:07:43 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:24:06 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ static void	ft_unset_secret_env(char *key, t_env **secret_env)
 	}
 }
 
-void ft_unset(t_cmd_line *cmd, t_data *data)
+void	ft_unset(t_cmd_line *cmd, t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (cmd->args[i] == NULL)

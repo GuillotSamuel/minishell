@@ -6,7 +6,7 @@
 #    By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/12 23:12:03 by azbk             ###   ########.fr        #
+#    Updated: 2024/03/13 11:14:40 by azbk             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,8 @@ SRC :=	main.c \
 		exec/check_builtin/check_builtin.c \
 		\
 		exec/cmd_exist/exist.c \
+		\
+		exec/core_exec/init.c \
 		\
 		exec/here_doc/heredoc.c \
 		exec/here_doc/create_random.c \
