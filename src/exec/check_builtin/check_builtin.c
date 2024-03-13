@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:49:29 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/12 23:25:09 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:10:59 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int exec_builtin(t_cmd_line *cmd, t_data *data)
     if (ft_strcmp(cmd->args[0], "export") == 0)
         ft_export(cmd->args, data);
     if (ft_strcmp(cmd->args[0], "unset") == 0)
-        ft_unset(cmd);
+        ft_unset(cmd, data);
     if (ft_strcmp(cmd->args[0], "env") == 0)
         ft_print_env(data->env);
     if (ft_strcmp(cmd->args[0], "exit") == 0)

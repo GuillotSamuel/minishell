@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:29:14 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/12 23:29:34 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:03:10 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,23 @@ int	ft_export_plus_equal(char *key, char *value, t_data *data)
 	str = ft_is_key_in_env(key, data->env); 
 	if (str)
 	{
-		if (ft_add_value_in_env(key, value, str, data->env) == ERROR)
-			return (ERROR);
-		if (ft_add_value_in_env(key, value, str, data->secret_env) == ERROR)
-			return (ERROR);
+		ft_add_value_in_env(key, value, str, data->env);
+		free(str);
 	}
 	else
 	{
-		if (ft_create_var_env(key, value, data->env) == ERROR)
-			return (ERROR);
-		if (ft_create_var_env(key, value, data->secret_env) == ERROR)
-			return (ERROR);
+		ft_create_var_env(key, value, data->env);
 	}
-	free(str);
+	str = ft_is_key_in_env(key, data->secret_env);
+	if (str)
+	{
+		ft_add_value_in_env(key, value, str, data->secret_env);
+		free(str);
+	}
+	else
+	{
+		ft_create_var_env(key, value, data->secret_env);	
+	}
 	return (OK);
 }
 
@@ -63,12 +67,21 @@ void	ft_export_value(char *key, char *value, t_data *data)
 	{
 		free(str);
 		ft_change_value_in_env(key, value, data->env);
-		ft_change_value_in_env(key, value, data->secret_env);
 	}
 	else
 	{
 		ft_create_var_env(key, value, data->env);
+	}
+	str = ft_is_key_in_env(key, data->secret_env);
+	if (str)
+	{
+		free(str);
+		ft_change_value_in_env(key, value, data->secret_env);
+	}
+	else
+	{
 		ft_create_var_env(key, value, data->secret_env);
+	
 	}
 }
 
@@ -111,10 +124,16 @@ void	ft_export(char **args, t_data *data)
 		}
 		key = ft_dup_key(args[i]);
 		value = ft_dup_value(args[i]);
+		printf("value = %s\n", value);
 		if (is_plus_equal(args[i]) == 1)
+		{
+			printf("JE RENTRE = %s\n", value);
 			ft_export_plus_equal(key, value, data);
-		else if (value == NULL)
+		}
+		else if (value == NULL || ft_strlen(value) == 0)
+		{
 			ft_export_no_value(key, data);
+		}
 		else
 			ft_export_value(key, value, data);
 		free(key);

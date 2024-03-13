@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:23:31 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/12 23:45:42 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:01:11 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_is_key_in_env(char *key, t_env **env)
 	while (current)
 	{
 		if (ft_strcmp(current->key, key) == 0)
-			return (current->str);
+			return (ft_strdup(current->str));
 		current = current->next;
 	}
 	return (NULL);
@@ -71,16 +71,19 @@ int	ft_add_value_in_env(char *key, char *value, char *str, t_env **env)
 	if (new_str == NULL)
 		return (FAIL);
 	current = *env;
-	while (current->next)
+	while (current)
 	{
+		if (strcmp(current->key, key) == 0)
+		{
+			free(current->str);
+			current->str = new_str;
+			free(current->value);
+			current->value = ft_dup_value(new_str);
+			if (current->value == NULL)
+				return (FAIL);
+			return (OK);
+		}
 		current = current->next;
 	}
-	current->next = malloc(sizeof(t_env));
-	if (current->next == NULL)
-		return (FAIL);
-	current->next->str = new_str;
-	current->next->key = ft_strdup(key);
-	current->next->value = ft_dup_value(value);
-	current->next->next = NULL;
-	return (OK);
+	return (FAIL);
 }
