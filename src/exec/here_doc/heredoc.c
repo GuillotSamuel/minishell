@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:12:58 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/08 17:19:40 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 12:04:24 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ static void fill_here_doc(int fd, char *token)
         line = readline("> ");
         if (line == NULL)
         {
+			ft_putstr_fd("minishell: warning: here-document delimited by end-of-file (wanted `", 2);
+			ft_putstr_fd(token, 2);
+			ft_putstr_fd("')\n", 2);
             return ;
         }
         if (ft_strcmp(line, token) == 0)
