@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/13 12:24:53 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 20:28:21 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include <signal.h>
 # include <stdlib.h>
 # include <string.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 
 /* TESTS */
 # include <stdio.h>

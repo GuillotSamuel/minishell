@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:49:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/08 16:18:01 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 19:03:12 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int write_or_overwrite_file(t_redir *redir, t_token *token_list, enum_type type)
 {
     int fd;
 
-    if (redir->fd_out != 0)
+    if (redir->fd_out != 1)
         close(redir->fd_out);
-    redir->fd_out = 0;
+    redir->fd_out = 1;
     if (type == CREAT_FILE)
         fd = open(token_list->token, O_WRONLY | O_CREAT | O_TRUNC, 0644);
     else

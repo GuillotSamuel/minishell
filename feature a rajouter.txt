@@ -1,5 +1,0 @@
-
-
-
-
-gere le CTRL D dans le here doc

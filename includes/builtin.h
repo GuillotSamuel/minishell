@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:25:59 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/13 11:23:23 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 19:29:10 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ size_t	ft_len_env(const char **envp);
 /* -------------------------------------------------------------------------- */
 
 /* exit */
-void	ft_exit(char **args);
+void	ft_exit(char **args, t_data *data);
 
 /* exit_utils */
 int		ft_is_positive_llong(char *str);

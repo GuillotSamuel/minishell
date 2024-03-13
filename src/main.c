@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/13 12:41:16 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 19:41:56 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	minishell(char *line, t_data *data)
 	while (true)
 	{
 		line = readline("\001\033[1;33m\002MonMinishell>\001\033[0m\002 ");
-		if (line == NULL || ft_strncmp(line, "exit", 5) == 0)
+		if (line == NULL)
 		{
 			ft_printf("exit\n");
 			ft_free_both_env(data);
@@ -60,6 +60,7 @@ int	main(int ac, char **av, char **envp)
 	if (!data)
 		return (ERROR_G);
 	data->cmd_list = NULL;
+	data->pid = NULL;
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
 	ft_init_lst_env((const char **)envp);

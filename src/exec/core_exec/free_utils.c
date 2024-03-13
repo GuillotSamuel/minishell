@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 19:12:02 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/13 20:03:33 by azbk             ###   ########.fr       */
+/*   Created: 2024/03/13 18:04:08 by azbk              #+#    #+#             */
+/*   Updated: 2024/03/13 19:50:27 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
-void	parsing(char *line, t_data *data)
+void	free_pipes_fd(int **pipes_fd, int nb_pipes)
 {
-	if (token(line, data) == ERROR_G)
-		return (clear_lists(data));
-	if (expand_all_tokens(data) == ERROR)
-		return (clear_lists(data));
-	init_exec(data);
-	clear_lists(data);
+	int	i;
+
+	i = 0;
+	while (i < nb_pipes)
+	{
+		if (pipes_fd[i])
+		{
+			if (pipes_fd[i][0] > 0)
+				close(pipes_fd[i][0]);
+			if (pipes_fd[i][1] > 0)
+				close(pipes_fd[i][1]);
+			free(pipes_fd[i]);
+		}
+		i++;
+	}
+	free(pipes_fd);
 }

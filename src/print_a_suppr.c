@@ -37,5 +37,3 @@ void print_token(t_data *data)
 		command = command->next;
 	}
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/12 21:36:16 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 19:32:03 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_env
 typedef struct s_data
 {
 	t_cmd_line			*cmd_list;
+	pid_t				*pid;
 	struct s_env		**env;
 	struct s_env		**secret_env;
 }						t_data;
