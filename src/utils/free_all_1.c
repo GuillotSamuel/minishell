@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/08 17:23:49 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:43:09 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,33 +34,37 @@ void	ft_free_redir(t_cmd_line *cmd)
 		tmp = tmp->next;
 	}
 }
+static void	clear_token_list(t_token **token_list)
+{
+	t_token	*current;
+	t_token	*tmp;
 
+	current = *token_list;
+	while (current)
+	{
+		tmp = current;
+		current = current->next;
+		free(tmp->token);
+		free(tmp);
+	}
+	*token_list = NULL;
+}
 void	clear_lists(t_data *data)
 {
-	t_cmd_line	*cmd_list_dup;
-	t_cmd_line	*tmp_cmd;
-	t_token		*token_list_dup;
-	t_token		*tmp_token;
+	t_cmd_line	*current;
+	t_cmd_line	*tmp;
 
-	cmd_list_dup = data->cmd_list;
-	while (cmd_list_dup)
+	current = data->cmd_list;
+	while (current)
 	{
-		ft_free_array(cmd_list_dup->args);
-		ft_free_redir(data->cmd_list);
-		token_list_dup = cmd_list_dup->token_list;
-		while (token_list_dup)
-		{
-			tmp_token = token_list_dup;
-			token_list_dup = token_list_dup->next;
-			free(tmp_token->token);
-			if (tmp_token)
-				free(tmp_token);
-		}
-		tmp_cmd = cmd_list_dup;
-		cmd_list_dup = cmd_list_dup->next;
-		if (tmp_cmd->cmd)
-			free(tmp_cmd->cmd);
-		free(tmp_cmd);
+		ft_free_array(current->args);
+		ft_free_redir(current);
+		clear_token_list(&(current->token_list));
+		tmp = current;
+		current = current->next;
+		if (tmp->cmd)
+			free(tmp->cmd);
+		free(tmp);
 	}
 	data->cmd_list = NULL;
 }

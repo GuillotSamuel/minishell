@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:25:07 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/06 17:06:08 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:27:20 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ char	*find_key_in_env(char *key)
 			return (ft_strdup(cur->value));
 		cur = cur->next;
 	}
-	ft_putstr_fd("Error, getcwd return null, \
-				and impossible to find key in env.",
-					2);
+	ft_putstr_fd("Error, getcwd return (null, ", 2);
+	ft_putstr_fd("and impossible to find key in env.", 2);
 	g_exit_status = 1;
 	return (NULL);
 }

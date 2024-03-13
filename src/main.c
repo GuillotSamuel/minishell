@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/13 11:13:09 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:45:12 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	g_exit_status;
 
 
-void	minishell(char *line, t_data *data/* , char **env */)
+void	minishell(char *line, t_data *data)
 {
 	while (true)
 	{
@@ -40,7 +40,6 @@ static void	handle_sigint(int sig)
 	(void) sig;
 	ft_printf("\n\001\033[1;33m\002MonMinishell>\001\033[0m\002 ");
 }
-
 
 int	main(int ac, char **av, char **envp )
 {
