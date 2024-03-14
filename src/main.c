@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/14 18:38:28 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:51:45 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	minishell(char *line, t_data *data)
 		{
 			add_history(line);
 			parsing(line, data);
+			init_exec(data);
+			clear_lists(data);
 		}
 	}
 }
