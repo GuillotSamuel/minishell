@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/14 18:46:39 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:18:44 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ static void	command_or_builtin(t_data *data)
 	char		*path;
 
 	cmd_list_dup = data->cmd_list;
-	if (check_builtin(cmd_list_dup->cmd) == 1)
+	if (check_builtin(cmd_list_dup->args[0]) == 1)
 	{
-		printf("BUILTIN\n");
-		fflush(stdout);
 		exec_builtin(cmd_list_dup, data);
 		return ; // TO REMOVE WHEN FORKING IS DONE
 		//exit(NULL); // TO ADD WHEN FORKING IS DONE
