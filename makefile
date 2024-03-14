@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/14 16:51:56 by sguillot         ###   ########.fr        #
+#    Updated: 2024/03/14 17:24:03 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ SRC :=	main.c \
 		exec/core_exec/free_utils.c \
 		exec/core_exec/init_exec.c \
 		exec/core_exec/forking_exec.c \
+		exec/core_exec/execve_exec.c \
 		\
 		exec/here_doc/heredoc.c \
 		exec/here_doc/create_random.c \

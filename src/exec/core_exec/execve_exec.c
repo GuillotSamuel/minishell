@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:33:42 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/14 17:06:31 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:28:32 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,12 @@ static void	convert_env_to_array(t_env **env, t_data *data)
 	data->env_array = env_array;
 }
 
-void	ft_execve_exec(char *path, t_cmd_line cmd_list_dup, t_data *data)
+int	ft_execve_exec(char *path, t_cmd_line *cmd_list_dup, t_data *data)
 {
-	convert_env_to_array(&data->env, data);
-	if (execve(path, cmd->args, data->env_array) == -1)
+	convert_env_to_array(data->env, data);
+	if (execve(path, cmd_list_dup->args, data->env_array) == -1)
 	{
 		return (FAIL);
 	}
+	return (SUCCESS);
 }
