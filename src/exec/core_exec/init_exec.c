@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:14:54 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 18:13:52 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:47:01 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static int	init_pipes(t_data *data)
 
 	cmd_list_tmp = data->cmd_list;
 	i = 0;
-	data->pipes_fd = malloc(sizeof(int*) * (cmd_nb(data->cmd_list) + 1));
 	data->pipes_fd = malloc(sizeof(int *) * (cmd_nb(data->cmd_list) + 1));
 	if (!data->pipes_fd)
 		return (ERROR);
@@ -73,6 +72,8 @@ int start_exec(t_data *data)
 	}
     if (nb_cmd == 1 && check_builtin(data->cmd_list->args[0]) == 1)
     {
+		printf("exec_builtin_one_cmd\n");
+		fflush(stdout);
         if (exec_builtin_one_cmd(data->cmd_list, data) == -1)
             return (FAIL);
     }
