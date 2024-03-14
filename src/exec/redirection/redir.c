@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:49:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 13:08:46 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:12:31 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int file_in(t_redir *redir, t_token *token_list)
         ft_putstr_fd("minishell: ", 2);
         ft_putstr_fd(token_list->token, 2);
         ft_putstr_fd(": No such file or directory\n", 2);
-        return (ERROR);
+        return (FAIL);
     }
     redir->fd_in = fd;
     return (OK);
@@ -48,7 +48,7 @@ int write_or_overwrite_file(t_redir *redir, t_token *token_list, enum_type type)
         ft_putstr_fd("minishell: ", 2);
         ft_putstr_fd(token_list->token, 2);
         ft_putstr_fd(": No such file or directory\n", 2);
-        return (ERROR);
+        return (FAIL);
     }
     redir->fd_out = fd;
     return (OK);

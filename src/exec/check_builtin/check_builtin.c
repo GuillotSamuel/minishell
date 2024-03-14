@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_builtin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:49:29 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 18:28:51 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:10:30 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,19 @@ int	exec_builtin(t_cmd_line *cmd, t_data *data)
 	return (0);
 }
 
+void close_and_unlink(t_cmd_line *cmd)
+{
+	if (cmd->redir->fd_out != 1)
+		close(cmd->redir->fd_out);
+	if (cmd->redir->fd_in != 0)
+		close(cmd->redir->fd_in);
+	if (cmd->redir->file_here_doc)
+	{
+		unlink(cmd->redir->file_here_doc);
+		free(cmd->redir->file_here_doc);
+	}
+}
+
 int    exec_builtin_one_cmd(t_cmd_line *cmd, t_data *data)
 {
     int    original_stdout;
@@ -74,9 +87,6 @@ int    exec_builtin_one_cmd(t_cmd_line *cmd, t_data *data)
         ft_exit(&cmd->args[1], data);
     dup2(original_stdout, STDOUT_FILENO);
     close(original_stdout);
-    if (cmd->redir->fd_out != 1)
-        close(cmd->redir->fd_out);
-    if (cmd->redir->fd_in != 0)
-        close(cmd->redir->fd_in);
+    close_and_unlink(cmd);
     return (0);
 }

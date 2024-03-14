@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/14 18:46:39 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:18:43 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static void	command_or_builtin(t_data *data)
 {
 	t_cmd_line	*cmd_list_dup;
 	char		*path;
-
+	
 	cmd_list_dup = data->cmd_list;
-	if (check_builtin(cmd_list_dup->cmd) == 1)
+	if (check_builtin(cmd_list_dup->args) == 1)
 	{
 		printf("BUILTIN\n");
 		fflush(stdout);
