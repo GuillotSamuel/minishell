@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/14 18:51:45 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:27:40 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int ac, char **av, char **envp)
 
 	line = NULL;
 	if (ac == 0 || !av || ac > 1)
-		return (printf("No args required\n"), 0);
+		return (ft_printf("No args required\n"), 0);
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (ERROR_G);

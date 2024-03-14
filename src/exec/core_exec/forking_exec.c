@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/14 19:18:44 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:26:21 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	command_or_builtin(t_data *data)
 {
 	t_cmd_line	*cmd_list_dup;
 	char		*path;
-
+	
 	cmd_list_dup = data->cmd_list;
 	if (check_builtin(cmd_list_dup->args[0]) == 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:14:54 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 18:57:43 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:25:15 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,9 @@ int start_exec(t_data *data)
 	}
     if (nb_cmd == 1 && check_builtin(data->cmd_list->args[0]) == 1)
     {
-        if (exec_builtin_one_cmd(data->cmd_list, data) == -1)
-            return (FAIL);
+        return (exec_builtin_one_cmd(data->cmd_list, data));
     }
-	else
-		forking_exec(data); 
+	forking_exec(data); 
     return (OK);
 }
 
