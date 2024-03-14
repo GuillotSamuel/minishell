@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:57:57 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 15:29:16 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 16:52:43 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ char	*ft_get_env(char *key, t_env *env);
 /* free_utils.c */
 void	free_pipes_fd(t_data *data);
 
-/* init.c */
+/* init_exec.c */
 int init_exec(t_data *data);
 int start_exec(t_data *data);
-
+int	cmd_nb(t_cmd_line *cmd);
+void forking_exec(t_data *data);
 
 /* -------------------------------------------------------------------------- */
 /*                                      HERE_DOC                              */
