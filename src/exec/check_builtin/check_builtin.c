@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_builtin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:49:29 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 19:23:18 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:10:30 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	check_builtin(char *arg)
 {
-    
     if (!arg)
         return (FAIL);
     if (ft_strcmp(arg, "echo") == 0)
