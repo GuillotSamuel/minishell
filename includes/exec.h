@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:57:57 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 15:29:16 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:01:41 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXEC_H
 # define EXEC_H
 
-
 /* -------------------------------------------------------------------------- */
 /*                                    CHECK_BUILTIN                             */
 /* -------------------------------------------------------------------------- */
 
 /* check_builtin */
-int    check_builtin(char *arg);
-int exec_builtin(t_cmd_line *cmd, t_data *data);
+int		check_builtin(char *arg);
+int		exec_builtin(t_cmd_line *cmd, t_data *data);
+int		exec_builtin_one_cmd(t_cmd_line *cmd, t_data *data);
 
 /* -------------------------------------------------------------------------- */
 /*                                      CMD_EXIST                             */
 /* -------------------------------------------------------------------------- */
 
 /* exist.c */
-char		*ft_cmd_exist(char *cmd);
+char	*ft_cmd_exist(char *cmd);
 char	*ft_get_env(char *key, t_env *env);
 
 /* -------------------------------------------------------------------------- */
@@ -38,28 +38,27 @@ char	*ft_get_env(char *key, t_env *env);
 void	free_pipes_fd(t_data *data);
 
 /* init.c */
-int init_exec(t_data *data);
-int start_exec(t_data *data);
-
+int		init_exec(t_data *data);
+int		start_exec(t_data *data);
 
 /* -------------------------------------------------------------------------- */
 /*                                      HERE_DOC                              */
 /* -------------------------------------------------------------------------- */
 
 /* create_random */
-int ft_random(void);
-char *create_random_name(void);
+int		ft_random(void);
+char	*create_random_name(void);
 
 /* heredoc */
-int start_here_doc(t_redir *redir, t_token *token_list);
+int		start_here_doc(t_redir *redir, t_token *token_list);
 
 /* -------------------------------------------------------------------------- */
 /*                                    REDIRECTION                             */
 /* -------------------------------------------------------------------------- */
 /* redirection */
-int file_in(t_redir *redir, t_token *token_list);
-int write_or_overwrite_file(t_redir *redir, t_token *token_list, enum_type type);
-int open_all_redirections(t_cmd_line *cmd);
-
+int		file_in(t_redir *redir, t_token *token_list);
+int		write_or_overwrite_file(t_redir *redir, t_token *token_list,
+			enum_type type);
+int		open_all_redirections(t_cmd_line *cmd);
 
 #endif
