@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:14:54 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 17:13:26 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:13:52 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 extern int g_exit_status;
 
 
-static int	cmd_nb(t_cmd_line *cmd)
-
+int	cmd_nb(t_cmd_line *cmd)
 {
 	int			i;
 	t_cmd_line	*tmp;
@@ -77,7 +76,8 @@ int start_exec(t_data *data)
         if (exec_builtin_one_cmd(data->cmd_list, data) == -1)
             return (FAIL);
     }
-	forking_exec(data); 
+	else
+		forking_exec(data); 
     return (OK);
 }
 
