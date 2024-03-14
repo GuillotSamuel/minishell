@@ -6,14 +6,13 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:14:54 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 17:02:02 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:13:26 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
 extern int g_exit_status;
-
 
 static int	cmd_nb(t_cmd_line *cmd)
 {
@@ -65,10 +64,7 @@ int start_exec(t_data *data)
 	while (cmd)
 	{
 		if (open_all_redirections(cmd) == -1)
-		{
-			printf("Error in redirections\n");
 			return (FAIL);
-		}
 		cmd = cmd->next;
 		nb_cmd ++;
 	}
@@ -80,8 +76,6 @@ int start_exec(t_data *data)
 	//start forking PIPEX 
     return (OK);
 }
-
-
 
 int init_exec(t_data *data)
 {

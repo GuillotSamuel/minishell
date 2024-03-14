@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/14 13:07:33 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:26:01 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void	ft_free_redir(t_cmd_line *cmd)
 		{
 			if (tmp->redir->file_here_doc)
 			{
-				// a voir si on doit unlink ici, meme si je pense quon va devoir unlink 
-				// a la fin de chaque cmd, donc changer de place le unlink a la fin dune commande.
 				unlink(tmp->redir->file_here_doc);
 				free(tmp->redir->file_here_doc);
 			}
@@ -34,6 +32,7 @@ void	ft_free_redir(t_cmd_line *cmd)
 		tmp = tmp->next;
 	}
 }
+
 static void	clear_token_list(t_token **token_list)
 {
 	t_token	*current;
@@ -49,6 +48,7 @@ static void	clear_token_list(t_token **token_list)
 	}
 	*token_list = NULL;
 }
+
 void	clear_lists(t_data *data)
 {
 	t_cmd_line	*current;

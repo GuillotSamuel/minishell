@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:11:07 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/26 16:17:02 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:23:21 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ size_t	find_len_var(const char *line)
 	}
 	return (len_var);
 }
-
 
 char	*get_value_env(const char *variable)
 {
