@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:57:57 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/13 18:06:26 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/14 15:29:16 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ char	*ft_get_env(char *key, t_env *env);
 /* -------------------------------------------------------------------------- */
 
 /* free_utils.c */
-void	free_pipes_fd(int **pipes_fd, int nb_pipes);
+void	free_pipes_fd(t_data *data);
 
 /* init.c */
-int alloc_pipes(t_cmd_line *cmd, int **pipes_fd, int i);
-int init_pipes(t_cmd_line *cmd, size_t nb_cmd);
 int init_exec(t_data *data);
 int start_exec(t_data *data);
 

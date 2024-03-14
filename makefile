@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+         #
+#    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/13 18:05:33 by azbk             ###   ########.fr        #
+#    Updated: 2024/03/14 14:16:30 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ SRC :=	main.c \
 		exec/cmd_exist/exist.c \
 		\
 		exec/core_exec/free_utils.c \
-		exec/core_exec/init.c \
+		exec/core_exec/init_exec.c \
 		\
 		exec/here_doc/heredoc.c \
 		exec/here_doc/create_random.c \
