@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:14:10 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/06 17:14:52 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/08 19:56:51 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ft_cd(char **args, t_data *data)
 	t_env	**env;
 	t_env	**secret_env;
 
-	env = ft_singletone_env();
+	env = data->env;
 	secret_env = data->secret_env;
 	if (ft_len_tab(args) > 1)
 	{

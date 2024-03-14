@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/08 16:22:15 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 20:28:21 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include <signal.h>
 # include <stdlib.h>
 # include <string.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 
 /* TESTS */
 # include <stdio.h>
@@ -43,6 +45,7 @@
 
 # define MALLOC_ERROR NULL
 # define VAR_EMPTY NULL
+# define VAR_NOT_FOUND NULL
 # define ERROR false
 # define OK true
 # define FAIL -1
@@ -53,7 +56,6 @@ extern int	g_exit_status;
 void		print_token(t_data *data);
 void ft_print_env(t_env **env);
 void ft_print_pwd_oldpwd(t_env **env);
-void start_exec(t_data *data);
 // A SUPPRRRR
 
 /* -------------------------------------------------------------------------- */
@@ -64,6 +66,8 @@ void start_exec(t_data *data);
 bool		ft_lst_env(const char *line, t_env **env);
 bool		ft_init_baby_env(t_env **env);
 bool		ft_init_lst_env(const char **envp);
+char *ft_dup_key(const char *line);
+char *ft_dup_value(const char *line);
 
 /* shlvl */
 bool		ft_init_shlvl(t_env **env_list);

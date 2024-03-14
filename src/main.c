@@ -3,30 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/05 19:30:20 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/14 13:06:08 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	g_exit_status;
+int			g_exit_status;
 
-
-void	minishell(char *line, t_data *data/* , char **env */)
+void	minishell(char *line, t_data *data)
 {
 	while (true)
 	{
 		line = readline("\001\033[1;33m\002MonMinishell>\001\033[0m\002 ");
-		if (line == NULL || ft_strncmp(line, "exit", 5) == 0)
+		if (line == NULL)
 		{
 			ft_printf("exit\n");
 			ft_free_both_env(data);
 			free(data);
 			free(line);
-			break;
+			break ;
 		}
 		else if (line != NULL && strlen(line) > 0)
 		{
@@ -35,45 +34,40 @@ void	minishell(char *line, t_data *data/* , char **env */)
 		}
 	}
 }
-static void	handle_sigint(int sig) 
+static void	handle_sigint(int sig)
 {
-	(void) sig;
-	ft_printf("\n\001\033[1;33m\002MonMinishell>\001\033[0m\002 ");
+	if (sig == SIGINT)
+	{
+		g_exit_status = 130;
+		printf("\n");
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
+	}
 }
 
-
-int	main(int ac, char **av, char **envp )
+int	main(int ac, char **av, char **envp)
 {
 	t_data	*data;
-	// char	**env;
 	char	*line;
+	t_env	**env;
+	t_env	**secret;
 
 	line = NULL;
 	if (ac == 0 || !av)
 		return (0);
 	data = malloc(sizeof(t_data));
-	// recupere la value grace a la key echo $PATH
-	// ajoute une key value export bonjour=test
-	// change la value grace a la key export bonjour=bonjour
-	// supprime un maillon grace a la key unset bonjour
-/* 	t_env **head;
-	ft_envaddback(*head, "bonjour", "test");
-	ft_envgetvalue(*head, "bonjour");
-	ft_envchangevalue(*head, "bonjour", "bonjour");
-	ft_envdelone(*head, "bonjour");
-	data->env = head; */
 	if (!data)
 		return (ERROR_G);
 	data->cmd_list = NULL;
-	data->env = NULL;
+	data->pid = NULL;
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
-	ft_init_lst_env((const char**)envp);
-	t_env **env = ft_singletone_env();
-	t_env **secret = dup_secret_env(env);
+	ft_init_lst_env((const char **)envp);
+	env = ft_singletone_env();
+	secret = dup_secret_env(env);
 	data->env = env;
 	data->secret_env = secret;
-	
-	minishell(line, data /* , env */);
+	minishell(line, data);
 	return (0);
 }

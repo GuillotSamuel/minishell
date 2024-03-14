@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exist.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:46:45 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/03 15:52:16 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/14 11:36:06 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char* join_path(char *path, char *cmd)
     return (tmp2);
 }
 
-static int check_cmd(char **tab, char *cmd)
+static char *check_cmd(char **tab, char *cmd)
 {
     size_t i;
     char *tmp;
@@ -46,48 +46,51 @@ static int check_cmd(char **tab, char *cmd)
     {
         tmp = join_path(tab[i], cmd);
         if (tmp == NULL)
-            return (FAIL);
+            return (VAR_NOT_FOUND);
         if (access(tmp, F_OK) == 0)
         {
             if(access(tmp, X_OK) == 0)
             {
-                free(tmp);
-                return (OK);
+                return (tmp);
             }
             else
             {
                 free(tmp);
-                return (FAIL);                     
+                return (VAR_NOT_FOUND);                     
             }
         }
         free(tmp);
     }
-    return (FAIL);
+    return (VAR_NOT_FOUND);
 }
 
-
-int ft_cmd_exist(char *cmd)
+char *ft_cmd_exist(char *cmd)
 {
-    char *path;    
+    char *var_path;    
     t_env **env;
     char **tab;
+    char *path;
 
+    if (cmd && (cmd[0] == '.' || cmd[0] == '/'))
+		return (cmd);
     env = ft_singletone_env();
-    path = ft_get_env("PATH", *env);
-    if (path == NULL)
-        return (FAIL);
-    tab = ft_split(path, ':');
+    var_path = ft_get_env("PATH", *env);
+    if (var_path == NULL)
+        return (MALLOC_ERROR);
+    tab = ft_split(var_path, ':');
     if (tab == NULL)
-        return (FAIL);
-    if (check_cmd(tab, cmd) == OK)
+        return (MALLOC_ERROR);
+    path = check_cmd(tab, cmd);
+    if (path == NULL)
     {
-        ft_free_array(tab);
-        return (OK);
+        ft_putstr_fd("minishell: " , 2);
+        ft_putstr_fd(cmd, 2);
+        ft_putstr_fd(": No such file or directory", 2);
+        g_exit_status = 127;
     }
-    else
-    {
-        ft_free_array(tab);
-        return (FAIL);
-    }
+    ft_free_array(tab);
+    return (path);
 }
+
+
 

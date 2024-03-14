@@ -6,7 +6,7 @@
 #    By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/08 14:50:37 by azbk             ###   ########.fr        #
+#    Updated: 2024/03/13 18:05:33 by azbk             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ SRC :=	main.c \
 		builtins/env/lst_env.c \
 		builtins/exit/exit_utils.c \
 		builtins/exit/exit.c \
+		builtins/export/check_export.c \
+		builtins/export/export_tools.c \
 		builtins/export/export.c \
 		builtins/pwd/pwd.c \
 		builtins/unset/unset.c \
@@ -47,7 +49,12 @@ SRC :=	main.c \
 		initialize/lst_env.c \
 		initialize/shlvl.c \
 		\
+		exec/check_builtin/check_builtin.c \
+		\
 		exec/cmd_exist/exist.c \
+		\
+		exec/core_exec/free_utils.c \
+		exec/core_exec/init.c \
 		\
 		exec/here_doc/heredoc.c \
 		exec/here_doc/create_random.c \

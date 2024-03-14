@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:50:00 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/06 17:03:55 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:25:53 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ extern int	g_exit_status;
 int	ft_pwd_exist(t_env **env, char *key, char *pwd)
 {
 	t_env	*current;
+	char	*tmp;
 
 	current = *env;
 	while (current)
@@ -25,6 +26,10 @@ int	ft_pwd_exist(t_env **env, char *key, char *pwd)
 		{
 			free(current->value);
 			current->value = ft_strdup(pwd);
+			free(current->str);
+			tmp = ft_strjoin(key, "=");
+			current->str = ft_strjoin(tmp, pwd);
+			free(tmp);
 			return (OK);
 		}
 		else
@@ -32,6 +37,7 @@ int	ft_pwd_exist(t_env **env, char *key, char *pwd)
 	}
 	return (FAIL);
 }
+
 int	ft_pwd_dont_exist(t_env **env, char *key, char *pwd)
 {
 	char	*add_egal;

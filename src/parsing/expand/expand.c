@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:32:31 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/08 17:24:42 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/14 13:05:22 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static t_redir	*init_redir(void)
 	if (new == NULL)
 		return (MALLOC_ERROR);
 	new->fd_in = 0;
-	new->fd_out = 0;
+	new->fd_out = 1;
 	new->file_here_doc = NULL;
 	return (new);
 }

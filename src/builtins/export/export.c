@@ -3,126 +3,129 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:29:14 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/27 18:09:30 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:21:12 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-/* static char	*ft_generate_env_str(char *key, char *value)
+static int	ft_export_plus_equal(char *key, char *value, t_data *data)
 {
-	char	*env_str;
-	int		i;
-	int		j;
-	
-	i = 0;
-	j = 0;
-	env_str = malloc(sizeof(char) * (ft_strlen(key) + ft_strlen(value) + 2));
-	while (key[j])
+	char	*str;
+
+	str = ft_is_key_in_env(key, data->env);
+	if (str)
 	{
-		env_str[i] = key[j];
-		i++;
-		j++;
+		ft_add_value_in_env(key, value, str, data->env);
+		free(str);
 	}
-	env_str[i] = '=';
-	i++;
-	while (value[j])
+	else
 	{
-		env_str[i] = value[j];
-		i++;
-		j++;
+		ft_create_var_env(key, value, data->env);
 	}
-	env_str[i] = '\0';
-	return (env_str);
+	str = ft_is_key_in_env(key, data->secret_env);
+	if (str)
+	{
+		ft_add_value_in_env(key, value, str, data->secret_env);
+		free(str);
+	}
+	else
+	{
+		ft_create_var_env(key, value, data->secret_env);
+	}
+	return (OK);
 }
 
-static void	ft_export_value_2(char *key, char *value, t_data **data)
+static void	ft_export_value(char *key, char *value, t_data *data)
 {
-	t_env	*secret_env_tmp;
-	t_env	*new_secret_env;
+	char	*str;
 
-	secret_env_tmp = (*data)->env;
-	while (secret_env_tmp)
+	str = ft_is_key_in_env(key, data->env);
+	if (str)
 	{
-		if (ft_strcmp(secret_env_tmp->key, key) == SUCCESS)
-		{
-			free(secret_env_tmp->value);
-			secret_env_tmp->value = NULL;
-			return ;
-		}
-		secret_env_tmp = secret_env_tmp->next;
+		free(str);
+		ft_change_value_in_env(key, value, data->env);
 	}
-	new_secret_env = malloc(sizeof(t_env));
-	if (!new_secret_env)
-		exit_error(*data);
-	new_secret_env->key = ft_strdup(key);
-	new_secret_env->value = value;
-	new_secret_env->next = (*data)->env;
-	(*data)->env = new_secret_env;
+	else
+	{
+		ft_create_var_env(key, value, data->env);
+	}
+	str = ft_is_key_in_env(key, data->secret_env);
+	if (str)
+	{
+		free(str);
+		ft_change_value_in_env(key, value, data->secret_env);
+	}
+	else
+	{
+		ft_create_var_env(key, value, data->secret_env);
+	}
 }
 
-static void	ft_export_value_1(char *key, char *value, t_data **data)
+static void	ft_export_no_value(char *key, t_data *data)
 {
-	t_env	*env_tmp;
-	t_env	*new_env;
+	char	*str;
 
-	ft_export_value_2(key, value, data);
-	env_tmp = (*data)->env;
-	while (env_tmp)
+	str = ft_is_key_in_env(key, data->env);
+	if (str)
 	{
-		if (ft_strcmp(env_tmp->key, key) == SUCCESS)
-		{
-			free(env_tmp->value);
-			env_tmp->value = value;
-			return ;
-		}
-		env_tmp = env_tmp->next;
+		free(str);
+		return ;
 	}
-	new_env = malloc(sizeof(t_env));
-	if (!new_env)
-		exit_error(*data);
-	new_env->key = ft_strdup(key);
-	new_env->value = value;
-	new_env->next = (*data)->env;
-	(*data)->env = new_env;
-	g_exit_status = 0;
+	ft_create_var_env(key, "", data->secret_env);
 }
 
-static void	ft_export_no_value(char *key, t_data **data)
+static void	exec_export_argument(char *arg, t_data *data)
 {
-	t_env	*secret_env_tmp;
-	t_env	*new_secret_env;
+	char	*key;
+	char	*value;
 
-	secret_env_tmp = (*data)->env;
-	while (secret_env_tmp)
+	if (ft_export_is_incorrect(arg) == -1)
 	{
-		if (ft_strcmp(secret_env_tmp->key, key) == SUCCESS)
-		{
-			free(secret_env_tmp->value);
-			secret_env_tmp->value = NULL;
-			return ;
-		}
-		secret_env_tmp = secret_env_tmp->next;
+		g_exit_status = 1;
+		ft_putstr_fd("minishell: export: ", 2);
+		ft_putstr_fd(arg, 2);
+		ft_putstr_fd(": not a valid identifier\n", 2);
+		return ;
 	}
-	new_secret_env = malloc(sizeof(t_env));
-	if (!new_secret_env)
-		exit_error(*data);
-	new_secret_env->key = ft_strdup(key);
-	new_secret_env->value = NULL;
-	new_secret_env->next = (*data)->env;
-	(*data)->env = new_secret_env;
-	g_exit_status = 0;
-}
-
-void	ft_export(char *key, char *value, t_data **data)
-{
-	if (value == NULL)
+	key = ft_dup_key(arg);
+	value = ft_dup_value(arg);
+	if (is_plus_equal(arg) == 1)
+	{
+		ft_export_plus_equal(key, value, data);
+	}
+	else if (value == NULL || ft_strlen(value) == 0)
+	{
 		ft_export_no_value(key, data);
+	}
 	else
 		ft_export_value(key, value, data);
+	free(key);
+	free(value);
+}
+
+void	ft_export(char **args, t_data *data)
+{
+	int	i;
+
+	i = 1;
+	if (ft_len_tab(args) == 1)
+	{
+		ft_print_secret_env(data->secret_env);
+		g_exit_status = 0;
+		return ;
+	}
+	while (args[i])
+	{
+		exec_export_argument(args[i], data);
+		if (g_exit_status == 1)
+		{
+			return ;
+		}
+		i++;
+	}
 	g_exit_status = 0;
 }
- */

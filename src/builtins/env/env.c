@@ -6,11 +6,23 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:20:25 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/05 19:39:40 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/08 18:34:04 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+void	ft_print_env(t_env **env)
+{
+	t_env	*cur;
+
+	cur = *env;
+	while (cur)
+	{
+		printf("%s\n", cur->str);
+		cur = cur->next;
+	}
+}
 
 void	ft_print_secret_env(t_env **env)
 {

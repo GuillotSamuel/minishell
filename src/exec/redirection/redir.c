@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:49:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/08 16:18:01 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/14 13:08:46 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,15 @@ int write_or_overwrite_file(t_redir *redir, t_token *token_list, enum_type type)
 {
     int fd;
 
-    if (redir->fd_out != 0)
+    if (redir->fd_out != 1)
+    {
         close(redir->fd_out);
-    redir->fd_out = 0;
+    }
+    redir->fd_out = 1;
     if (type == CREAT_FILE)
-        fd = open(token_list->token, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+        fd = open(token_list->token, O_WRONLY | O_CREAT | O_TRUNC, 0777);
     else
-        fd = open(token_list->token, O_WRONLY | O_CREAT | O_APPEND, 0644);
+        fd = open(token_list->token, O_WRONLY | O_CREAT | O_APPEND, 0777);
     if (fd < 0)
     {
         ft_putstr_fd("minishell: ", 2);
@@ -71,14 +73,11 @@ int open_all_redirections(t_cmd_line *cmd)
 		else if(token->type == CREAT_FILE || token->type == WRITE_FILE)
 		{
 			if (write_or_overwrite_file(cmd->redir, token, token->type) == -1)
+            {
 			    return (FAIL);
+            }
 		}
 		token = token->next;
 	}
-	// a supprrrr
-	if (cmd->redir->fd_in != 0)
-		close(cmd->redir->fd_in);
-	if (cmd->redir->fd_out != 0)
-		close(cmd->redir->fd_out);
 	return (OK);
 }
