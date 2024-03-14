@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_ctrl_1superior.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:52:35 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/22 16:02:17 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 11:46:51 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	control_s1(char *line)
 
 int	control_s2(char *line)
 {
-	const char	*cmp1[] = {"<", ">", "|", "(", ")", NULL};
+	const char	*cmp1[] = {"<", ">", "(", ")", NULL};
 
 	if (ft_strcmp_array_space_3(line, cmp1, ">") == 1)
 	{

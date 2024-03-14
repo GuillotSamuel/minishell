@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/13 19:32:03 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/14 12:20:06 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ typedef struct s_token
 }						t_token;
 
 typedef struct s_redir
-{
-	int					fd_in;
-	int					fd_out;
+{								// echo salut > file | wc -l
+	int					fd_in; // 0
+	int					fd_out; // 
 	char				*file_here_doc;
 }						t_redir;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/13 19:34:47 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/14 13:07:33 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	clear_lists(t_data *data)
 void	free_all(t_data *data)
 {
 	ft_free_both_env(data);
-	free(data->pid);
 	clear_lists(data);
 	if (data)
 		free(data);
