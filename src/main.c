@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/14 15:20:37 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:51:45 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	minishell(char *line, t_data *data)
 		{
 			add_history(line);
 			parsing(line, data);
+			init_exec(data);
+			clear_lists(data);
 		}
 	}
 }
@@ -54,12 +56,13 @@ int	main(int ac, char **av, char **envp)
 	t_env	**secret;
 
 	line = NULL;
-	if (ac == 0 || !av)
-		return (0);
+	if (ac == 0 || !av || ac > 1)
+		return (printf("No args required\n"), 0);
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (ERROR_G);
 	data->cmd_list = NULL;
+	data->env_array = NULL;
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
 	ft_init_lst_env((const char **)envp);

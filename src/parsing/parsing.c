@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:12:02 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/14 11:49:49 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:51:36 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,4 @@ void	parsing(char *line, t_data *data)
 		return (clear_lists(data));
 	if (expand_all_tokens(data) == ERROR)
 		return (clear_lists(data));
-	init_exec(data);
-	clear_lists(data);
 }
