@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:57:57 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 17:01:41 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:27:18 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,18 @@ char	*ft_get_env(char *key, t_env *env);
 /* free_utils.c */
 void	free_pipes_fd(t_data *data);
 
+/* init_exec.c */
+int init_exec(t_data *data);
+int start_exec(t_data *data);
+int	cmd_nb(t_cmd_line *cmd);
+void forking_exec(t_data *data);
+
 /* init.c */
 int		init_exec(t_data *data);
 int		start_exec(t_data *data);
+
+/* execve_exec.c */
+int	ft_execve_exec(char *path, t_cmd_line *cmd_list_dup, t_data *data);
 
 /* -------------------------------------------------------------------------- */
 /*                                      HERE_DOC                              */

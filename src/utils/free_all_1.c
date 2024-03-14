@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   free_all_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
 /*   Updated: 2024/03/14 17:26:01 by emauduit         ###   ########.fr       */
@@ -11,6 +11,24 @@
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+static void	free_data_env_array(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	if (data->env_array)
+	{
+		while (data->env_array[i])
+		{
+			if (data->env_array[i])
+				free(data->env_array[i]);
+			i++;
+		}
+		free(data->env_array);
+	}
+	data->env_array = NULL;
+}
 
 void	ft_free_redir(t_cmd_line *cmd)
 {
@@ -73,6 +91,7 @@ void	free_all(t_data *data)
 {
 	ft_free_both_env(data);
 	clear_lists(data);
+	free_data_env_array(data);
 	if (data)
 		free(data);
 }

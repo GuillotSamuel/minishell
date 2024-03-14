@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_builtin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:49:29 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 17:01:12 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:10:46 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 int	check_builtin(char *arg)
 {
-	if (!arg)
-		return (FAIL);
-	if (ft_strcmp(arg, "echo") == 0)
-		return (1);
-	if (ft_strcmp(arg, "cd") == 0)
-		return (1);
-	if (ft_strcmp(arg, "pwd") == 0)
-		return (1);
-	if (ft_strcmp(arg, "export") == 0)
-		return (1);
-	if (ft_strcmp(arg, "unset") == 0)
-		return (1);
-	if (ft_strcmp(arg, "env") == 0)
-		return (1);
-	if (ft_strcmp(arg, "exit") == 0)
-		return (1);
-	return (FAIL);
+    if (!arg)
+        return (FAIL);
+    if (ft_strcmp(arg, "echo") == 0)
+        return (1);
+    if (ft_strcmp(arg, "cd") == 0)
+        return (1);
+    if (ft_strcmp(arg, "pwd") == 0)
+        return (1);
+    if (ft_strcmp(arg, "export") == 0)
+        return (1);
+    if (ft_strcmp(arg, "unset") == 0)
+        return (1);
+    if (ft_strcmp(arg, "env") == 0)
+        return (1);
+    if (ft_strcmp(arg, "exit") == 0)
+        return (1);
+    return (FAIL);
 }
 
 int	exec_builtin(t_cmd_line *cmd, t_data *data)
