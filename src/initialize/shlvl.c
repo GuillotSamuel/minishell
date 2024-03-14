@@ -6,13 +6,13 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 10:29:54 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/12 11:24:36 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:22:55 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-bool    ft_update_shlvl(char *line, t_env **env_list, int level)
+bool	ft_update_shlvl(char *line, t_env **env_list, int level)
 {
 	t_env	*cur;
 
@@ -41,23 +41,22 @@ bool    ft_update_shlvl(char *line, t_env **env_list, int level)
 	return (OK);
 }
 
-
-char *find_env(char *line, t_env *env_list)
+char	*find_env(char *line, t_env *env_list)
 {
-    char *new_str;
-    t_env *cur;
+	char	*new_str;
+	t_env	*cur;
 
-    cur = env_list;
-    while (cur)
-    {
-        if (ft_strncmp(line, cur->key, 5) == 0)
-        {
-            new_str = ft_strdup(cur->key);
-            return (new_str);
-        }
-        cur = cur->next;
-    }
-    return (NULL);
+	cur = env_list;
+	while (cur)
+	{
+		if (ft_strncmp(line, cur->key, 5) == 0)
+		{
+			new_str = ft_strdup(cur->key);
+			return (new_str);
+		}
+		cur = cur->next;
+	}
+	return (NULL);
 }
 
 bool	ft_init_shlvl(t_env **env_list)
@@ -72,18 +71,18 @@ bool	ft_init_shlvl(t_env **env_list)
 		level = 1;
 	}
 	else
-    {
+	{
 		level = ft_atoi(shlvl_str) + 1;
-        free(shlvl_str);
-    }
+		free(shlvl_str);
+	}
 	new_str = ft_strjoin("SHLVL=", ft_itoa(level));
 	if (new_str == NULL)
-        return (ERROR);
-	if (ft_update_shlvl(new_str, env_list, level) == 0)
-    {
-        free(new_str);
 		return (ERROR);
-    }
-    free(new_str);
+	if (ft_update_shlvl(new_str, env_list, level) == 0)
+	{
+		free(new_str);
+		return (ERROR);
+	}
+	free(new_str);
 	return (OK);
 }

@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:14:54 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 17:14:14 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:13:26 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 extern int g_exit_status;
 
-int	cmd_nb(t_cmd_line *cmd)
+
+static int	cmd_nb(t_cmd_line *cmd)
+
 {
 	int			i;
 	t_cmd_line	*tmp;
@@ -66,10 +68,7 @@ int start_exec(t_data *data)
 	while (cmd)
 	{
 		if (open_all_redirections(cmd) == -1)
-		{
-			printf("Error in redirections\n");
 			return (FAIL);
-		}
 		cmd = cmd->next;
 		nb_cmd ++;
 	}
@@ -81,8 +80,6 @@ int start_exec(t_data *data)
 	forking_exec(data); 
     return (OK);
 }
-
-
 
 int init_exec(t_data *data)
 {
