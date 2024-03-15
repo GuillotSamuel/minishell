@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:07:50 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 19:17:35 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/15 19:31:08 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern int	g_exit_status;
 
 static void	exit_multiple_num(void)
 {
-	ft_printf("exit\nbash: exit: too many arguments\n");
+	write(2, " too many arguments\n", 20);
 	g_exit_status = 1;
 }
 
