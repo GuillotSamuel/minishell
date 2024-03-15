@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 11:45:33 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:00:58 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	clear_lists(t_data *data)
 
 void	free_all(t_data *data)
 {
-	//free_pipes_fd(data);
+	free_pipes_fd(data);
 	ft_free_both_env(data);
 	clear_lists(data);
 	free_data_env_array(data);

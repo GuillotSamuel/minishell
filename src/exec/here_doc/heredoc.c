@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:12:58 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/13 12:04:24 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/15 14:13:00 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int start_here_doc(t_redir *redir, t_token *token_list)
 	}
 	redir->fd_in = fd;
 	fill_here_doc(fd, token_list->token);
+	close(fd);
+	fd = open(file, O_RDONLY);
 	if (redir->file_here_doc)
 	{
 		unlink(redir->file_here_doc);

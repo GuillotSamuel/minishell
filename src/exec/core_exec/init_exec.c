@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:14:54 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/15 11:51:41 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/15 13:14:29 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,6 @@ int	cmd_nb(t_cmd_line *cmd)
 	return (i);
 }
 
-static void redirect_io(t_data *data)
-{
-	if (data->cmd_list->redir->fd_in != 0)
-		dup2(data->cmd_list->redir->fd_in, 0);
-	if (data->cmd_list->redir->fd_out != 1)
-		dup2(data->cmd_list->redir->fd_out, 1);
-}
-
 static int	init_pipes(t_data *data)
 {
 	t_cmd_line	*cmd_list_tmp;
@@ -48,14 +40,14 @@ static int	init_pipes(t_data *data)
 	i = 0;
 	data->pipes_fd = malloc(sizeof(int *) * (cmd_nb(data->cmd_list) + 1));
 	if (!data->pipes_fd)
-		return (ERROR);
+		exit_error(data);
 	while (cmd_list_tmp)
 	{
 		data->pipes_fd[i] = malloc(sizeof(int) * 2);
 		if (!data->pipes_fd[i])
-			return (ERROR);
+			exit_error(data);
 		if (pipe(data->pipes_fd[i]) == -1)
-			return (ERROR);
+			exit_error(data);
 		cmd_list_tmp = cmd_list_tmp->next;
 		i++;
 	}
@@ -88,8 +80,8 @@ int start_exec(t_data *data)
 
 int init_exec(t_data *data)
 {
-	//init_pipes(data);
+	if (init_pipes(data) == ERROR)
+		return (FAIL);
 	start_exec(data);
-	//free_pipes_fd(data);
 	return (OK);
 }

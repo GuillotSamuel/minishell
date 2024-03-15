@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 11:44:25 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/15 15:09:02 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,51 +16,98 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 {
 	t_cmd_line	*cmd_list_dup;
 	char		*path;
-	
+
 	cmd_list_dup = cmd_list;
 	if (check_builtin(cmd_list_dup->args[0]) == 1)
 	{
-		fflush(stdout);
 		exec_builtin(cmd_list_dup, data);
 		free_all(data);
-		exit(0); // TO ADD WHEN FORKING IS DONE
+		exit(0);
 	}
 	path = ft_cmd_exist(cmd_list_dup->token_list->token);
 	if (path != VAR_NOT_FOUND)
 	{
 		ft_execve_exec(path, cmd_list_dup, data);
 	}
+	free_all(data);
+	exit(0);
 }
 
-void	forking_exec(t_data *data)
+void	read_last_pipe(t_data *data)
 {
-	t_cmd_line	*cmd_list;
+	int	last_pipe_index;
+	int		read_end;
+	char	buffer[1024];
+	ssize_t	bytes_read;
 
-	cmd_list = data->cmd_list;
-	int		i;
-	int		num_children;
-	pid_t	pid;
-	
+	last_pipe_index = cmd_nb(data->cmd_list) - 1;
+	read_end = data->pipes_fd[last_pipe_index][0];
+	bytes_read = read(read_end, buffer, sizeof(buffer));
+	if (bytes_read > 0)
+	{
+		write(STDOUT_FILENO, buffer, bytes_read);
+	}
+	close(read_end);
+}
+
+static void	close_all_fd(t_data *data)
+{
+	int	i;
+	int	num_children;
+
 	i = 0;
 	num_children = cmd_nb(data->cmd_list);
 	while (i < num_children)
 	{
+		close(data->pipes_fd[i][0]);
+		close(data->pipes_fd[i][1]);
+		i++;
+	}
+}
+
+static void	ft_wait_children(int num_children)
+{
+	int	i;
+	int	status;
+
+	i = 0;
+	while (i < num_children)
+	{
+		wait(&status);
+		i++;
+	}
+}
+
+void	forking_exec(t_data *data)
+{
+	int			i;
+	int			num_children;
+	t_cmd_line	*cmd_list;
+	pid_t		pid;
+	int			**pipes_fd;
+
+	i = 0;
+	num_children = cmd_nb(data->cmd_list);
+	cmd_list = data->cmd_list;
+	pipes_fd = data->pipes_fd;
+	while (i < num_children)
+	{
 		pid = fork();
 		if (pid < 0)
-		{
 			free_all(data);
-		}
 		else if (pid == 0)
 		{
-			//redirect_io(data);
+			if (i != 0)
+				dup2(pipes_fd[i - 1][0], STDIN_FILENO);
+			if (i != num_children - 1)
+				dup2(pipes_fd[i][1], STDOUT_FILENO);
+			close_all_fd(data);
 			command_or_builtin(data, cmd_list);
-			//exit (0);
-		}
-		else if (pid > 0)
-		{
-			wait(NULL);
+			exit(0);
 		}
 		i++;
 		cmd_list = cmd_list->next;
 	}
+	close_all_fd(data);
+	ft_wait_children(num_children);
 }

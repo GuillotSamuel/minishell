@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:57:57 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 17:27:18 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:00:56 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ int start_exec(t_data *data);
 int	cmd_nb(t_cmd_line *cmd);
 void forking_exec(t_data *data);
 
-/* init.c */
+/* init_exec.c */
 int		init_exec(t_data *data);
 int		start_exec(t_data *data);
+void	redirect_io(t_cmd_line *cmd_list);
+
 
 /* execve_exec.c */
 int	ft_execve_exec(char *path, t_cmd_line *cmd_list_dup, t_data *data);
