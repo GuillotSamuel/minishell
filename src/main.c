@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/14 18:51:45 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/15 11:08:47 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ void	minishell(char *line, t_data *data)
 		else if (line != NULL && strlen(line) > 0)
 		{
 			add_history(line);
-			parsing(line, data);
-			init_exec(data);
+			if (parsing(line, data) == SUCCESS)
+			{
+				init_exec(data);
+			}
 			clear_lists(data);
 		}
 	}
@@ -41,7 +43,7 @@ static void	handle_sigint(int sig)
 	if (sig == SIGINT)
 	{
 		g_exit_status = 130;
-		printf("\n");
+		ft_printf("\n");
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
