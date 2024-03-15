@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:07:50 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/13 20:06:32 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/15 19:31:08 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern int	g_exit_status;
 
 static void	exit_multiple_num(void)
 {
-	ft_printf("exit\nbash: exit: too many arguments\n");
+	write(2, " too many arguments\n", 20);
 	g_exit_status = 1;
 }
 
@@ -50,10 +50,12 @@ void	ft_exit(char **args, t_data *data)
 		exit_no_args(data);
 	else if (args[0] && args[1])
 		exit_multiple_num();
-	else if (args[0] && ft_is_positive_llong(args[0]) == ERROR_G)
-		exit_num_alpha(args, data);
 	else if (args[0] && ft_is_positive_llong(args[0]) == SUCCESS)
 		exit_one_num(args, data);
+	else if (args[0] && ft_is_negative_llong(args[0]) == SUCCESS)
+		exit_one_neg_num(data);
+	else if (args[0] && ft_is_positive_llong(args[0]) == ERROR_G)
+		exit_num_alpha(args, data);
 	else
 	{
 		ft_printf("exit\nbash: exit: %s: numeric argument required\n", args[0]);

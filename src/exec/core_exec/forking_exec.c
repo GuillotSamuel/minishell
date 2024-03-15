@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 17:16:26 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:00:13 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	{
 		ft_execve_exec(path, cmd_list_dup, data);
 	}
-	free_pipes_fd(data);
 	free(data->pids);
 	free_all(data);
 	exit(0);

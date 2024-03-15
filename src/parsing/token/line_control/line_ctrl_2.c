@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_ctrl_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:51:04 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/08 19:56:02 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/15 18:22:18 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	ft_strcmp_array_space_3(char *l, const char **ca, char *cs)
 	i = -1;
 	while (l[++i])
 	{
+		ft_ignore_quotes(l, &i);
 		j = 0;
 		while (ca[j] && ca[j][0] != l[i])
 			j++;
