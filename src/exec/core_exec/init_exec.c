@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:14:54 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 18:57:56 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/15 11:51:41 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ int	cmd_nb(t_cmd_line *cmd)
 		tmp = tmp->next;
 	}
 	return (i);
+}
+
+static void redirect_io(t_data *data)
+{
+	if (data->cmd_list->redir->fd_in != 0)
+		dup2(data->cmd_list->redir->fd_in, 0);
+	if (data->cmd_list->redir->fd_out != 1)
+		dup2(data->cmd_list->redir->fd_out, 1);
 }
 
 static int	init_pipes(t_data *data)
@@ -80,8 +88,8 @@ int start_exec(t_data *data)
 
 int init_exec(t_data *data)
 {
-	init_pipes(data);
+	//init_pipes(data);
 	start_exec(data);
-	free_pipes_fd(data);
+	//free_pipes_fd(data);
 	return (OK);
 }
