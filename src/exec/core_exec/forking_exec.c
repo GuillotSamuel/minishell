@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 15:09:02 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:16:26 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	{
 		exec_builtin(cmd_list_dup, data);
 		free_all(data);
+		free(data->pids);
 		exit(0);
 	}
 	path = ft_cmd_exist(cmd_list_dup->token_list->token);
@@ -29,35 +30,18 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	{
 		ft_execve_exec(path, cmd_list_dup, data);
 	}
+	free_pipes_fd(data);
+	free(data->pids);
 	free_all(data);
 	exit(0);
 }
 
-void	read_last_pipe(t_data *data)
-{
-	int	last_pipe_index;
-	int		read_end;
-	char	buffer[1024];
-	ssize_t	bytes_read;
-
-	last_pipe_index = cmd_nb(data->cmd_list) - 1;
-	read_end = data->pipes_fd[last_pipe_index][0];
-	bytes_read = read(read_end, buffer, sizeof(buffer));
-	if (bytes_read > 0)
-	{
-		write(STDOUT_FILENO, buffer, bytes_read);
-	}
-	close(read_end);
-}
-
-static void	close_all_fd(t_data *data)
+static void	close_pipes(t_data *data, int num_children)
 {
 	int	i;
-	int	num_children;
 
 	i = 0;
-	num_children = cmd_nb(data->cmd_list);
-	while (i < num_children)
+	while (i < num_children - 1)
 	{
 		close(data->pipes_fd[i][0]);
 		close(data->pipes_fd[i][1]);
@@ -65,49 +49,80 @@ static void	close_all_fd(t_data *data)
 	}
 }
 
-static void	ft_wait_children(int num_children)
+static void	ft_wait_children(int num_children, pid_t *pids)
 {
 	int	i;
-	int	status;
 
 	i = 0;
 	while (i < num_children)
 	{
-		wait(&status);
+		waitpid(pids[i], NULL, 0);
 		i++;
+	}
+}
+
+static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid,
+		int n)
+{
+	*pid = fork();
+	if (*pid < 0)
+	{
+		perror("fork");
+		free_all(data);
+		free(data->pids);
+		exit(EXIT_FAILURE);
+	}
+	else if (*pid == 0)
+	{
+		if (cmd->redir->fd_in != 0)
+			dup2(cmd->redir->fd_in, STDIN_FILENO);
+		if (cmd->redir->fd_out != 1)
+			dup2(cmd->redir->fd_out, STDOUT_FILENO);
+		close_pipes(data, n);
+		command_or_builtin(data, cmd);
+		exit(EXIT_SUCCESS);
+	}
+}
+void	free_here_doc(t_data *data)
+{
+	t_cmd_line	*cmd;
+
+	cmd = data->cmd_list;
+	while (cmd)
+	{
+		if (cmd->redir->file_here_doc)
+		{
+			unlink(cmd->redir->file_here_doc);
+			free(cmd->redir->file_here_doc);
+		}
+		cmd->redir->file_here_doc = NULL;
+		cmd = cmd->next;
 	}
 }
 
 void	forking_exec(t_data *data)
 {
-	int			i;
-	int			num_children;
 	t_cmd_line	*cmd_list;
-	pid_t		pid;
-	int			**pipes_fd;
+	int			num_children;
+	int			i;
 
-	i = 0;
-	num_children = cmd_nb(data->cmd_list);
 	cmd_list = data->cmd_list;
-	pipes_fd = data->pipes_fd;
-	while (i < num_children)
+	num_children = cmd_nb(data->cmd_list);
+	data->pids = (pid_t *)malloc(sizeof(pid_t) * num_children);
+	if (!data->pids)
 	{
-		pid = fork();
-		if (pid < 0)
-			free_all(data);
-		else if (pid == 0)
-		{
-			if (i != 0)
-				dup2(pipes_fd[i - 1][0], STDIN_FILENO);
-			if (i != num_children - 1)
-				dup2(pipes_fd[i][1], STDOUT_FILENO);
-			close_all_fd(data);
-			command_or_builtin(data, cmd_list);
-			exit(0);
-		}
-		i++;
-		cmd_list = cmd_list->next;
+		perror("malloc");
+		exit(EXIT_FAILURE);
 	}
-	close_all_fd(data);
-	ft_wait_children(num_children);
+	i = 0;
+	while (cmd_list)
+	{
+		create_and_manage_child(data, cmd_list, &data->pids[i], num_children);
+		cmd_list = cmd_list->next;
+		i++;
+	}
+	close_pipes(data, num_children);
+	ft_wait_children(num_children, data->pids);
+	free_here_doc(data);
+	free(data->pids);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 14:00:58 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/15 17:41:06 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ void	clear_lists(t_data *data)
 
 void	free_all(t_data *data)
 {
-	free_pipes_fd(data);
+	if (data->pipes_fd)
+		free_pipes_fd(data);
 	ft_free_both_env(data);
 	clear_lists(data);
 	free_data_env_array(data);
