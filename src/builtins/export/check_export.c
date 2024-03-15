@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_export.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:56:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/13 11:15:02 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/15 18:38:25 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	ft_export_is_incorrect(char *str)
 			else
 				return (FAIL);
 		}
+		if (str[i] == '=')
+			return (OK);
 		if (ft_isalnum(str[i]) || str[i] == '_' || str[i] == '+'
 			|| str[i] == '=')
 			i++;

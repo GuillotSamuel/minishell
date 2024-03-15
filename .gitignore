@@ -4,3 +4,4 @@ minishell
 test_push_swap.ods
 *.a
 .vscode/
+.minishell_tester/
