@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 18:04:08 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 15:24:35 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:01:02 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,9 @@ void	free_pipes_fd(t_data *data)
 	{
 		if (data->pipes_fd[i])
 		{
-			if (data->pipes_fd[i][0] > 0)
-				close(data->pipes_fd[i][0]);
-			if (data->pipes_fd[i][1] > 0)
-				close(data->pipes_fd[i][1]);
-			if (data->pipes_fd[i])
-				free(data->pipes_fd[i]);
+			close(data->pipes_fd[i][0]);
+			close(data->pipes_fd[i][1]);
+			free(data->pipes_fd[i]);
 		}
 		i++;
 	}
