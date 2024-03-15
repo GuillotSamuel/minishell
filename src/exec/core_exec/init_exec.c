@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:14:54 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/15 13:14:29 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:01:31 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ int	cmd_nb(t_cmd_line *cmd)
 	return (i);
 }
 
+// static void open_pipes(t_cmd_line *cmd, t_data *data, int i)
+// {
+// 	if (i > 0)
+// 		cmd->redir->fd_in = data->pipes_fd[i-1][0];
+// 	if (cmd->next == NULL)
+// 		{
+			
+// 			cmd->redir->fd_out = 1;
+// 		}
+// 	else
+// 		cmd->redir->fd_out = data->pipes_fd[i][1];
+// }
+
 static int	init_pipes(t_data *data)
 {
 	t_cmd_line	*cmd_list_tmp;
@@ -40,15 +53,26 @@ static int	init_pipes(t_data *data)
 	i = 0;
 	data->pipes_fd = malloc(sizeof(int *) * (cmd_nb(data->cmd_list) + 1));
 	if (!data->pipes_fd)
-		exit_error(data);
+		return (ERROR);
 	while (cmd_list_tmp)
 	{
 		data->pipes_fd[i] = malloc(sizeof(int) * 2);
 		if (!data->pipes_fd[i])
-			exit_error(data);
+			return (ERROR);
 		if (pipe(data->pipes_fd[i]) == -1)
-			exit_error(data);
+			return (ERROR);
+		if (i > 0)
+			cmd_list_tmp->redir->fd_in = data->pipes_fd[i-1][0];
+		if (cmd_list_tmp->next == NULL)
+		{
+			cmd_list_tmp->redir->fd_out = 1;
+		}
+		else
+			cmd_list_tmp->redir->fd_out = data->pipes_fd[i][1];
+		printf("redir->fd_out = %d\n", cmd_list_tmp->redir->fd_out);
+		printf("redir->fd_in = %d\n", cmd_list_tmp->redir->fd_in);
 		cmd_list_tmp = cmd_list_tmp->next;
+		
 		i++;
 	}
 	data->pipes_fd[i] = NULL;
@@ -80,8 +104,8 @@ int start_exec(t_data *data)
 
 int init_exec(t_data *data)
 {
-	if (init_pipes(data) == ERROR)
-		return (FAIL);
+	init_pipes(data);
 	start_exec(data);
+	free_pipes_fd(data);
 	return (OK);
 }
