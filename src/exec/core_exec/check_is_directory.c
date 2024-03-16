@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 14:59:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 15:26:41 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 16:36:28 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void ft_check_is_directory(t_data *data, char *cmd)
 		permission_denied(data, cmd);
 	}
 	else if ((cmd[0] == '.' && cmd[1] == '/')
-		|| (cmd[1] == '/'))
+		|| (cmd[0] == '/'))
 	{
 		is_directory(data, cmd);
 	}

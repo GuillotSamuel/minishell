@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/15 11:09:14 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 16:57:19 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		parsing(char *line, t_data *data);
 /*                                    EXPAND                                  */
 /* -------------------------------------------------------------------------- */
 
+int		check_token_list_after_expand(t_cmd_line **cmd_list);
 bool	expand_all_tokens(t_data *data);
 char	*expand_smpl_quotes(const char *line, char *str_expand, int *i);
 char	*expand_no_quote(t_token **tok, const char *line, char *str_expand, int *i);
@@ -51,17 +52,12 @@ void	delete_quote(char *new_str, char *line, int i, int j);
 bool	init_delete_quote(t_token *lst_token, char *line);
 
 // FREE A VOIR SI ON DEL
-void print_cmd(t_data *data);
+void 	print_cmd(t_data *data);
 void	ft_free_data(t_data *data);
 void	ft_free_commands(t_cmd_line *command);
 void	ft_free_cmd(t_cmd_line *cmd);
 void	ft_free_array(char **tab);
 void	ft_free_tokens(t_token *tokens);
-
-
-
-
-
 
 /* ---------------------------------- TOKEN --------------------------------- */
 
@@ -85,7 +81,6 @@ int			ft_strcmp_array_space_3(char *l, const char **ca, char *cs);
 int			forbiden_consecutive(char *line);
 int         forbiden_char(char *line);
 
-
 /* line_ctrl_1inferior */
 int			control_i1(char *line);
 int			control_i2(char *line);
@@ -106,13 +101,13 @@ int			control_ss2(char *line);
 int			ft_strcmp_array_space_2(char *l, const char **cmp_arr, char *cmp_str);
 
 /* line_ctrl_utils_2 */
-void    	ft_ignore_quotes(char *l, int *i);
+void		ft_ignore_quotes(char *l, int *i);
 
 /* token_assign_1 */
 void		create_token_1(t_cmd_line **cmd_list, t_data **data);
 
 /* token_utils_1 */
-char        *ft_remove_nchar_from_str_2(char *cmd_line, int n);
+char		*ft_remove_nchar_from_str_2(char *cmd_line, int n);
 char		*ft_remove_nchar_from_str(char *cmd_line, int n);
 int			ft_strcmp_array_space(const char *str, const char **array);
 int			ft_strcmp_space(const char *s1, const char *s2);
@@ -131,6 +126,7 @@ void		ft_stackaddback_token(t_token **lst, t_token *new);
 
 /* token_list_control_1 */
 int			check_token_list(t_cmd_line **cmd_list, t_data **data);
+void		empty_token_ctrl(char *token, t_token **token_list_dup, t_token **token_list_dup_prev);
 
 /* type_assign_1 */
 void		put_type_1(t_cmd_line **cmd_list);

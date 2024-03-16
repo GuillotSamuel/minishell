@@ -1,6 +1,5 @@
+/* TO DELETE */
 #include "../includes/minishell.h"
-
-
 
 void ft_print_pwd_oldpwd(t_env **env)
 {

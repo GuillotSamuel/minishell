@@ -6,13 +6,34 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:49:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/16 14:04:02 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 16:31:15 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
 extern int	g_exit_status;
+
+static int	ft_permission_denied(char *cmd)
+{
+	if (access(cmd, F_OK) == -1)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(cmd, 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
+		g_exit_status = 1;
+		return (FAIL);
+	}
+	else if (access(cmd, X_OK) == -1)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(cmd, 2);
+		ft_putstr_fd(": Permission denied\n", 2);
+		g_exit_status = 126;
+		return (FAIL);
+	}
+	return (OK);
+}
 
 int file_in(t_redir *redir, t_token *token_list)
 {
@@ -24,7 +45,8 @@ int file_in(t_redir *redir, t_token *token_list)
     fd = open(token_list->token, O_RDONLY);
     if (fd < 0)
     {
-        ft_putstr_fd("minishell: ", 2);
+        // ft_permission_denied(token_list->token);
+		ft_putstr_fd("minishell: ", 2);
         ft_putstr_fd(token_list->token, 2);
         ft_putstr_fd(": No such file or directory\n", 2);
 		g_exit_status = 1;
