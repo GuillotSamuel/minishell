@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/14 17:24:03 by sguillot         ###   ########.fr        #
+#    Updated: 2024/03/16 15:07:15 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRC :=	main.c \
 		\
 		exec/cmd_exist/exist.c \
 		\
+		exec/core_exec/check_is_directory.c \
 		exec/core_exec/free_utils.c \
 		exec/core_exec/init_exec.c \
 		exec/core_exec/forking_exec.c \

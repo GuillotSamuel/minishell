@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:57:57 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/15 14:00:56 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 15:07:31 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ char	*ft_get_env(char *key, t_env *env);
 /* -------------------------------------------------------------------------- */
 /*                                      CORE_EXEC                             */
 /* -------------------------------------------------------------------------- */
+
+
+/* check_is_directory */
+void ft_check_is_directory(t_data *data, char *cmd);
 
 /* free_utils.c */
 void	free_pipes_fd(t_data *data);

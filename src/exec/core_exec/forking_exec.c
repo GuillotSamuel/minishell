@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 14:47:04 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:59:41 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 		free(data->pids);
 		exit(g_exit_status);
 	}
+	ft_check_is_directory(data, cmd_list_dup->args[0]);
 	path = ft_cmd_exist(cmd_list_dup->token_list->token);
 	if (path != VAR_NOT_FOUND)
 	{
