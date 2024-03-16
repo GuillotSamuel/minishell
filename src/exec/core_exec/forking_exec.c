@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 14:07:38 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:47:04 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 		exec_builtin(cmd_list_dup, data);
 		free_all(data);
 		free(data->pids);
-		exit(0);
+		exit(g_exit_status);
 	}
 	path = ft_cmd_exist(cmd_list_dup->token_list->token);
 	if (path != VAR_NOT_FOUND)
@@ -35,7 +35,7 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	free(data->pids);
 	free_all(data);
 	g_exit_status = 127;
-	exit(0);
+	exit(g_exit_status);
 }
 
 static void	close_pipes(t_data *data, int num_children)
@@ -53,12 +53,16 @@ static void	close_pipes(t_data *data, int num_children)
 
 static void	ft_wait_children(int num_children, pid_t *pids)
 {
-	int	i;
+	int		i;
+	int		status;
+	pid_t	child_pid;
 
 	i = 0;
 	while (i < num_children)
 	{
-		waitpid(pids[i], NULL, 0);
+		child_pid = waitpid(pids[i], &status, 0);
+		if (WIFEXITED(status))
+			g_exit_status = WEXITSTATUS(status);
 		i++;
 	}
 }
