@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/16 16:57:19 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:05:26 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		parsing(char *line, t_data *data);
 /*                                    EXPAND                                  */
 /* -------------------------------------------------------------------------- */
 
-int		check_token_list_after_expand(t_cmd_line **cmd_list);
+void	check_args_array_after_expands(t_cmd_line *cmd, t_data *data);
 bool	expand_all_tokens(t_data *data);
 char	*expand_smpl_quotes(const char *line, char *str_expand, int *i);
 char	*expand_no_quote(t_token **tok, const char *line, char *str_expand, int *i);

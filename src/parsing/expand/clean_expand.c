@@ -6,52 +6,103 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:52:41 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 17:27:52 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:16:49 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-static int	check_token_only_null(t_token *token_list)
+static int	is_empty_countet(char **args)
 {
-    t_token	*token_list_dup;
+	int i;
+	int counter;
 
-    token_list_dup = token_list;
-    while (token_list_dup)
-    {
-        if (token_list_dup->token != NULL)
-            return (ERROR);
-        token_list_dup = token_list_dup->next;
-    }
-    return (SUCCESS);
+	i = 0;
+	counter = 0;
+	while (args[i])
+	{
+		if (args[i][0] == '\0')
+			counter++;
+		i++;
+	}
+	return (counter);	
 }
 
-int	check_token_list_after_expand(t_cmd_line **cmd_list)
+static int	args_counter(char **args)
+{
+	int i;
+
+	i = 0;
+	while (args[i])
+		i++;
+	return (i);
+}
+
+static void	free_args(char **args)
+{
+	int i;
+
+	i = 0;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
+}
+
+static char **clean_cmd_args(char **args, t_data *data)
+{
+	char	**new_args;
+	int		i;
+	int 	j;
+
+	i = 0;
+	j = 0;
+	new_args = malloc(sizeof(char *)
+		* (args_counter(args) - is_empty_countet(args) + 1));
+	if (!new_args)
+		exit_error(data);
+	while (args[i])
+    {
+        if (args[i][0] != '\0')
+        {
+            new_args[j] = ft_strdup(args[i]);
+            j++;
+        }
+        i++;
+    }
+	new_args[j] = NULL;
+	free_args(args);
+	return (new_args);
+}
+
+static bool check_command_is_empty(char **cmd)
+{
+	int i;
+
+	i = 0;
+	while (cmd[i])
+	{
+		if (cmd[i][0] != '\0')
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+void	check_args_array_after_expands(t_cmd_line *cmd, t_data *data)
 {
 	t_cmd_line	*cmd_list_dup;
-	t_token		*token_list_dup;
-	t_token		*token_list_dup_prev;
-	char		*token;
 
-	cmd_list_dup = *cmd_list;
+	cmd_list_dup = cmd;
 	while (cmd_list_dup)
 	{
-		token_list_dup = cmd_list_dup->token_list;
-		token_list_dup_prev = NULL;
-		if (check_token_only_null(token_list_dup) == ERROR)
+		if (check_command_is_empty(cmd_list_dup->args) == false)
 		{
-			while (token_list_dup)
-			{
-				token = token_list_dup->token;
-				empty_token_ctrl(token, &token_list_dup, &token_list_dup_prev);
-				if (token_list_dup)
-				{
-					token_list_dup_prev = token_list_dup;
-					token_list_dup = token_list_dup->next;
-				}
-			}
-			cmd_list_dup = cmd_list_dup->next;
+			cmd_list_dup->args
+				= clean_cmd_args(cmd_list_dup->args, data);
 		}
+		cmd_list_dup = cmd_list_dup->next;
 	}
-	return (SUCCESS);
 }
