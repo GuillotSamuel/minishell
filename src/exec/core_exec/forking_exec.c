@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 16:08:20 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 17:34:19 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	if (check_builtin(cmd_list_dup->args[0]) == 1)
 	{
 		exec_builtin(cmd_list_dup, data);
-		free_all(data);
 		free(data->pids);
+		free_all(data);
 		exit(g_exit_status);
 	}
 	ft_check_is_directory(data, cmd_list_dup->args[0]);
@@ -33,9 +33,9 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	{
 		ft_execve_exec(path, cmd_list_dup, data);
 	}
+	g_exit_status = 127;
 	free(data->pids);
 	free_all(data);
-	g_exit_status = 127;
 	exit(g_exit_status);
 }
 
@@ -75,8 +75,9 @@ static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid,
 	if (*pid < 0)
 	{
 		perror("fork");
-		free_all(data);
 		free(data->pids);
+		free_all(data);
+	
 		exit(EXIT_FAILURE);
 	}
 	else if (*pid == 0)

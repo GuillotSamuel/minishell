@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prep_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:48:33 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/08 18:42:13 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/16 17:29:57 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ bool	prepare_execution(t_data *data)
 		data->cmd_list = NULL;
 		return (ERROR);
 	}
+	//check_token_list_after_expand(&data->cmd_list);
 	return (OK);
 }
