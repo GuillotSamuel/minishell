@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_ctrl_utils_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:32:57 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/13 19:17:50 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/16 20:25:10 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,6 @@ static void	ft_strcmp_array_space_2_1(char **l, int *i, int *j,
 		(*j)++;
 }
 
-/*
-	This function is used to compare the following string cmp_str 
-	(if cmp_str exists in str l) with the array cmp_arr
- */
 int	ft_strcmp_array_space_2(char *l, const char **cmp_arr, char *cmp_str)
 {
 	int	i;

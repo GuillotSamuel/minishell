@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 18:46:47 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 20:37:52 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	}
 	free_with_exit(data);
 }
-
-
 
 static void	ft_wait_children(int num_children, pid_t *pids)
 {
@@ -79,6 +77,7 @@ static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid)
 		exit(EXIT_SUCCESS);
 	}
 }
+
 void	free_here_doc(t_data *data)
 {
 	t_cmd_line	*cmd;

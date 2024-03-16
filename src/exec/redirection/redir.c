@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:49:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/16 18:50:33 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/16 20:39:20 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	file_in(t_redir *redir, t_token *token_list)
 	int	fd;
 
 	if (redir->fd_in != 0)
-        close(redir->fd_in);
+		close(redir->fd_in);
 	redir->fd_in = 0;
 	fd = open(token_list->token, O_RDONLY);
 	if (fd < 0)
@@ -56,6 +56,7 @@ int	file_in(t_redir *redir, t_token *token_list)
 	redir->fd_in = fd;
 	return (OK);
 }
+
 int	write_or_overwrite_file(t_redir *redir, t_token *token_list, enum_type type)
 {
 	int	fd;
@@ -80,6 +81,7 @@ int	write_or_overwrite_file(t_redir *redir, t_token *token_list, enum_type type)
 	redir->fd_out = fd;
 	return (OK);
 }
+
 int	open_all_redirections(t_cmd_line *cmd)
 {
 	t_token	*token;

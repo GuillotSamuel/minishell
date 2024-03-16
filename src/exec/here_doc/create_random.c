@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_random.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:06:57 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/08 17:19:16 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/16 20:39:49 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_random(void)
 char	*create_random_name(void)
 {
 	char	random_name[8];
-	int i;
+	int		i;
 
 	i = 0;
 	while (i < 7)

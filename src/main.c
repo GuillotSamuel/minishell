@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/15 17:39:01 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/16 20:24:00 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int			g_exit_status;
+int	g_exit_status;
 
 void	minishell(char *line, t_data *data)
 {
@@ -39,6 +39,7 @@ void	minishell(char *line, t_data *data)
 		}
 	}
 }
+
 static void	handle_sigint(int sig)
 {
 	if (sig == SIGINT)
