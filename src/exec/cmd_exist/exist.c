@@ -6,13 +6,13 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:46:45 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/14 17:31:54 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:20:34 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "../../../includes/minishell.h"
+
+extern int	g_exit_status;
 
 char	*ft_get_env(char *key, t_env *env)
 {
@@ -87,7 +87,7 @@ char	*ft_cmd_exist(char *cmd)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(cmd, 2);
-		ft_putstr_fd(": No such file or directory\n", 2);
+		ft_putstr_fd(": command not found\n", 2);
 		g_exit_status = 127;
 	}
 	ft_free_array(tab);
