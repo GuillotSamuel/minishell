@@ -6,11 +6,13 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 18:00:13 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:07:38 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+extern int	g_exit_status;
 
 static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 {
@@ -32,6 +34,7 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	}
 	free(data->pids);
 	free_all(data);
+	g_exit_status = 127;
 	exit(0);
 }
 
