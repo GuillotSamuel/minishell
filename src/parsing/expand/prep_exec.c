@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:48:33 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/16 17:29:57 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:05:04 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ bool	prepare_execution(t_data *data)
 		data->cmd_list = NULL;
 		return (ERROR);
 	}
-	//check_token_list_after_expand(&data->cmd_list);
+	check_args_array_after_expands(data->cmd_list, data);
 	return (OK);
 }

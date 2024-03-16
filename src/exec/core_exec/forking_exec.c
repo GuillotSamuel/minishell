@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 17:34:19 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 18:46:47 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid,
 		perror("fork");
 		free(data->pids);
 		free_all(data);
-	
 		exit(EXIT_FAILURE);
 	}
 	else if (*pid == 0)
