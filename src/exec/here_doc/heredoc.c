@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:12:58 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/15 17:21:24 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/16 18:23:23 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int	start_here_doc(t_redir *redir, t_token *token_list)
 	fill_here_doc(fd, token_list->token);
 	close(fd);
 	fd = open(file, O_RDONLY);
+	redir->fd_in = fd;
 	if (fd == -1)
 		return (FAIL);
-	redir->fd_in = fd;
 	if (redir->file_here_doc)
 	{
 		unlink(redir->file_here_doc);
