@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:14:54 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/15 17:20:26 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/16 18:37:51 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ int	start_exec(t_data *data)
 	cmd = data->cmd_list;
 	while (cmd)
 	{
-		if (open_all_redirections(cmd) == -1)
-			return (FAIL);
+		open_all_redirections(cmd);
 		cmd = cmd->next;
 		nb_cmd++;
 	}
