@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 17:34:19 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:06:34 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	char		*path;
 
 	cmd_list_dup = cmd_list;
+	if (cmd_list->redir->fd_in < 0 || cmd_list->redir->fd_out < 0)
+	{
+		free_with_exit(data);
+	}
 	if (check_builtin(cmd_list_dup->args[0]) == 1)
 	{
 		exec_builtin(cmd_list_dup, data);
@@ -33,24 +37,10 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	{
 		ft_execve_exec(path, cmd_list_dup, data);
 	}
-	g_exit_status = 127;
-	free(data->pids);
-	free_all(data);
-	exit(g_exit_status);
+	free_with_exit(data);
 }
 
-static void	close_pipes(t_data *data, int num_children)
-{
-	int	i;
 
-	i = 0;
-	while (i < num_children - 1)
-	{
-		close(data->pipes_fd[i][0]);
-		close(data->pipes_fd[i][1]);
-		i++;
-	}
-}
 
 static void	ft_wait_children(int num_children, pid_t *pids)
 {
@@ -68,8 +58,7 @@ static void	ft_wait_children(int num_children, pid_t *pids)
 	}
 }
 
-static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid,
-		int n)
+static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid)
 {
 	*pid = fork();
 	if (*pid < 0)
@@ -77,7 +66,6 @@ static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid,
 		perror("fork");
 		free(data->pids);
 		free_all(data);
-	
 		exit(EXIT_FAILURE);
 	}
 	else if (*pid == 0)
@@ -86,7 +74,7 @@ static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid,
 			dup2(cmd->redir->fd_in, STDIN_FILENO);
 		if (cmd->redir->fd_out != 1)
 			dup2(cmd->redir->fd_out, STDOUT_FILENO);
-		close_pipes(data, n);
+		close_fd(data);
 		command_or_builtin(data, cmd);
 		exit(EXIT_SUCCESS);
 	}
@@ -125,11 +113,11 @@ void	forking_exec(t_data *data)
 	i = 0;
 	while (cmd_list)
 	{
-		create_and_manage_child(data, cmd_list, &data->pids[i], num_children);
+		create_and_manage_child(data, cmd_list, &data->pids[i]);
 		cmd_list = cmd_list->next;
 		i++;
 	}
-	close_pipes(data, num_children);
+	close_fd(data);
 	ft_wait_children(num_children, data->pids);
 	free_here_doc(data);
 	free(data->pids);

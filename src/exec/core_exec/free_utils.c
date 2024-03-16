@@ -6,11 +6,13 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 18:04:08 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/15 16:06:04 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:05:46 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
+
+extern int	g_exit_status;
 
 void	free_pipes_fd(t_data *data)
 {
@@ -33,4 +35,19 @@ void	free_pipes_fd(t_data *data)
 	if (data->pipes_fd)
 		free(data->pipes_fd);
 	data->pipes_fd = NULL;
+}
+void free_with_exit(t_data *data)
+{
+	g_exit_status = 127;
+	free(data->pids);
+	free_all(data);
+	exit(g_exit_status);
+}
+
+void	close_fd(t_data *data)
+{
+	if (data->cmd_list->redir->fd_in > 0)
+		close(data->cmd_list->redir->fd_in);
+	if (data->cmd_list->redir->fd_out > 1)
+		close(data->cmd_list->redir->fd_out);
 }
