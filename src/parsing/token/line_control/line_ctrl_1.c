@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:31:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/17 16:17:39 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:43:41 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int	line_ctrl(char *line)
 		|| first_char_ctrl(line) == ERROR_SYNTAX
 		|| last_char_ctrl(line) == ERROR_SYNTAX
 		|| consecutive_pipes_ctrl(line) == ERROR_SYNTAX
-		// || forbiden_consecutive(line) == ERROR_SYNTAX
+		//|| forbiden_consecutive(line) == ERROR_SYNTAX
 		|| forbiden_char(line) == ERROR_SYNTAX)
-		return (printf("ERROR\n"), ERROR_SYNTAX);
-	return (printf("SUCCESS\n"), SUCCESS);
+		return (ERROR_SYNTAX);
+	return (SUCCESS);
 }
