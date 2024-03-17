@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/13 20:28:21 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/17 17:11:16 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,9 @@ void		free_all(t_data *data);
 /* free_env */
 void		ft_free_both_env(t_data *data);
 void		ft_free_env_singletone(t_env **env);
+
+/* signal.c */
+void	handle_sigint(int sig);
 
 /* singletone */
 t_env		**ft_singletone_env(void);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
+#    By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/17 13:23:18 by sguillot         ###   ########.fr        #
+#    Updated: 2024/03/17 17:10:40 by azbk             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,6 +106,7 @@ SRC :=	main.c \
 		utils/free_all_1.c \
 		utils/free_env.c \
 		utils/exit_error.c \
+		utils/signal.c \
 		utils/singletone.c
 
 

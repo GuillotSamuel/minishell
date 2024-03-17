@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 20:37:52 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:09:32 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	ft_wait_children(int num_children, pid_t *pids)
 	pid_t	child_pid;
 
 	i = 0;
+	signal(SIGINT, SIG_IGN);
 	while (i < num_children)
 	{
 		child_pid = waitpid(pids[i], &status, 0);
@@ -54,6 +55,7 @@ static void	ft_wait_children(int num_children, pid_t *pids)
 			g_exit_status = WEXITSTATUS(status);
 		i++;
 	}
+	signal(SIGINT, handle_sigint);
 }
 
 static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid)

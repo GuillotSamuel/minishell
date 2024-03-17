@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execve_exec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:33:42 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/14 17:28:32 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:00:57 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	convert_env_to_array(t_env **env, t_data *data)
 	i = 0;
 	while (env_dup != NULL)
 	{
-		env_array[i] = ft_strjoin(env_dup->key, env_dup->value);
+		env_array[i] = ft_strdup(env_dup->str);
 		i++;
 		env_dup = env_dup->next;
 	}
