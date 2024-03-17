@@ -6,13 +6,13 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/17 17:09:55 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/17 17:41:26 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	g_exit_status;
+int		g_exit_status;
 
 void	minishell(char *line, t_data *data)
 {
@@ -40,30 +40,18 @@ void	minishell(char *line, t_data *data)
 	}
 }
 
-
 int	main(int ac, char **av, char **envp)
 {
 	t_data	*data;
 	char	*line;
-	t_env	**env;
-	t_env	**secret;
 
-	line = NULL;
 	if (ac == 0 || !av || ac > 1)
 		return (printf("No args required\n"), 0);
-	data = malloc(sizeof(t_data));
-	if (!data)
-		return (ERROR_G);
-	data->cmd_list = NULL;
-	data->env_array = NULL;
-	data->pipes_fd = NULL;
+	line = NULL;
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
-	ft_init_lst_env((const char **)envp);
-	env = ft_singletone_env();
-	secret = dup_secret_env(env);
-	data->env = env;
-	data->secret_env = secret;
+	if (init_data(&data, envp) == ERROR_G)
+		return (ERROR_G);
 	minishell(line, data);
 	return (0);
 }

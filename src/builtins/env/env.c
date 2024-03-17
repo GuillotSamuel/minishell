@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:20:25 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/08 18:34:04 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/17 17:24:04 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ t_env	**dup_secret_env(t_env **env)
 	*secret_env = NULL;
 	while (current)
 	{
-		ft_lst_env(current->str, secret_env);
+		if (ft_lst_env(current->str, secret_env) == ERROR)
+			return (MALLOC_ERROR);
 		current = current->next;
 	}
 	return (secret_env);
@@ -95,7 +96,10 @@ bool	ft_init_lst_env(const char **envp)
 	{
 		ft_lst_env(envp[len], env);
 		if ((*env)->str == NULL || (*env)->key == NULL)
+		{
+			ft_free_env_singletone(env);
 			return (ERROR);
+		}
 		len--;
 	}
 	return (OK);
