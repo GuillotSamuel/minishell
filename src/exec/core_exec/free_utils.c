@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 18:04:08 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/16 19:05:46 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/16 20:38:22 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	free_pipes_fd(t_data *data)
 		free(data->pipes_fd);
 	data->pipes_fd = NULL;
 }
-void free_with_exit(t_data *data)
+
+void	free_with_exit(t_data *data)
 {
 	g_exit_status = 127;
 	free(data->pids);

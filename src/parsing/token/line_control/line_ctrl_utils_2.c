@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_ctrl_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 13:20:58 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 17:42:21 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/16 20:26:21 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_ignore_quotes(char *l, int *i)
 {
-	while (l[*i] && (l[*i] == '\"' || l[*i] == '\'' /* || l[*i] == ' ' */))
+	while (l[*i] && (l[*i] == '\"' || l[*i] == '\''))
 	{
 		if (l[*i] == '\"')
 		{
@@ -22,10 +22,9 @@ void	ft_ignore_quotes(char *l, int *i)
 			while (l[*i] && l[*i] != '\"')
 				(*i)++;
 			if (!l[*i])
-			{
 				(*i)--;
+			if (!l[*i])
 				break ;
-			}
 		}
 		else if (l[*i] == '\'')
 		{
@@ -33,10 +32,9 @@ void	ft_ignore_quotes(char *l, int *i)
 			while (l[*i] && l[*i] != '\'')
 				(*i)++;
 			if (!l[*i])
-			{
 				(*i)--;
+			if (!l[*i])
 				break ;
-			}
 		}
 		else
 			(*i)++;

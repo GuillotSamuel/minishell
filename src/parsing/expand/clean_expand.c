@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:52:41 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 19:16:49 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 20:22:34 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	is_empty_countet(char **args)
 {
-	int i;
-	int counter;
+	int	i;
+	int	counter;
 
 	i = 0;
 	counter = 0;
@@ -25,22 +25,12 @@ static int	is_empty_countet(char **args)
 			counter++;
 		i++;
 	}
-	return (counter);	
-}
-
-static int	args_counter(char **args)
-{
-	int i;
-
-	i = 0;
-	while (args[i])
-		i++;
-	return (i);
+	return (counter);
 }
 
 static void	free_args(char **args)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (args[i])
@@ -51,35 +41,35 @@ static void	free_args(char **args)
 	free(args);
 }
 
-static char **clean_cmd_args(char **args, t_data *data)
+static char	**clean_cmd_args(char **args, t_data *data)
 {
 	char	**new_args;
 	int		i;
-	int 	j;
+	int		j;
 
 	i = 0;
 	j = 0;
 	new_args = malloc(sizeof(char *)
-		* (args_counter(args) - is_empty_countet(args) + 1));
+			* (args_counter(args) - is_empty_countet(args) + 1));
 	if (!new_args)
 		exit_error(data);
 	while (args[i])
-    {
-        if (args[i][0] != '\0')
-        {
-            new_args[j] = ft_strdup(args[i]);
-            j++;
-        }
-        i++;
-    }
+	{
+		if (args[i][0] != '\0')
+		{
+			new_args[j] = ft_strdup(args[i]);
+			j++;
+		}
+		i++;
+	}
 	new_args[j] = NULL;
 	free_args(args);
 	return (new_args);
 }
 
-static bool check_command_is_empty(char **cmd)
+static bool	check_command_is_empty(char **cmd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (cmd[i])

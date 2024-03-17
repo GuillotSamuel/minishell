@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/16 19:05:26 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/17 13:22:16 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		parsing(char *line, t_data *data);
 /* -------------------------------------------------------------------------- */
 
 void	check_args_array_after_expands(t_cmd_line *cmd, t_data *data);
+int		args_counter(char **args);
 bool	expand_all_tokens(t_data *data);
 char	*expand_smpl_quotes(const char *line, char *str_expand, int *i);
 char	*expand_no_quote(t_token **tok, const char *line, char *str_expand, int *i);
@@ -36,7 +37,7 @@ char	*exp_with_dollar(const char *line, int *i);
 char	*exp_no_quote_no_dol(const char *line, char *str_expand, int *i);
 bool	prepare_execution(t_data *data);
 
-char *init_no_quote_with_dollar(t_token **token ,const char *line, char *str_expand, int *i);
+char	*init_no_quote_with_dollar(t_token **token ,const char *line, char *str_expand, int *i);
 
 /* -------------------------------------------------------------------------- */
 /*                                  UTILS                                     */
@@ -71,6 +72,9 @@ int			create_cmd_1(char *line, t_cmd_line **cmd_list, t_data **data);
 void		ft_stackaddback_cmd(t_cmd_line **line, t_cmd_line *new);
 t_cmd_line	*ft_stacknew_cmd(char *content);
 int			cut_cmd(char *str);
+
+/* ctrl_consecutive_pipes */
+int			consecutive_pipes_ctrl(char *line);
 
 /* line_ctrl_1 */
 int			line_ctrl(char *line);
