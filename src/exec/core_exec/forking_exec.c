@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/17 17:09:32 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/17 17:47:20 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,23 +77,6 @@ static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid)
 		close_fd(data);
 		command_or_builtin(data, cmd);
 		exit(EXIT_SUCCESS);
-	}
-}
-
-void	free_here_doc(t_data *data)
-{
-	t_cmd_line	*cmd;
-
-	cmd = data->cmd_list;
-	while (cmd)
-	{
-		if (cmd->redir->file_here_doc)
-		{
-			unlink(cmd->redir->file_here_doc);
-			free(cmd->redir->file_here_doc);
-		}
-		cmd->redir->file_here_doc = NULL;
-		cmd = cmd->next;
 	}
 }
 
