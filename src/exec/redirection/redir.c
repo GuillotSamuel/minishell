@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:49:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/16 20:39:20 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/17 18:18:53 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	file_in(t_redir *redir, t_token *token_list)
 	return (OK);
 }
 
-int	write_or_overwrite_file(t_redir *redir, t_token *token_list, enum_type type)
+int	write_or_overwrite_file(t_redir *redir, t_token *token_list, t_enum_type type)
 {
 	int	fd;
 
