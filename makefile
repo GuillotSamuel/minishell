@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/16 20:23:31 by sguillot         ###   ########.fr        #
+#    Updated: 2024/03/17 13:23:18 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,7 @@ SRC :=	main.c \
 		parsing/token/command_assignement/command_assign_1.c \
 		parsing/token/command_assignement/command_assign_utils.c \
 		\
+		parsing/token/line_control/ctrl_consecutive_pipes.c \
 		parsing/token/line_control/line_ctrl_1.c \
 		parsing/token/line_control/line_ctrl_2.c \
 		parsing/token/line_control/line_ctrl_1inferior.c \
