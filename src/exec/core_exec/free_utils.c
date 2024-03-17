@@ -47,8 +47,15 @@ void	free_with_exit(t_data *data)
 
 void	close_fd(t_data *data)
 {
-	if (data->cmd_list->redir->fd_in > 0)
-		close(data->cmd_list->redir->fd_in);
-	if (data->cmd_list->redir->fd_out > 1)
-		close(data->cmd_list->redir->fd_out);
+	t_cmd_line	*tmp;
+
+	tmp = data->cmd_list;
+	while (tmp)
+	{
+		if (tmp->redir->fd_in > 0)
+			close(tmp->redir->fd_in);
+		if (tmp->redir->fd_out > 1)
+			close(tmp->redir->fd_out);
+		tmp = tmp->next;
+	}
 }
