@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:46:45 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/18 13:53:12 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/18 14:17:02 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,20 @@ static char	*join_path(char *path, char *cmd)
 
 static char *ft_access(char *path)
 {
+	if (path[0] == '/' && access(path, F_OK) == -1)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(path, 2);
+		ft_putstr_fd(": Not a directory\n", 2);
+		g_exit_status = 126;
+		return (NULL);
+	}
 	if (access(path, F_OK) == -1)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(path, 2);
 		ft_putstr_fd(": No such file or directory\n", 2);
-		g_exit_status = 127;
+		g_exit_status = 126;
 		return (NULL);
 	}
 	if (access(path, X_OK) == -1)
