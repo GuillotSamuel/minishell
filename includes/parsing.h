@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/17 18:15:31 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/18 12:33:08 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			parsing(char *line, t_data *data);
 /*                                    EXPAND                                  */
 /* -------------------------------------------------------------------------- */
 
-void		check_args_array_after_expands(t_cmd_line *cmd, t_data *data);
+int		check_args_array_after_expands(t_cmd_line *cmd, t_data *data);
 int			args_counter(char **args);
 bool		expand_all_tokens(t_data *data);
 char		*expand_smpl_quotes(const char *line, char *str_expand, int *i);

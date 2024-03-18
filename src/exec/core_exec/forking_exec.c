@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/17 17:47:20 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/18 12:25:47 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 		free_all(data);
 		exit(g_exit_status);
 	}
-	ft_check_is_directory(data, cmd_list_dup->args[0]);
+	//ft_check_is_directory(data, cmd_list_dup->args[0]);
 	path = ft_cmd_exist(cmd_list_dup->token_list->token);
 	if (path != VAR_NOT_FOUND)
 	{

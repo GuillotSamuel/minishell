@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_ctrl_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:31:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/17 17:03:23 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/18 12:48:13 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ int	line_ctrl(char *line)
 		consecutive_pipes_ctrl(line) == ERROR_SYNTAX
 		// || forbiden_consecutive(line) == ERROR_SYNTAX
 		|| forbiden_char(line) == ERROR_SYNTAX)
-		return (printf("ERROR\n"), ERROR_SYNTAX);
+		return (ERROR_SYNTAX);
 	return (SUCCESS);
 }
