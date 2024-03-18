@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:52:35 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/18 21:10:24 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:48:14 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	control_i1(char *line)
 
 	if (compare_one_doublechar_to_str('<', line, cmp1) != SUCCESS)
 	{
-		ft_printf("i1 1\n");
 		ft_printf("bash: parse error near `%s%s'\n",
 			cmp1[compare_one_doublechar_to_str('<', line, cmp1) - 1],
 			cmp1[compare_one_doublechar_to_str('<', line, cmp1) - 1]);
@@ -26,7 +25,6 @@ int	control_i1(char *line)
 	}
 	else if (compare_one_char_to_str('<', line, cmp1) != SUCCESS)
 	{
-		ft_printf("i1 2\n");
 		ft_printf("bash: parse error near `%s'\n",
 			cmp1[compare_one_char_to_str('<', line, cmp1) - 1]);
 		return (ERROR_SYNTAX);
@@ -40,7 +38,6 @@ int	control_i2(char *line)
 
 	if (ft_strcmp_array_space_3(line, cmp1, "<") == 1)
 	{
-		ft_printf("i2 1\n");
 		ft_printf("bash: parse error near `<'\n");
 		return (ERROR_SYNTAX);
 	}
