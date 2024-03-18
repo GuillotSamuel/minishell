@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:51:04 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/18 12:12:59 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/18 12:30:36 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ int	forbiden_char(char *line)
 
 int	forbiden_consecutive(char *line)
 {
-	if (/* control_ss1(line) == ERROR_SYNTAX
-		||  */control_ss2(line) == ERROR_SYNTAX
-		// || control_ii1(line) == ERROR_SYNTAX
+	if (control_ss1(line) == ERROR_SYNTAX
+		|| control_ss2(line) == ERROR_SYNTAX
+		|| control_ii1(line) == ERROR_SYNTAX
 		|| control_ii2(line) == ERROR_SYNTAX
-		// || control_s1(line) == ERROR_SYNTAX
+		|| control_s1(line) == ERROR_SYNTAX
 		|| control_s2(line) == ERROR_SYNTAX
-		// || control_i1(line) == ERROR_SYNTAX
+		|| control_i1(line) == ERROR_SYNTAX
 		|| control_i2(line) == ERROR_SYNTAX)
 		return (ERROR_SYNTAX);
 	else
