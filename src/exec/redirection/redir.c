@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:49:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/18 14:06:42 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:01:30 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	file_in(t_redir *redir, t_token *token_list)
 		redir->fd_in = fd;
 		if (ft_permission_denied(token_list->token) == FAIL)
 			return (FAIL);
+		return (FAIL);
 	}
 	redir->fd_in = fd;
 	return (OK);
