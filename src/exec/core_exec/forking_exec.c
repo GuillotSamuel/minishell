@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/18 14:49:44 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/18 14:50:59 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	exit(g_exit_status);
 }
 
-static void	handle_sigint_2(int sig)
+static void	handle_sigint_child(int sig)
 {
 	if (sig == 2)
 	{
@@ -62,7 +62,7 @@ static void	ft_wait_children(int num_children, pid_t *pids)
 	pid_t	child_pid;
 
 	i = 0;
-	signal(SIGINT, handle_sigint_2);
+	signal(SIGINT, handle_sigint_child);
 	signal(SIGQUIT, SIG_IGN);
 	while (i < num_children)
 	{
