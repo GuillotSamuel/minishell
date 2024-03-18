@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:07:50 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 19:31:08 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:33:21 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@ extern int	g_exit_status;
 
 static void	exit_multiple_num(void)
 {
-	write(2, " too many arguments\n", 20);
+	ft_putstr_fd("exit\n", 2);
+	ft_putstr_fd("bash: exit: too many arguments\n", 2);
 	g_exit_status = 1;
 }
 
 static void	exit_num_alpha(char **args, t_data *data)
 {
-	ft_printf("exit\nbash: exit: %s: numeric argument required\n", args[0]);
+	ft_putstr_fd("exit\n", 2);
+	ft_putstr_fd("bash: exit: ", 2);
+	ft_putstr_fd(args[0], 2);
+	ft_putstr_fd(": numeric argument required\n", 2);
 	g_exit_status = 2;
 	free_all(data);
 	exit(g_exit_status);
@@ -58,7 +62,9 @@ void	ft_exit(char **args, t_data *data)
 		exit_num_alpha(args, data);
 	else
 	{
-		ft_printf("exit\nbash: exit: %s: numeric argument required\n", args[0]);
+		ft_putstr_fd("exit\nbash: exit: ", 2);
+		ft_putstr_fd(args[0], 2);
+		ft_putstr_fd(": numeric argument required\n", 2);
 		g_exit_status = 2;
 		free_all(data);
 		exit(g_exit_status);
