@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exist.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:46:45 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/16 14:20:34 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/18 14:17:02 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,35 @@ static char	*join_path(char *path, char *cmd)
 	tmp2 = ft_strjoin(tmp, cmd);
 	free(tmp);
 	return (tmp2);
+}
+
+static char *ft_access(char *path)
+{
+	if (path[0] == '/' && access(path, F_OK) == -1)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(path, 2);
+		ft_putstr_fd(": Not a directory\n", 2);
+		g_exit_status = 126;
+		return (NULL);
+	}
+	if (access(path, F_OK) == -1)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(path, 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
+		g_exit_status = 126;
+		return (NULL);
+	}
+	if (access(path, X_OK) == -1)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(path, 2);
+		ft_putstr_fd(": Permission denied\n", 2);
+		g_exit_status = 126;
+		return (NULL);
+	}
+	return (path);
 }
 
 static char	*check_cmd(char **tab, char *cmd)
@@ -74,7 +103,7 @@ char	*ft_cmd_exist(char *cmd)
 	char	*path;
 
 	if (cmd && (cmd[0] == '.' || cmd[0] == '/'))
-		return (cmd);
+		return (ft_access(cmd));
 	env = ft_singletone_env();
 	var_path = ft_get_env("PATH", *env);
 	if (var_path == NULL)
