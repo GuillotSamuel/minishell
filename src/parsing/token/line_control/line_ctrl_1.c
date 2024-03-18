@@ -65,9 +65,9 @@ int	line_ctrl(char *line)
 {
 	if (empty_line(line) == ERROR_SYNTAX
 		|| first_char_ctrl(line) == ERROR_SYNTAX
-		|| last_char_ctrl(line) == ERROR_SYNTAX ||
-		consecutive_pipes_ctrl(line) == ERROR_SYNTAX
-		// || forbiden_consecutive(line) == ERROR_SYNTAX
+		|| last_char_ctrl(line) == ERROR_SYNTAX
+		|| consecutive_pipes_ctrl(line) == ERROR_SYNTAX
+		|| forbiden_consecutive(line) == ERROR_SYNTAX
 		|| forbiden_char(line) == ERROR_SYNTAX)
 		return (ERROR_SYNTAX);
 	return (SUCCESS);
