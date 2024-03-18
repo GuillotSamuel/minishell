@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_expand.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:52:41 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 20:22:34 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/18 12:34:07 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static char	**clean_cmd_args(char **args, t_data *data)
 	new_args = malloc(sizeof(char *)
 			* (args_counter(args) - is_empty_countet(args) + 1));
 	if (!new_args)
-		exit_error(data);
+		return (NULL);
 	while (args[i])
 	{
 		if (args[i][0] != '\0')
@@ -81,7 +81,7 @@ static bool	check_command_is_empty(char **cmd)
 	return (true);
 }
 
-void	check_args_array_after_expands(t_cmd_line *cmd, t_data *data)
+int	check_args_array_after_expands(t_cmd_line *cmd, t_data *data)
 {
 	t_cmd_line	*cmd_list_dup;
 
@@ -92,7 +92,10 @@ void	check_args_array_after_expands(t_cmd_line *cmd, t_data *data)
 		{
 			cmd_list_dup->args
 				= clean_cmd_args(cmd_list_dup->args, data);
+			if (!cmd_list_dup->args)
+				return (ERROR);
 		}
 		cmd_list_dup = cmd_list_dup->next;
 	}
+	return (OK);
 }

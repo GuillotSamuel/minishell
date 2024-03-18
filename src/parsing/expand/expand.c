@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:32:31 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/14 13:05:22 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/17 18:20:37 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static bool	start_expand(t_token **lst_token, char *line, char *str_expand,
 	return (OK);
 }
 
-static bool	expand_token(t_token **lst_token, char *line, enum_type type)
+static bool	expand_token(t_token **lst_token, char *line, t_enum_type type)
 {
 	int		i;
 	char	*str_expand;

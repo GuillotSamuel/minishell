@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:57:57 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/16 19:05:53 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/17 18:18:44 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define EXEC_H
 
 /* -------------------------------------------------------------------------- */
-/*                                    CHECK_BUILTIN                             */
+/*                                    CHECK_BUILTIN                           */
 /* -------------------------------------------------------------------------- */
 
 /* check_builtin */
@@ -40,6 +40,7 @@ void	ft_check_is_directory(t_data *data, char *cmd);
 /* free_utils.c */
 void	free_pipes_fd(t_data *data);
 void	free_with_exit(t_data *data);
+void	free_here_doc(t_data *data);
 void	close_fd(t_data *data);
 
 /* init_exec.c */
@@ -73,7 +74,7 @@ int		start_here_doc(t_redir *redir, t_token *token_list);
 /* redirection */
 int		file_in(t_redir *redir, t_token *token_list);
 int		write_or_overwrite_file(t_redir *redir, t_token *token_list,
-			enum_type type);
+			t_enum_type type);
 int		open_all_redirections(t_cmd_line *cmd);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_is_directory.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 14:59:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 20:37:21 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:49:56 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,9 @@ static void	is_directory(t_data *data, char *cmd)
 
 void	ft_check_is_directory(t_data *data, char *cmd)
 {
-	if ((cmd[0] != '\0' && cmd[1] != '\0' && cmd[2] != '\0'
-			&& cmd[0] == '.' && cmd[1] == '/' && access(cmd, F_OK) == -1)
-		|| (cmd[0] != '\0' && cmd[1] != '\0'
-			&& cmd[0] == '/' && access(cmd, F_OK) == -1))
+	if ((cmd[0] != '\0' && cmd[1] != '\0' && cmd[2] != '\0' && cmd[0] == '.'
+			&& cmd[1] == '/' && access(cmd, F_OK) == -1) || (cmd[0] != '\0'
+			&& cmd[1] != '\0' && cmd[0] == '/' && access(cmd, F_OK) == -1))
 	{
 		not_file_or_directory(data, cmd);
 	}
@@ -63,9 +62,8 @@ void	ft_check_is_directory(t_data *data, char *cmd)
 		permission_denied(data, cmd);
 	}
 	else if ((cmd[0] != '\0' && cmd[1] != '\0' && cmd[2] != '\0'
-			&& cmd[0] == '.' && cmd[1] == '/')
-		|| (cmd[0] != '\0' && cmd[1] != '\0'
-			&& cmd[0] == '/'))
+			&& cmd[0] == '.' && cmd[1] == '/') || (cmd[0] != '\0'
+			&& cmd[1] != '\0' && cmd[0] == '/'))
 	{
 		is_directory(data, cmd);
 	}

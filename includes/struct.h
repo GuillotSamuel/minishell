@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 17:04:04 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/17 18:18:38 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,29 @@
 typedef enum type
 {
 	NON,
-	ARG,           // word
-	BUILTIN,       // builtin
-	OPEN_FILE,     //  word following '<'
-	HERE_DOC,      // word == '<<'
-	LIMITOR,       // word following '<<'
-	CREAT_FILE,    // word following '>'
-	WRITE_FILE,    // word following '>>'
-	FILE_IN,       // word == '<'
-	FILE_OUT,      // word == '>'
-	FILE_OUT_OVER, // word == '>>'
+	ARG,
+	BUILTIN,
+	OPEN_FILE,
+	HERE_DOC,
+	LIMITOR,
+	CREAT_FILE,
+	WRITE_FILE,
+	FILE_IN,
+	FILE_OUT,
+	FILE_OUT_OVER,
 	ENDS
-}						enum_type;
+}						t_enum_type;
 
 typedef struct s_token
 {
 	char				*token;
-	enum_type			type;
+	t_enum_type			type;
 	struct s_token		*next;
 }						t_token;
 
 typedef struct s_redir
-{			
-	int					fd_in; 
+{
+	int					fd_in;
 	int					fd_out;
 	char				*file_here_doc;
 }						t_redir;
