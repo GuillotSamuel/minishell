@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+         #
+#    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/17 17:26:21 by azbk             ###   ########.fr        #
+#    Updated: 2024/03/18 12:15:00 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRC :=	main.c \
 		parsing/token/command_assignement/command_assign_1.c \
 		parsing/token/command_assignement/command_assign_utils.c \
 		\
+		parsing/token/line_control/compare_str_to_strarr.c \
 		parsing/token/line_control/ctrl_consecutive_pipes.c \
 		parsing/token/line_control/line_ctrl_1.c \
 		parsing/token/line_control/line_ctrl_2.c \
