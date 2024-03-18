@@ -1,0 +1,11 @@
+path = /usr/bin/ls
+includes
+libft
+makefile
+mdr
+minishell
+minishell_tester
+obj
+readline_leak.txt
+src
+xd

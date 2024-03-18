@@ -6,164 +6,137 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:32:57 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/18 12:56:57 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:30:27 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
 
-// static int	ft_strcmp_array_space_2_4(const char **cmp_arr,
-// 	int j, int i, char *l)
-// {
-// 	if (l[i] != '\0' && l[i + 1] != '\0' && cmp_arr[j] && cmp_arr[j][0] == l[i]
-// 		&& (l[i + 1] == '<' || l[i + 1] == '>') && l[i] == l[i + 1])
-// 		return (-(j + 1));
-// 	else if (cmp_arr[j] && cmp_arr[j][0] == l[i])
-// 		return (j + 1);
-// 	return (SUCCESS);
-// }
-
-// static void	ft_strcmp_array_space_2_3(char **l, int *i, int *j,
-// 	const char **cmp_arr)
-// {
-// 	while ((*l)[*i] && (*l)[*i] == ' ')
-// 		(*i)++;
-// 	while (cmp_arr[*j] && cmp_arr[*j][0] != (*l)[*i])
-// 		(*j)++;
-// }
-
-// static void	ft_strcmp_array_space_2_2(char **l, int *i, char *cmp_str)
-// {
-// 	(*i)++;
-// 	if ((*l)[*i] == cmp_str[0])
-// 		(*i)++;
-// }
-
-// static void	ft_strcmp_array_space_2_1(char **l, int *i, int *j,
-// 	const char **cmp_arr)
-// {
-// 	(*i) += 2;
-// 	while ((*l)[*i] && (*l)[*i] == ' ')
-// 		(*i)++;
-// 	while (cmp_arr[*j] && cmp_arr[*j][0] != (*l)[*i])
-// 		(*j)++;
-// }
-
-// int	ft_strcmp_array_space_2(char *l, const char **cmp_arr, char *cmp_str)
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = -1;
-// 	j = 0;
-// 	while (l[++i])
-// 	{
-// 		ft_ignore_quotes(l, &i);
-// 		if (l[i] != '\0' && l[i + 1] != '\0' && ft_strlen(cmp_str) == 2
-// 			&& l[i] == cmp_str[0] && l[i + 1] == cmp_str[1])
-// 		{
-// 			if (!l[i + 2])
-// 				break ;
-// 			ft_strcmp_array_space_2_1(&l, &i, &j, cmp_arr);
-// 			if (!l[i])
-// 				break ;
-// 			if (ft_strcmp_array_space_2_4(cmp_arr, j, i, l) != SUCCESS)
-// 				return (ft_strcmp_array_space_2_4(cmp_arr, j, i, l));
-// 			j = 0;
-// 		}
-// 		else if (l[i] != '\0' && l[i + 1] != '\0'
-// 			&& l[i] == cmp_str[0] && ft_strlen(cmp_str) == 1)
-// 		{
-// 			if (!l[i + 1])
-// 				break ;
-// 			ft_strcmp_array_space_2_2(&l, &i, cmp_str);
-// 			if (!l[i])
-// 				break ;
-// 			ft_strcmp_array_space_2_3(&l, &i, &j, cmp_arr);
-// 			if (ft_strcmp_array_space_2_4(cmp_arr, j, i, l) != SUCCESS)
-// 				return (ft_strcmp_array_space_2_4(cmp_arr, j, i, l));
-// 			j = 0;
-// 		}
-// 	}
-// 	return (SUCCESS);
-// }
-
-static int	ft_strcmp_array_space_2_4(const char **cmp_arr,
-	int j, int i, char *l)
+void	ft_ignore_quotes(char *l, int *i)
 {
-	if (l[i] != '\0' && l[i + 1] != '\0' && cmp_arr[j] && cmp_arr[j][0] == l[i]
-		&& (l[i + 1] == '<' || l[i + 1] == '>') && l[i] == l[i + 1])
-		return (-(j + 1));
-	else if (cmp_arr[j] && cmp_arr[j][0] == l[i])
-		return (j + 1);
-	return (SUCCESS);
-}
+	char	quote_char;
 
-static void	ft_strcmp_array_space_2_3(char **l, int *i, int *j,
-	const char **cmp_arr)
-{
-	while ((*l)[*i] && (*l)[*i] == ' ')
+	while (l[*i] && (l[*i] == '\"' || l[*i] == '\''))
+	{
+		quote_char = l[*i];
 		(*i)++;
-	while (cmp_arr[*j] && cmp_arr[*j][0] != (*l)[*i])
-		(*j)++;
+		while (l[*i] && l[*i] != quote_char)
+			(*i)++;
+		if (l[*i] == quote_char)
+			(*i)++;
+	}
 }
 
-static void	ft_strcmp_array_space_2_2(char **l, int *i, char *cmp_str)
-{
-	(*i)++;
-	if ((*l)[*i] == cmp_str[0])
-		(*i)++;
-}
-
-static void	ft_strcmp_array_space_2_1(char **l, int *i, int *j,
-	const char **cmp_arr)
-{
-	(*i) += 2;
-	while ((*l)[*i] && (*l)[*i] == ' ')
-		(*i)++;
-	while (cmp_arr[*j] && cmp_arr[*j][0] != (*l)[*i])
-		(*j)++;
-}
-
-int	ft_strcmp_array_space_2(char *l, const char **cmp_arr, char *cmp_str)
+int	compare_one_char_to_str(char needle, char *haystack,
+	const char **forbiden_consec)
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	j = 0;
-	while (l[++i])
+	while (haystack[++i] != '\0')
 	{
-		if (l[i] == '\0')
-			break ;
-		else if (l[i] == '\'' || l[i] == '\"')
-			ft_ignore_quotes(l, &i);
-		else
+		j = -1;
+		if (haystack[i] == '\'' || haystack[i] == '\"')
 		{
-			if (l[i] != '\0' && l[i + 1] != '\0' && ft_strlen(cmp_str) == 2
-				&& l[i] == cmp_str[0] && l[i + 1] == cmp_str[1])
+			ft_ignore_quotes(haystack, &i);
+			if (haystack[i] == '\0')
+				return (SUCCESS);
+		}
+		else if (haystack[i] == needle && haystack[i + 1] != '\0')
+		{
+			while (forbiden_consec[++j] != NULL)
 			{
-				if (!l[i + 2])
-					break ;
-				ft_strcmp_array_space_2_1(&l, &i, &j, cmp_arr);
-				if (!l[i])
-					break ;
-				if (ft_strcmp_array_space_2_4(cmp_arr, j, i, l) != SUCCESS)
-					return (ft_strcmp_array_space_2_4(cmp_arr, j, i, l));
-				j = 0;
+				if (haystack[i + 1] == forbiden_consec[j][0])
+					return (j + 1);
 			}
-			else if (l[i] != '\0' && l[i + 1] != '\0'
-				&& l[i] == cmp_str[0] && ft_strlen(cmp_str) == 1)
+		}
+	}
+	return (SUCCESS);
+}
+
+int	compare_two_chars_to_str(char needle, char *haystack,
+	const char **forbiden_consec)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (haystack[++i] != '\0')
+	{
+		j = -1;
+		if (haystack[i] == '\'' || haystack[i] == '\"')
+			ft_ignore_quotes(haystack, &i);
+		if (haystack[i] == '\0')
+			return (SUCCESS);
+		if (haystack[i] == needle)
+		{
+			if (haystack[++i] != '\0' && haystack[i] == needle
+				&& haystack[i + 1] != '\0')
 			{
-				if (!l[i + 1])
-					break ;
-				ft_strcmp_array_space_2_2(&l, &i, cmp_str);
-				if (!l[i])
-					break ;
-				ft_strcmp_array_space_2_3(&l, &i, &j, cmp_arr);
-				if (ft_strcmp_array_space_2_4(cmp_arr, j, i, l) != SUCCESS)
-					return (ft_strcmp_array_space_2_4(cmp_arr, j, i, l));
-				j = 0;
+				while (forbiden_consec[++j] != NULL)
+				{
+					if (haystack[i + 1] == forbiden_consec[j][0])
+						return (j + 1);
+				}
+			}
+		}
+	}
+	return (SUCCESS);
+}
+
+int	compare_one_doublechar_to_str(char needle, char *haystack,
+	const char **forbiden_consec)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (haystack[++i] != '\0')
+	{
+		j = -1;
+		if (haystack[i] == '\'' || haystack[i] == '\"')
+			ft_ignore_quotes(haystack, &i);
+		if (haystack[i] == '\0')
+			return (SUCCESS);
+		if (haystack[i] == needle && haystack[i + 1] != '\0'
+			&& haystack[i + 1] == needle)
+		{
+			if (haystack[i + 2] != '\0')
+			{
+				while (forbiden_consec[++j] != NULL)
+					if (haystack[i + 1] == forbiden_consec[j][0]
+						&& haystack[i + 2] == forbiden_consec[j][1])
+						return (j + 1);
+			}
+		}
+	}
+	return (SUCCESS);
+}
+
+int	compare_two_doublechars_to_str(char needle,
+	char *haystack, const char **forbiden_c)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (haystack[++i] != '\0')
+	{
+		j = -1;
+		if (haystack[i] == '\'' || haystack[i] == '\"')
+			ft_ignore_quotes(haystack, &i);
+		if (haystack[i] == '\0')
+			return (SUCCESS);
+		if (haystack[i] == needle && haystack[i + 1] != '\0'
+			&& haystack[i + 1] == needle)
+		{
+			i += 2;
+			while (forbiden_c[++j] != NULL)
+			{
+				if (haystack[i] && haystack[i] == forbiden_c[j][0]
+					&& haystack[i + 1] && haystack[i + 1] == forbiden_c[j][0])
+					return (j + 1);
 			}
 		}
 	}

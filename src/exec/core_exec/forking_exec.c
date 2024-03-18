@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/17 17:09:32 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/18 21:45:23 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	cmd_list_dup = cmd_list;
 	if (cmd_list->redir->fd_in < 0 || cmd_list->redir->fd_out < 0)
 	{
-		free_with_exit(data);
+		free(data->pids);
+		free_all(data);
+		exit(g_exit_status);
 	}
 	if (check_builtin(cmd_list_dup->args[0]) == 1)
 	{
@@ -33,11 +35,22 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	}
 	ft_check_is_directory(data, cmd_list_dup->args[0]);
 	path = ft_cmd_exist(cmd_list_dup->token_list->token);
-	if (path != VAR_NOT_FOUND)
-	{
+	if (path != NULL)
 		ft_execve_exec(path, cmd_list_dup, data);
+	free(data->pids);
+	free_all(data);
+	exit(g_exit_status);
+}
+
+static void	handle_sigint_child(int sig)
+{
+	if (sig == 2)
+	{
+		g_exit_status = 130;
+		printf("\n");
+		rl_replace_line("", 0);
+		rl_redisplay();
 	}
-	free_with_exit(data);
 }
 
 static void	ft_wait_children(int num_children, pid_t *pids)
@@ -47,7 +60,8 @@ static void	ft_wait_children(int num_children, pid_t *pids)
 	pid_t	child_pid;
 
 	i = 0;
-	signal(SIGINT, SIG_IGN);
+	signal(SIGINT, handle_sigint_child);
+	signal(SIGQUIT, SIG_IGN);
 	while (i < num_children)
 	{
 		child_pid = waitpid(pids[i], &status, 0);
@@ -77,23 +91,6 @@ static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid)
 		close_fd(data);
 		command_or_builtin(data, cmd);
 		exit(EXIT_SUCCESS);
-	}
-}
-
-void	free_here_doc(t_data *data)
-{
-	t_cmd_line	*cmd;
-
-	cmd = data->cmd_list;
-	while (cmd)
-	{
-		if (cmd->redir->file_here_doc)
-		{
-			unlink(cmd->redir->file_here_doc);
-			free(cmd->redir->file_here_doc);
-		}
-		cmd->redir->file_here_doc = NULL;
-		cmd = cmd->next;
 	}
 }
 

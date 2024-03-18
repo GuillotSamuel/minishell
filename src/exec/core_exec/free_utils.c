@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 18:04:08 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/16 20:38:22 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:46:09 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,23 @@ void	free_pipes_fd(t_data *data)
 	if (data->pipes_fd)
 		free(data->pipes_fd);
 	data->pipes_fd = NULL;
+}
+
+void	free_here_doc(t_data *data)
+{
+	t_cmd_line	*cmd;
+
+	cmd = data->cmd_list;
+	while (cmd)
+	{
+		if (cmd->redir->file_here_doc)
+		{
+			unlink(cmd->redir->file_here_doc);
+			free(cmd->redir->file_here_doc);
+		}
+		cmd->redir->file_here_doc = NULL;
+		cmd = cmd->next;
+	}
 }
 
 void	free_with_exit(t_data *data)

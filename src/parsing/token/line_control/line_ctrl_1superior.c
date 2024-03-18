@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_ctrl_1superior.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:52:35 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/14 11:46:51 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:16:42 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 
 int	control_s1(char *line)
 {
-	const char	*cmp1[] = {"#", "<", ">", "(", ")", ";", NULL};
+	const char	*cmp1[] = {"#", "<", "(", ")", ";", NULL};
 
-	if (ft_strcmp_array_space_2(line, cmp1, ">") > SUCCESS)
+	if (compare_one_doublechar_to_str('>', line, cmp1) != SUCCESS)
 	{
-		ft_printf("bash: parse error near `%s'\n",
-			cmp1[ft_strcmp_array_space_2(line, cmp1, ">") - 1]);
+		ft_printf("s1 1\n");
+		ft_printf("bash: parse error near `%s%s'\n",
+			cmp1[compare_one_doublechar_to_str('>', line, cmp1) - 1],
+			cmp1[compare_one_doublechar_to_str('>', line, cmp1) - 1]);
 		return (ERROR_SYNTAX);
 	}
-	else if (ft_strcmp_array_space_2(line, cmp1, ">") < SUCCESS)
+	else if (compare_one_char_to_str('>', line, cmp1) != SUCCESS)
 	{
-		ft_printf("bash: parse error near `%s%s'\n",
-			cmp1[-ft_strcmp_array_space_2(line, cmp1, ">") - 1],
-			cmp1[-ft_strcmp_array_space_2(line, cmp1, ">") - 1]);
+		ft_printf("s1 2\n");
+		ft_printf("bash: parse error near `%s'\n",
+			cmp1[compare_one_char_to_str('>', line, cmp1) - 1]);
 		return (ERROR_SYNTAX);
 	}
 	if (ft_space_ctrl_1(line, '>', '&') == ERROR_SYNTAX)
@@ -40,10 +42,11 @@ int	control_s1(char *line)
 
 int	control_s2(char *line)
 {
-	const char	*cmp1[] = {"<", ">", "(", ")", NULL};
+	const char	*cmp1[] = {"<", "(", ")", NULL};
 
 	if (ft_strcmp_array_space_3(line, cmp1, ">") == 1)
 	{
+		ft_printf("s2 1\n");
 		ft_printf("bash: parse error near `>'\n");
 		return (ERROR_SYNTAX);
 	}

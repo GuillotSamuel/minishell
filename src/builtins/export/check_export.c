@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_export.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:56:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/15 18:38:25 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:11:37 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_export_is_incorrect(char *str)
 {
 	int	i;
 
-	if (!str || !str[0] || ft_isdigit(str[0]))
+	if (!str || !str[0] || ft_isdigit(str[0]) || str[0] == '=')
 		return (FAIL);
 	i = 0;
 	while (str[i])

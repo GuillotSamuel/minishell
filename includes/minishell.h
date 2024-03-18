@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/17 17:33:53 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/17 18:17:08 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # include <signal.h>
 # include <stdlib.h>
 # include <string.h>
-#include <sys/wait.h>
-#include <sys/types.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 
 /* TESTS */
 # include <stdio.h>
@@ -42,7 +42,6 @@
 # define ERROR_G -1
 # define ERROR_SYNTAX -2
 # define ERROR_MALLOC -3
-
 # define MALLOC_ERROR NULL
 # define VAR_EMPTY NULL
 # define VAR_NOT_FOUND NULL
@@ -54,8 +53,8 @@ extern int	g_exit_status;
 
 // A SUUPRRR
 void		print_token(t_data *data);
-void ft_print_env(t_env **env);
-void ft_print_pwd_oldpwd(t_env **env);
+void		ft_print_env(t_env **env);
+void		ft_print_pwd_oldpwd(t_env **env);
 // A SUPPRRRR
 
 /* -------------------------------------------------------------------------- */
@@ -63,14 +62,14 @@ void ft_print_pwd_oldpwd(t_env **env);
 /* -------------------------------------------------------------------------- */
 
 /* init_data */
-int init_data(t_data **data, char **envp);
+int			init_data(t_data **data, char **envp);
 
 /* lst_env */
 bool		ft_lst_env(const char *line, t_env **env);
 bool		ft_init_baby_env(t_env **env);
 bool		ft_init_lst_env(const char **envp);
-char *ft_dup_key(const char *line);
-char *ft_dup_value(const char *line);
+char		*ft_dup_key(const char *line);
+char		*ft_dup_value(const char *line);
 
 /* shlvl */
 bool		ft_init_shlvl(t_env **env_list);
@@ -93,7 +92,7 @@ void		ft_free_both_env(t_data *data);
 void		ft_free_env_singletone(t_env **env);
 
 /* signal.c */
-void	handle_sigint(int sig);
+void		handle_sigint(int sig);
 
 /* singletone */
 t_env		**ft_singletone_env(void);
