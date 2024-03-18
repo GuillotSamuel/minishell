@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   exist.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:46:45 by azbk              #+#    #+#             */
 /*   Updated: 2024/03/18 21:45:42 by sguillot         ###   ########.fr       */
@@ -38,7 +38,7 @@ static char	*join_path(char *path, char *cmd)
 	return (tmp2);
 }
 
-static char	*ft_access(char *path)
+static char *ft_access(char *path)
 {
 	if (access(path, F_OK) == -1)
 	{
