@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/18 12:33:08 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:12:26 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			parsing(char *line, t_data *data);
 /*                                    EXPAND                                  */
 /* -------------------------------------------------------------------------- */
 
-int		check_args_array_after_expands(t_cmd_line *cmd, t_data *data);
+int			check_args_array_after_expands(t_cmd_line *cmd);
 int			args_counter(char **args);
 bool		expand_all_tokens(t_data *data);
 char		*expand_smpl_quotes(const char *line, char *str_expand, int *i);
@@ -85,6 +85,7 @@ int			ft_space_ctrl_1(char *line, char cmp_str, char cmp_str2);
 int			ft_strcmp_array_space_3(char *l, const char **ca, char *cs);
 int			forbiden_consecutive(char *line);
 int			forbiden_char(char *line);
+void 		ft_ignore_quotes(char *l, int *i);
 
 /* line_ctrl_1inferior */
 int			control_i1(char *line);
@@ -103,11 +104,11 @@ int			control_ss1(char *line);
 int			control_ss2(char *line);
 
 /* line_ctrl_utils_1 */
-int			ft_strcmp_array_space_2(char *l, const char **cmp_arr,
-				char *cmp_str);
+int compare_one_char_to_str(char needle, char *haystack, const char **forbiden_consec);
+int compare_two_chars_to_str(char needle, char *haystack, const char **forbiden_consec);
+int compare_one_doublechar_to_str(char needle, char *haystack, const char **forbiden_consec);
+int compare_two_doublechars_to_str(char needle, char *haystack, const char **forbiden_consec);
 
-/* line_ctrl_utils_2 */
-void		ft_ignore_quotes(char *l, int *i);
 
 /* token_assign_1 */
 void		create_token_1(t_cmd_line **cmd_list, t_data **data);

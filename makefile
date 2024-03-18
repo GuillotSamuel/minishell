@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/18 12:15:00 by sguillot         ###   ########.fr        #
+#    Updated: 2024/03/18 21:05:56 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,6 @@ SRC :=	main.c \
 		parsing/token/line_control/line_ctrl_1superior.c \
 		parsing/token/line_control/line_ctrl_2superior.c \
 		parsing/token/line_control/line_ctrl_utils_1.c \
-		parsing/token/line_control/line_ctrl_utils_2.c \
 		\
 		parsing/expand/args_counter.c \
 		parsing/expand/clean_expand.c \

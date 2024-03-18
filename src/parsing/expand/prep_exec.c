@@ -68,7 +68,7 @@ bool	prepare_execution(t_data *data)
 		data->cmd_list = NULL;
 		return (ERROR);
 	}
-	if (check_args_array_after_expands(data->cmd_list, data) -1)
+	if (check_args_array_after_expands(data->cmd_list) - 1)
 		return (ERROR);
 	return (OK);
 }

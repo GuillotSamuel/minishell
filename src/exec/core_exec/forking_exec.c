@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/18 15:50:55 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/18 21:45:23 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	ft_check_is_directory(data, cmd_list_dup->args[0]);
 	path = ft_cmd_exist(cmd_list_dup->token_list->token);
 	if (path != NULL)
-	{
 		ft_execve_exec(path, cmd_list_dup, data);
-	}
 	free(data->pids);
 	free_all(data);
 	exit(g_exit_status);
