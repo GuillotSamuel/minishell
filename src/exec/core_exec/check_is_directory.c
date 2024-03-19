@@ -6,13 +6,31 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 14:59:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/19 14:39:38 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:09:39 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
 extern int	g_exit_status;
+
+void	check_empty_token(t_cmd_line *cmd_list, t_data *data)
+{
+	t_token	*token;
+
+	token = cmd_list->token_list;
+	while (token)
+	{
+		if (token->token[0] != '\0')
+		{
+			return ;
+		}
+		token = token->next;
+	}
+	free(data->pids);
+	free_all(data);
+	exit(0);
+}
 
 static void	permission_denied(t_data *data, char *cmd)
 {
