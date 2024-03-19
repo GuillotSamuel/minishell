@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 16:36:33 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/26 13:04:33 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 11:52:55 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,13 @@ char	*expand_dbl_quotes(const char *line, char *str_expand, int *i)
 			str_expand = init_exp_with_dollar(line, str_expand, i);
 		}
 		if (str_expand == NULL)
-			return (MALLOC_ERROR);
+		{
+			return (NULL);
+		}
+	}
+	if (str_expand == NULL)
+	{
+		str_expand = ft_strdup("");
 	}
 	return (str_expand);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_a_suppr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 20:33:02 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/16 20:41:56 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/19 13:13:57 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ void	ft_print_pwd_oldpwd(t_env **env)
 	}
 }
 
+void	ft_print_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		ft_printf("tab[%d] = %s|\n", i, tab[i]);
+		i++;
+	}
+}
+
 void	print_token(t_data *data)
 {
 	t_cmd_line	*command;
@@ -44,11 +56,11 @@ void	print_token(t_data *data)
 		current_token = command->token_list;
 		while (current_token)
 		{
-			printf("token[%d] = %s\n", ++i, current_token->token);
+			printf("token[%d] = %s|\n", ++i, current_token->token);
 			printf("Type = %d\n", current_token->type);
 			current_token = current_token->next;
 		}
 		command = command->next;
 	}
-	void print_token(t_data *data);
+	void print_token(t_data * data);
 }

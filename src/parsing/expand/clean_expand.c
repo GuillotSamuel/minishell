@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:52:41 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/18 21:07:05 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:36:16 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static char	**clean_cmd_args(char **args)
 
 	i = 0;
 	j = 0;
-	new_args = malloc(sizeof(char *)
-			* (args_counter(args) - is_empty_countet(args) + 1));
+	new_args = malloc(sizeof(char *) * (args_counter(args)
+				- is_empty_countet(args) + 1));
 	if (!new_args)
 		return (NULL);
 	while (args[i])
@@ -90,8 +90,7 @@ int	check_args_array_after_expands(t_cmd_line *cmd)
 	{
 		if (check_command_is_empty(cmd_list_dup->args) == false)
 		{
-			cmd_list_dup->args
-				= clean_cmd_args(cmd_list_dup->args);
+			cmd_list_dup->args = clean_cmd_args(cmd_list_dup->args);
 			if (!cmd_list_dup->args)
 				return (ERROR);
 		}

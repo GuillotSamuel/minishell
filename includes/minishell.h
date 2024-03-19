@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/17 18:17:08 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/19 12:33:21 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ extern int	g_exit_status;
 
 // A SUUPRRR
 void		print_token(t_data *data);
-void		ft_print_env(t_env **env);
 void		ft_print_pwd_oldpwd(t_env **env);
+void		ft_print_tab(char **tab);
 // A SUPPRRRR
 
 /* -------------------------------------------------------------------------- */
