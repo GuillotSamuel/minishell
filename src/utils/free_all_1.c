@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 17:59:15 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:02:07 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ void	ft_free_redir(t_cmd_line *cmd)
 	{
 		if (tmp->redir)
 		{
+			if (tmp->redir->file_here_doc)
+			{
+				free(tmp->redir->file_here_doc);
+				tmp->redir->file_here_doc = NULL;
+			}
 			free(tmp->redir);
 			tmp->redir = NULL;
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exist.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:46:45 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/18 21:45:42 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:08:56 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,26 +65,26 @@ static char	*check_cmd(char **tab, char *cmd)
 	char	*tmp;
 
 	i = -1;
+	if (cmd[0] == '\0')
+		return (NULL);
 	while (tab[++i])
 	{
 		tmp = join_path(tab[i], cmd);
 		if (tmp == NULL)
-			return (VAR_NOT_FOUND);
+			return (NULL);
 		if (access(tmp, F_OK) == 0)
 		{
 			if (access(tmp, X_OK) == 0)
-			{
 				return (tmp);
-			}
 			else
 			{
 				free(tmp);
-				return (VAR_NOT_FOUND);
+				return (NULL);
 			}
 		}
 		free(tmp);
 	}
-	return (VAR_NOT_FOUND);
+	return (NULL);
 }
 
 char	*ft_cmd_exist(char *cmd)
@@ -99,10 +99,10 @@ char	*ft_cmd_exist(char *cmd)
 	env = ft_singletone_env();
 	var_path = ft_get_env("PATH", *env);
 	if (var_path == NULL)
-		return (MALLOC_ERROR);
+		return (NULL);
 	tab = ft_split(var_path, ':');
 	if (tab == NULL)
-		return (MALLOC_ERROR);
+		return (NULL);
 	path = check_cmd(tab, cmd);
 	if (path == NULL)
 	{

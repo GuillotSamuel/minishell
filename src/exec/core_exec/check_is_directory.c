@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_is_directory.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 14:59:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/17 17:49:56 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/19 14:39:38 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,20 @@ static void	not_file_or_directory(t_data *data, char *cmd)
 
 static void	is_directory(t_data *data, char *cmd)
 {
-	ft_putstr_fd("minishell: ", 2);
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd(": Is a directory\n", 2);
-	g_exit_status = 126;
-	free(data->pids);
-	free_all(data);
-	exit(g_exit_status);
+	DIR	*dir;
+
+	dir = opendir(cmd);
+	if (dir)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(cmd, 2);
+		ft_putstr_fd(": Is a directory\n", 2);
+		g_exit_status = 126;
+		free(data->pids);
+		free_all(data);
+		closedir(dir);
+		exit(g_exit_status);
+	}
 }
 
 void	ft_check_is_directory(t_data *data, char *cmd)

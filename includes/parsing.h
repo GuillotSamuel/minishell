@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/18 21:12:26 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:01:57 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int			ft_space_ctrl_1(char *line, char cmp_str, char cmp_str2);
 int			ft_strcmp_array_space_3(char *l, const char **ca, char *cs);
 int			forbiden_consecutive(char *line);
 int			forbiden_char(char *line);
-void 		ft_ignore_quotes(char *l, int *i);
+void		ft_ignore_quotes(char *l, int *i);
 
 /* line_ctrl_1inferior */
 int			control_i1(char *line);
@@ -104,11 +104,14 @@ int			control_ss1(char *line);
 int			control_ss2(char *line);
 
 /* line_ctrl_utils_1 */
-int compare_one_char_to_str(char needle, char *haystack, const char **forbiden_consec);
-int compare_two_chars_to_str(char needle, char *haystack, const char **forbiden_consec);
-int compare_one_doublechar_to_str(char needle, char *haystack, const char **forbiden_consec);
-int compare_two_doublechars_to_str(char needle, char *haystack, const char **forbiden_consec);
-
+int			compare_one_char_to_str(char needle, char *haystack,
+				const char **forbiden_consec);
+int			compare_two_chars_to_str(char needle, char *haystack,
+				const char **forbiden_consec);
+int			compare_one_doublechar_to_str(char needle, char *haystack,
+				const char **forbiden_consec);
+int			compare_two_doublechars_to_str(char needle, char *haystack,
+				const char **forbiden_consec);
 
 /* token_assign_1 */
 void		create_token_1(t_cmd_line **cmd_list, t_data **data);

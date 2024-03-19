@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 10:53:52 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/26 13:30:19 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:03:15 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static t_token	*alloc_token(const char *str)
 
 	new = malloc(sizeof(t_token));
 	if (!new)
-		return (MALLOC_ERROR);
+		return (NULL);
 	new->type = ARG;
 	new->token = ft_strdup(str);
 	new->next = NULL;
 	if (new->token == NULL)
 	{
-		return (MALLOC_ERROR);
+		return (NULL);
 	}
 	return (new);
 }
@@ -43,7 +43,7 @@ static char	*add_split_to_token(t_token **token, char **tab, int i)
 			if (new_node->token)
 				free(new_node->token);
 			ft_free_array(tab);
-			return (MALLOC_ERROR);
+			return (NULL);
 		}
 		if (*token)
 			new_node->next = next_node;
@@ -59,7 +59,7 @@ static char	*free_str_expand(char *str_expand)
 {
 	if (str_expand)
 		free(str_expand);
-	return (MALLOC_ERROR);
+	return (NULL);
 }
 
 char	*init_no_quote_with_dollar(t_token **token, const char *line,

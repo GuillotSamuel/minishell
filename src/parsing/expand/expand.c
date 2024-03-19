@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:32:31 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/17 18:20:37 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/19 14:03:15 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static t_redir	*init_redir(void)
 
 	new = malloc(sizeof(t_redir));
 	if (new == NULL)
-		return (MALLOC_ERROR);
+		return (NULL);
 	new->fd_in = 0;
 	new->fd_out = 1;
 	new->file_here_doc = NULL;
@@ -99,7 +99,7 @@ bool	expand_all_tokens(t_data *data)
 		while (command)
 		{
 			command->redir = init_redir();
-			if (command->redir == MALLOC_ERROR)
+			if (command->redir == NULL)
 				return (ERROR);
 			token_list = command->token_list;
 			while (token_list)

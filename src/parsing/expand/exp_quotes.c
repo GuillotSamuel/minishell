@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 16:36:33 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/26 13:04:33 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:03:15 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*expand_smpl_quotes(const char *line, char *str_expand, int *i)
 	{
 		if (str_expand)
 			free(str_expand);
-		return (MALLOC_ERROR);
+		return (NULL);
 	}
 	str = ft_strncpy(str, &line[j], (*i) - j);
 	new_str = ft_strjoin(str_expand, str);
@@ -49,7 +49,13 @@ char	*expand_dbl_quotes(const char *line, char *str_expand, int *i)
 			str_expand = init_exp_with_dollar(line, str_expand, i);
 		}
 		if (str_expand == NULL)
-			return (MALLOC_ERROR);
+		{
+			return (NULL);
+		}
+	}
+	if (str_expand == NULL)
+	{
+		str_expand = ft_strdup("");
 	}
 	return (str_expand);
 }
@@ -68,7 +74,7 @@ char	*expand_no_quote(t_token **tok, const char *line, char *str_expand,
 			str_expand = init_no_quote_with_dollar(tok, line, str_expand, i);
 		}
 		if (str_expand == NULL)
-			return (MALLOC_ERROR);
+			return (NULL);
 	}
 	return (str_expand);
 }

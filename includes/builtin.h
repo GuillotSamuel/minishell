@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:25:59 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/17 18:13:14 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/19 14:06:53 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_echo(char **args);
 
 /* env */
 t_env	**dup_secret_env(t_env **env);
+void	ft_print_env(t_env **env);
 bool	ft_init_baby_env(t_env **env);
 bool	ft_init_lst_env(const char **envp);
 void	ft_print_secret_env(t_env **env);
