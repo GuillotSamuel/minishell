@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_ctrl_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:31:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/18 12:48:13 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:58:59 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	empty_line(char *line)
 	i = 0;
 	while (line[i] != '\0')
 	{
-		if (line[i] != ' ')
+		if (line[i] != ' ' && line[i] != '\t')
 			return (SUCCESS);
 		i++;
 	}
