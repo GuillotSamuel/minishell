@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:32:31 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/17 18:20:37 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/19 12:08:49 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ bool	expand_all_tokens(t_data *data)
 		while (command)
 		{
 			command->redir = init_redir();
-			if (command->redir == MALLOC_ERROR)
+			if (command->redir == NULL)
 				return (ERROR);
 			token_list = command->token_list;
 			while (token_list)
