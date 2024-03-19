@@ -14,6 +14,24 @@
 
 extern int	g_exit_status;
 
+void	check_empty_token(t_cmd_line *cmd_list, t_data *data)
+{
+	t_token	*token;
+
+	token = cmd_list->token_list;
+	while (token)
+	{
+		if (token->token[0] != '\0')
+		{
+			return ;
+		}
+		token = token->next;
+	}
+	free(data->pids);
+	free_all(data);
+	exit(0);
+}
+
 static void	permission_denied(t_data *data, char *cmd)
 {
 	ft_putstr_fd("minishell: ", 2);

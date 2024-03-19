@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   clean_expand.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:52:41 by sguillot          #+#    #+#             */
 /*   Updated: 2024/03/19 17:29:07 by sguillot         ###   ########.fr       */
