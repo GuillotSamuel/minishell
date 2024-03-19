@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:25:59 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/19 14:06:53 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:30:06 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_exit(char **args, t_data *data);
 
 /* exit_utils */
 int		ft_is_positive_llong(char *str);
-void	exit_one_neg_num(t_data *data);
+void	exit_one_neg_num(t_data *data, long long nb);
 int		ft_is_negative_llong(char *str);
 
 /* -------------------------------------------------------------------------- */

@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:52:41 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/19 17:29:07 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:21:18 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ static bool	check_command_is_empty(char **cmd)
 int	check_args_array_after_expands(t_cmd_line *cmd)
 {
 	t_cmd_line	*cmd_list_dup;
-
 	cmd_list_dup = cmd;
 	while (cmd_list_dup)
 	{
