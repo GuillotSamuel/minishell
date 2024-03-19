@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_all_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 18:31:40 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 17:59:15 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:58:30 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,25 @@ static void	free_data_env_array(t_data *data)
 	data->env_array = NULL;
 }
 
-void	ft_free_redir(t_cmd_line *cmd)
+void ft_free_redir(t_cmd_line *cmd)
 {
-	t_cmd_line	*tmp;
+    t_cmd_line *tmp;
 
-	tmp = cmd;
-	while (tmp)
-	{
-		if (tmp->redir)
-		{
-			free(tmp->redir);
-			tmp->redir = NULL;
-		}
-		tmp = tmp->next;
-	}
+    tmp = cmd;
+    while (tmp)
+    {
+        if (tmp->redir)
+        {
+            if (tmp->redir->file_here_doc)
+			{
+                free(tmp->redir->file_here_doc);
+                tmp->redir->file_here_doc = NULL;
+            }
+            free(tmp->redir);
+            tmp->redir = NULL;
+        }
+        tmp = tmp->next;
+    }
 }
 
 static void	clear_token_list(t_token **token_list)
