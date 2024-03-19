@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/19 14:01:57 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:09:49 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char		*init_no_quote_with_dollar(t_token **token, const char *line,
 /* -------------------------------------------------------------------------- */
 size_t		find_len_var(const char *line);
 char		*get_value_env(const char *variable);
+void		check_empty_token(t_cmd_line *cmd_list, t_data *data);
 
 /* -------------------------------------------------------------------------- */
 /*                                  DEL QUOTES                                */

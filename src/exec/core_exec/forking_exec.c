@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/18 21:45:23 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:09:42 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 	char		*path;
 
 	cmd_list_dup = cmd_list;
+	check_empty_token(cmd_list_dup, data);
 	if (cmd_list->redir->fd_in < 0 || cmd_list->redir->fd_out < 0)
 	{
 		free(data->pids);

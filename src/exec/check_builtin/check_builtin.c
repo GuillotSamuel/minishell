@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 17:49:29 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/19 12:30:37 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:09:06 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	close_and_unlink(t_cmd_line *cmd)
 	{
 		unlink(cmd->redir->file_here_doc);
 		free(cmd->redir->file_here_doc);
+		cmd->redir->file_here_doc = NULL;
 	}
 }
 
