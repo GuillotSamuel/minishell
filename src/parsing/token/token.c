@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:26:18 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/18 12:45:23 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:58:20 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	token(char *line, t_data *data)
 {
-	if (line_ctrl(line) == 0)
+	if (line_ctrl(line) == SUCCESS)
 	{
 		if (create_cmd_1(line, &(data->cmd_list), &data) == ERROR_G)
 			return (ERROR_G);

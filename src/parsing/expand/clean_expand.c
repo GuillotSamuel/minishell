@@ -12,17 +12,16 @@
 
 #include "../../../includes/minishell.h"
 
-static int	is_empty_countet(char **args)
+static int	is_empty_counter(char **args)
 {
 	int	i;
 	int	counter;
 
-	i = 0;
+	i = 1;
 	counter = 0;
-	while (args[i])
+	while (args[i] && args[i][0] == '\0')
 	{
-		if (args[i][0] == '\0')
-			counter++;
+		counter++;
 		i++;
 	}
 	return (counter);
@@ -47,19 +46,19 @@ static char	**clean_cmd_args(char **args)
 	int		i;
 	int		j;
 
-	i = 0;
-	j = 0;
+	i = 1;
+	j = 1;
 	new_args = malloc(sizeof(char *) * (args_counter(args)
-				- is_empty_countet(args) + 1));
+				- is_empty_counter(args) + 1));
 	if (!new_args)
 		return (NULL);
+	new_args[0] = ft_strdup(args[0]);
+	while (args[i] && args[i][0] == '\0')
+		i++;
 	while (args[i])
 	{
-		if (args[i][0] != '\0')
-		{
-			new_args[j] = ft_strdup(args[i]);
-			j++;
-		}
+		new_args[j] = ft_strdup(args[i]);
+		j++;
 		i++;
 	}
 	new_args[j] = NULL;
