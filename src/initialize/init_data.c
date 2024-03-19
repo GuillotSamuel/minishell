@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 17:25:45 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/17 17:41:46 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/19 14:58:11 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int	init_data(t_data **data, char **envp)
 	if (ft_init_lst_env((const char **)envp) == ERROR)
 		return (ERROR_G);
 	(*data)->env = ft_singletone_env();
+	ft_init_shlvl((*data)->env);
 	(*data)->secret_env = dup_secret_env((*data)->env);
-	if ((*data)->secret_env == MALLOC_ERROR)
+	if ((*data)->secret_env == NULL)
 	{
 		free(*data);
 		ft_free_env_singletone((*data)->env);

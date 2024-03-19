@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:26:39 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/19 13:07:24 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:02:23 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 extern int	g_exit_status;
 
-static int only_n(char *str)
+static int	only_n(char *str)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (str[i] == 'n')
@@ -26,9 +26,9 @@ static int only_n(char *str)
 	return (0);
 }
 
-static int count_n(char **args)
+static int	count_n(char **args)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (args[i] && args[i][0] == '-' && args[i][1] == 'n')
@@ -38,16 +38,16 @@ static int count_n(char **args)
 		else
 			return (i);
 	}
-	return (i);		
+	return (i);
 }
 
 void	ft_echo(char **args)
 {
 	int	i;
 	int	n;
+
 	i = 1;
 	n = 0;
-	
 	if (args[1] && args[1][0] == '-' && args[1][1] == 'n')
 	{
 		if (only_n(args[1]))

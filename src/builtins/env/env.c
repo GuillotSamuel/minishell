@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:20:25 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/17 17:24:04 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/19 15:16:18 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_env	**dup_secret_env(t_env **env)
 	while (current)
 	{
 		if (ft_lst_env(current->str, secret_env) == ERROR)
-			return (MALLOC_ERROR);
+			return (NULL);
 		current = current->next;
 	}
 	return (secret_env);
@@ -67,10 +67,6 @@ bool	ft_init_baby_env(t_env **env)
 	if (ft_lst_env(str, env) == 0)
 	{
 		free(str);
-		return (ERROR);
-	}
-	if (ft_init_shlvl(env) == 0)
-	{
 		return (ERROR);
 	}
 	return (OK);

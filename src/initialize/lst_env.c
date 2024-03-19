@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:20:25 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/17 17:08:08 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/19 14:04:01 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ char	*ft_dup_key(const char *line)
 		i++;
 	}
 	if (i == 0)
-		return (VAR_EMPTY);
+		return (NULL);
 	key = malloc(sizeof(char) * (i + 1));
 	if (key == NULL)
-		return (MALLOC_ERROR);
+		return (NULL);
 	ft_strncpy(key, line, i);
 	return (key);
 }
@@ -43,7 +43,7 @@ char	*ft_dup_value(const char *line)
 		i++;
 	value = ft_strdup(&line[i]);
 	if (value == NULL)
-		return (MALLOC_ERROR);
+		return (NULL);
 	return (value);
 }
 
