@@ -45,6 +45,7 @@ char		*init_no_quote_with_dollar(t_token **token, const char *line,
 /* -------------------------------------------------------------------------- */
 size_t		find_len_var(const char *line);
 char		*get_value_env(const char *variable);
+void		check_empty_token(t_cmd_line *cmd_list, t_data *data);
 
 /* -------------------------------------------------------------------------- */
 /*                                  DEL QUOTES                                */

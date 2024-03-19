@@ -62,6 +62,7 @@ void	close_and_unlink(t_cmd_line *cmd)
 	{
 		unlink(cmd->redir->file_here_doc);
 		free(cmd->redir->file_here_doc);
+		cmd->redir->file_here_doc = NULL;
 	}
 }
 

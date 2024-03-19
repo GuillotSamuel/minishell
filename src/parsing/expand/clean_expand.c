@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:52:41 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/19 17:29:07 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/19 18:01:38 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	is_empty_counter(char **args)
 	int	i;
 	int	counter;
 
-	i = 1;
+	i = 0;
 	counter = 0;
 	while (args[i] && args[i][0] == '\0')
 	{
@@ -46,13 +46,12 @@ static char	**clean_cmd_args(char **args)
 	int		i;
 	int		j;
 
-	i = 1;
-	j = 1;
+	i = 0;
+	j = 0;
 	new_args = malloc(sizeof(char *) * (args_counter(args)
 				- is_empty_counter(args) + 1));
 	if (!new_args)
 		return (NULL);
-	new_args[0] = ft_strdup(args[0]);
 	while (args[i] && args[i][0] == '\0')
 		i++;
 	while (args[i])
@@ -83,7 +82,6 @@ static bool	check_command_is_empty(char **cmd)
 int	check_args_array_after_expands(t_cmd_line *cmd)
 {
 	t_cmd_line	*cmd_list_dup;
-
 	cmd_list_dup = cmd;
 	while (cmd_list_dup)
 	{

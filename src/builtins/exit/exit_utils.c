@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:29:48 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/15 19:19:47 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:37:32 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	ft_is_positive_llong(char *str)
 
 	nb = 0;
 	i = -1;
-	if ((str[0] == '+' && ft_strlen(str) > 1)
-		|| (str[0] >= '0' && str[0] <= '9'))
+	if ((str[0] == '+' && ft_strlen(str) > 1) || (str[0] >= '0'
+			&& str[0] <= '9'))
 		i++;
 	else
 		return (ERROR_G);
@@ -56,10 +56,10 @@ int	ft_is_negative_llong(char *str)
 	return (SUCCESS);
 }
 
-void	exit_one_neg_num(t_data *data)
+void	exit_one_neg_num(t_data *data, long long nb)
 {
 	ft_printf("exit\n");
-	g_exit_status = 156;
+	g_exit_status = 256 - ((nb * -1) % 256);
 	free_all(data);
 	exit(g_exit_status);
 }
