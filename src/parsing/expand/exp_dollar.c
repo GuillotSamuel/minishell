@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:13:16 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/26 16:15:39 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:03:15 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*one_dollar(int *i)
 
 	str = malloc(2);
 	if (str == NULL)
-		return (MALLOC_ERROR);
+		return (NULL);
 	str[0] = '$';
 	str[1] = '\0';
 	(*i)++;
@@ -55,7 +55,7 @@ char	*exp_with_dollar(const char *line, int *i)
 	}
 	variable = malloc(sizeof(char) * (len_var + 1));
 	if (variable == NULL)
-		return (MALLOC_ERROR);
+		return (NULL);
 	variable = ft_strncpy(variable, &line[*i + 1], len_var);
 	(*i) += len_var + 1;
 	new_str = get_value_env(variable);
@@ -80,7 +80,7 @@ char	*exp_without_dollar(const char *line, char *str_expand, int *i)
 	{
 		if (str_expand)
 			free(str_expand);
-		return (MALLOC_ERROR);
+		return (NULL);
 	}
 	str = ft_strncpy(str, &line[j], (*i) - j);
 	new_str = ft_strjoin(str_expand, str);
@@ -105,7 +105,7 @@ char	*exp_no_quote_no_dol(const char *line, char *str_expand, int *i)
 	{
 		if (str_expand)
 			free(str_expand);
-		return (MALLOC_ERROR);
+		return (NULL);
 	}
 	str = ft_strncpy(str, &line[j], (*i) - j);
 	new_str = ft_strjoin(str_expand, str);

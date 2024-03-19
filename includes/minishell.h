@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/19 12:33:21 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:17:22 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "builtin.h"
 # include "exec.h"
 # include "parsing.h"
+# include <dirent.h>
 # include <limits.h>
 # include <readline/history.h>
 # include <readline/readline.h>
@@ -31,9 +32,6 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 
-/* TESTS */
-# include <stdio.h>
-
 /* -------------------------------------------------------------------------- */
 /*                                    DEFINE                                  */
 /* -------------------------------------------------------------------------- */
@@ -42,20 +40,11 @@
 # define ERROR_G -1
 # define ERROR_SYNTAX -2
 # define ERROR_MALLOC -3
-# define MALLOC_ERROR NULL
-# define VAR_EMPTY NULL
-# define VAR_NOT_FOUND NULL
-# define ERROR false
-# define OK true
+# define ERROR 0
+# define OK 1
 # define FAIL -1
 
 extern int	g_exit_status;
-
-// A SUUPRRR
-void		print_token(t_data *data);
-void		ft_print_pwd_oldpwd(t_env **env);
-void		ft_print_tab(char **tab);
-// A SUPPRRRR
 
 /* -------------------------------------------------------------------------- */
 /*                                    INITIALISATION                          */

@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 19:11:07 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/14 17:23:21 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:03:15 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*get_value_env(const char *variable)
 	env = ft_singletone_env();
 	var_add_equal = ft_strjoin(variable, "=");
 	if (var_add_equal == NULL)
-		return (MALLOC_ERROR);
+		return (NULL);
 	cur = *env;
 	while (cur)
 	{
@@ -51,7 +51,7 @@ char	*get_value_env(const char *variable)
 		{
 			new_str = ft_strdup(cur->value);
 			if (new_str == NULL)
-				return (free(var_add_equal), MALLOC_ERROR);
+				return (free(var_add_equal), NULL);
 		}
 		cur = cur->next;
 	}
