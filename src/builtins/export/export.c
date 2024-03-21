@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:29:14 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/13 11:21:12 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/21 12:24:29 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	ft_export_no_value(char *key, t_data *data)
 {
 	char	*str;
 
-	str = ft_is_key_in_env(key, data->env);
+	str = ft_is_key_in_env(key, data->secret_env);
 	if (str)
 	{
 		free(str);

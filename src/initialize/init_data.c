@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 17:25:45 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/19 14:58:11 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:25:53 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	init_data(t_data **data, char **envp)
 		return (ERROR_G);
 	(*data)->cmd_list = NULL;
 	(*data)->env_array = NULL;
+	(*data)->line_free = NULL;
 	(*data)->pipes_fd = NULL;
 	if (ft_init_lst_env((const char **)envp) == ERROR)
 		return (ERROR_G);

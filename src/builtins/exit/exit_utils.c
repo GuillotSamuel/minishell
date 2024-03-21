@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:29:48 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/19 17:37:32 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/20 12:19:41 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,32 @@ void	exit_one_neg_num(t_data *data, long long nb)
 {
 	ft_printf("exit\n");
 	g_exit_status = 256 - ((nb * -1) % 256);
+	free_all(data);
+	exit(g_exit_status);
+}
+
+int	ft_is_number(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] != '\0')
+	{
+		if (ft_isdigit(str[i]) == 0)
+			return (ERROR_G);
+		i++;
+	}
+	return (SUCCESS);
+}
+
+void	exit_no_num_arg(char **args, t_data *data)
+{
+	ft_putstr_fd("exit\nminishell: exit: ", 2);
+	ft_putstr_fd(args[0], 2);
+	ft_putstr_fd(": numeric argument required\n", 2);
+	g_exit_status = 2;
 	free_all(data);
 	exit(g_exit_status);
 }

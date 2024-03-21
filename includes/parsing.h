@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/19 14:01:57 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:07:48 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void		create_token_1(t_cmd_line **cmd_list, t_data **data);
 
 /* token_utils_1 */
 char		*ft_remove_nchar_from_str_2(char *cmd_line, int n);
-char		*ft_remove_nchar_from_str(char *cmd_line, int n);
+void		ft_remove_nchar_from_str(char *cmd_line, int n, t_data *data);
 int			ft_strcmp_array_space(const char *str, const char **array);
 int			ft_strcmp_space(const char *s1, const char *s2);
 int			ft_charcmp_array(char c, const char **array);

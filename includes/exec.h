@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:57:57 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/17 18:18:44 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/21 12:35:52 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		exec_builtin_one_cmd(t_cmd_line *cmd, t_data *data);
 /* -------------------------------------------------------------------------- */
 
 /* exist.c */
-char	*ft_cmd_exist(char *cmd);
+char	*ft_cmd_exist(char *cmd, t_data *data);
 char	*ft_get_env(char *key, t_env *env);
 
 /* -------------------------------------------------------------------------- */
@@ -36,6 +36,7 @@ char	*ft_get_env(char *key, t_env *env);
 
 /* check_is_directory */
 void	ft_check_is_directory(t_data *data, char *cmd);
+void	not_file_or_directory(t_data *data, char *cmd);
 
 /* free_utils.c */
 void	free_pipes_fd(t_data *data);

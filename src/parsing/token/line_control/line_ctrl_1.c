@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   line_ctrl_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:31:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/19 12:58:59 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:22:52 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
+
+extern int	g_exit_status;
 
 static int	empty_line(char *line)
 {
@@ -63,12 +65,16 @@ static int	first_char_ctrl(char *line)
 
 int	line_ctrl(char *line)
 {
-	if (empty_line(line) == ERROR_SYNTAX
-		|| first_char_ctrl(line) == ERROR_SYNTAX
+	if (empty_line(line) == ERROR_SYNTAX)
+		return (ERROR_SYNTAX);
+	else if (first_char_ctrl(line) == ERROR_SYNTAX
 		|| last_char_ctrl(line) == ERROR_SYNTAX
 		|| consecutive_pipes_ctrl(line) == ERROR_SYNTAX
 		|| forbiden_consecutive(line) == ERROR_SYNTAX
 		|| forbiden_char(line) == ERROR_SYNTAX)
+	{
+		g_exit_status = 2;
 		return (ERROR_SYNTAX);
+	}
 	return (SUCCESS);
 }

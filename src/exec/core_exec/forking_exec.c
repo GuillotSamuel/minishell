@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/19 17:09:42 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:23:38 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 		exit(g_exit_status);
 	}
 	ft_check_is_directory(data, cmd_list_dup->args[0]);
-	path = ft_cmd_exist(cmd_list_dup->token_list->token);
+	path = ft_cmd_exist(cmd_list_dup->token_list->token, data);
 	if (path != NULL)
 		ft_execve_exec(path, cmd_list_dup, data);
 	free(data->pids);

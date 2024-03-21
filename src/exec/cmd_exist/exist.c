@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 14:46:45 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/19 12:08:56 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:56:15 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static char	*check_cmd(char **tab, char *cmd)
 	return (NULL);
 }
 
-char	*ft_cmd_exist(char *cmd)
+char	*ft_cmd_exist(char *cmd, t_data *data)
 {
 	char	*var_path;
 	t_env	**env;
@@ -99,7 +99,7 @@ char	*ft_cmd_exist(char *cmd)
 	env = ft_singletone_env();
 	var_path = ft_get_env("PATH", *env);
 	if (var_path == NULL)
-		return (NULL);
+		not_file_or_directory(data, cmd);
 	tab = ft_split(var_path, ':');
 	if (tab == NULL)
 		return (NULL);

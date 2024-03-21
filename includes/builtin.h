@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:25:59 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/19 17:30:06 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/20 12:21:57 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	ft_exit(char **args, t_data *data);
 int		ft_is_positive_llong(char *str);
 void	exit_one_neg_num(t_data *data, long long nb);
 int		ft_is_negative_llong(char *str);
+int		ft_is_number(char *str);
+void	exit_no_num_arg(char **args, t_data *data);
 
 /* -------------------------------------------------------------------------- */
 /*                                    EXPORT                                  */

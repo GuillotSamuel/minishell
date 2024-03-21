@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+         #
+#    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/19 15:17:38 by emauduit         ###   ########.fr        #
+#    Updated: 2024/03/21 16:41:42 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,10 @@
 NAME = minishell
 
 CC = cc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Wextra -Werror -g
 CIFLAGS	= -Iincludes -I$(LIB_DIR)/includes
 CCLIED	= -L$(LIB_DIR) -lft -lreadline
 MAKEFLAGS += --no-print-directory
-
 
 LIBFT = ./libft/libft.a
 SRC_DIR = ./src
@@ -108,7 +107,6 @@ SRC :=	main.c \
 		utils/exit_error.c \
 		utils/signal.c \
 		utils/singletone.c
-
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC))
 

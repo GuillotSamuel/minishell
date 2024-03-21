@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:48:33 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/19 12:08:42 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:17:17 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ bool	prepare_execution(t_data *data)
 	if (init_tab_args(command) == ERROR)
 	{
 		ft_free_commands(command);
+		data->cmd_list->args = NULL;
 		data->cmd_list = NULL;
 		return (ERROR);
 	}

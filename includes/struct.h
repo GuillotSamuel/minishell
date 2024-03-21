@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/17 18:18:38 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/20 15:14:49 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_env
 typedef struct s_data
 {
 	t_cmd_line			*cmd_list;
+	char				*line_free;
 	struct s_env		**env;
 	struct s_env		**secret_env;
 	int					**pipes_fd;

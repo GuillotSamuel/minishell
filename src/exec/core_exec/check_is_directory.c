@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 14:59:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/19 14:39:38 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:23:08 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ void	check_empty_token(t_cmd_line *cmd_list, t_data *data)
 	t_token	*token;
 
 	token = cmd_list->token_list;
+	if (!cmd_list->args[0])
+	{
+		free(data->pids);
+		free_all(data);
+		exit(0);
+	}
 	while (token)
 	{
 		if (token->token[0] != '\0')
@@ -43,7 +49,7 @@ static void	permission_denied(t_data *data, char *cmd)
 	exit(g_exit_status);
 }
 
-static void	not_file_or_directory(t_data *data, char *cmd)
+void	not_file_or_directory(t_data *data, char *cmd)
 {
 	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(cmd, 2);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line_ctrl_1inferior.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:52:35 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/18 21:48:14 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:36:07 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	control_i1(char *line)
 {
-	const char	*cmp1[] = {"#", ">", "|", "&", ")", ";", NULL};
+	const char	*cmp1[] = {"#", "|", "&", ")", ";", NULL};
 
 	if (compare_one_doublechar_to_str('<', line, cmp1) != SUCCESS)
 	{
