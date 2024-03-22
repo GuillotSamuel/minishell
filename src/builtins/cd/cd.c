@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:14:10 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/10 18:02:10 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/17 18:05:12 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
-/* 
+
 extern int	g_exit_status;
 
-static char	*prepare_path(char **args, t_env **env)
+static char	*find_path_in_env(t_env **env, char **args, char *path)
 {
-	char	*path;
-
 	if (args[0] == NULL || args[0][0] == '~')
 	{
 		path = ft_strdup(ft_get_env("HOME", *env));
@@ -28,10 +26,32 @@ static char	*prepare_path(char **args, t_env **env)
 			return (NULL);
 		}
 	}
-	else
+	else if (args[0][0] == '-')
 	{
-		path = ft_strdup(args[0]);
+		path = ft_strdup(ft_get_env("OLDPWD", *env));
+		if (path == NULL)
+		{
+			ft_putstr_fd("Minishell: cd: OLDPWD not set\n", 2);
+			g_exit_status = 1;
+			return (NULL);
+		}
+		else
+			ft_printf("%s\n", path);
 	}
+	return (path);
+}
+
+static char	*prepare_path(char **args, t_env **env)
+{
+	char	*path;
+
+	path = NULL;
+	if (args[0] == NULL || args[0][0] == '~' || args[0][0] == '-')
+	{
+		return (find_path_in_env(env, args, path));
+	}
+	else
+		path = ft_strdup(args[0]);
 	return (path);
 }
 
@@ -75,7 +95,7 @@ int	ft_cd(char **args, t_data *data)
 	t_env	**env;
 	t_env	**secret_env;
 
-	env = ft_singletone_env();
+	env = data->env;
 	secret_env = data->secret_env;
 	if (ft_len_tab(args) > 1)
 	{
@@ -91,4 +111,4 @@ int	ft_cd(char **args, t_data *data)
 		return (FAIL);
 	g_exit_status = 0;
 	return (OK);
-} */
+}

@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:48:54 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/27 18:19:15 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/16 16:50:32 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	trim_spaces_token_list(t_cmd_line **cmd_list, t_data **data)
 	}
 }
 
-static void	empty_token_ctrl(char *token,
+void	empty_token_ctrl(char *token,
 	t_token **token_list_dup, t_token **token_list_dup_prev)
 {
 	int	i;

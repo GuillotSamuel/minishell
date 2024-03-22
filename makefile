@@ -6,7 +6,7 @@
 #    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/07 15:18:00 by sguillot         ###   ########.fr        #
+#    Updated: 2024/03/21 16:41:42 by sguillot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,10 @@
 NAME = minishell
 
 CC = cc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Wextra -Werror -g
 CIFLAGS	= -Iincludes -I$(LIB_DIR)/includes
 CCLIED	= -L$(LIB_DIR) -lft -lreadline
 MAKEFLAGS += --no-print-directory
-
 
 LIBFT = ./libft/libft.a
 SRC_DIR = ./src
@@ -31,24 +30,38 @@ SRC_DIR = ./src
 ################################################################################
 
 SRC :=	main.c \
-		print_a_suppr.c \
 		\
 		builtins/cd/cd.c \
+		builtins/cd/update_pwd.c \
 		builtins/echo/echo.c \
 		builtins/env/env.c \
 		builtins/env/lst_env.c \
 		builtins/exit/exit_utils.c \
 		builtins/exit/exit.c \
+		builtins/export/check_export.c \
+		builtins/export/export_tools.c \
 		builtins/export/export.c \
 		builtins/pwd/pwd.c \
 		builtins/unset/unset.c \
 		\
-		exec/exec_1.c \
-		exec/exec_2.c \
-		exec/cmd_exist/exist.c \
-		\
+		initialize/init_data.c \
 		initialize/lst_env.c \
 		initialize/shlvl.c \
+		\
+		exec/check_builtin/check_builtin.c \
+		\
+		exec/cmd_exist/exist.c \
+		\
+		exec/core_exec/check_is_directory.c \
+		exec/core_exec/free_utils.c \
+		exec/core_exec/init_exec.c \
+		exec/core_exec/forking_exec.c \
+		exec/core_exec/execve_exec.c \
+		\
+		exec/here_doc/heredoc.c \
+		exec/here_doc/create_random.c \
+		\
+		exec/redirection/redir.c \
 		\
 		parsing/parsing.c \
 		\
@@ -57,6 +70,8 @@ SRC :=	main.c \
 		parsing/token/command_assignement/command_assign_1.c \
 		parsing/token/command_assignement/command_assign_utils.c \
 		\
+		parsing/token/line_control/compare_str_to_strarr.c \
+		parsing/token/line_control/ctrl_consecutive_pipes.c \
 		parsing/token/line_control/line_ctrl_1.c \
 		parsing/token/line_control/line_ctrl_2.c \
 		parsing/token/line_control/line_ctrl_1inferior.c \
@@ -64,8 +79,9 @@ SRC :=	main.c \
 		parsing/token/line_control/line_ctrl_1superior.c \
 		parsing/token/line_control/line_ctrl_2superior.c \
 		parsing/token/line_control/line_ctrl_utils_1.c \
-		parsing/token/line_control/line_ctrl_utils_2.c \
 		\
+		parsing/expand/args_counter.c \
+		parsing/expand/clean_expand.c \
 		parsing/expand/delete_quotes.c \
 		parsing/expand/exp_dollar.c \
 		parsing/expand/expand.c \
@@ -89,8 +105,8 @@ SRC :=	main.c \
 		utils/free_all_1.c \
 		utils/free_env.c \
 		utils/exit_error.c \
+		utils/signal.c \
 		utils/singletone.c
-
 
 SRC := $(addprefix $(SRC_DIR)/, $(SRC))
 

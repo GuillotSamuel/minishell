@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:58:17 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/21 15:48:12 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:25:18 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_remove_nchar_from_str_2(char *cmd_line, int n)
 	return (str);
 }
 
-char	*ft_remove_nchar_from_str(char *cmd_line, int n)
+void	ft_remove_nchar_from_str(char *cmd_line, int n, t_data *data)
 {
 	int		cmd_line_len;
 	char	*str;
@@ -43,14 +43,16 @@ char	*ft_remove_nchar_from_str(char *cmd_line, int n)
 	cmd_line_len = ft_strlen(cmd_line);
 	str = malloc(sizeof(char) * (cmd_line_len - n + 1));
 	if (!str)
-		return (NULL);
+		return ;
 	while (cmd_line[n + i])
 	{
 		str[i] = cmd_line[n + i];
 		i++;
 	}
+	free(data->line_free);
+	data->line_free = NULL;
 	str[i] = '\0';
-	return (str);
+	data->line_free = str;
 }
 
 int	ft_strcmp_array_space(const char *str, const char **array)

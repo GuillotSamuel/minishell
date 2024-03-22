@@ -3,90 +3,138 @@
 /*                                                        :::      ::::::::   */
 /*   line_ctrl_utils_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:32:57 by sguillot          #+#    #+#             */
-/*   Updated: 2024/02/22 16:00:32 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:31:06 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
 
-static int	ft_strcmp_array_space_2_4(const char **cmp_arr,
-	int j, int i, char *l)
+void	ft_ignore_quotes(char *l, int *i)
 {
-	if (l[i] != '\0' && l[i + 1] != '\0' && cmp_arr[j] && cmp_arr[j][0] == l[i]
-		&& (l[i + 1] == '<' || l[i + 1] == '>') && l[i] == l[i + 1])
-		return (-(j + 1));
-	else if (cmp_arr[j] && cmp_arr[j][0] == l[i])
-		return (j + 1);
-	return (SUCCESS);
-}
+	char	quote_char;
 
-static void	ft_strcmp_array_space_2_3(char **l, int *i, int *j,
-	const char **cmp_arr)
-{
-	while ((*l)[*i] && (*l)[*i] == ' ')
+	while (l[*i] && (l[*i] == '\"' || l[*i] == '\''))
+	{
+		quote_char = l[*i];
 		(*i)++;
-	while (cmp_arr[*j] && cmp_arr[*j][0] != (*l)[*i])
-		(*j)++;
+		while (l[*i] && l[*i] != quote_char)
+			(*i)++;
+		if (l[*i] == quote_char)
+			(*i)++;
+	}
 }
 
-static void	ft_strcmp_array_space_2_2(char **l, int *i, char *cmp_str)
-{
-	(*i)++;
-	if ((*l)[*i] == cmp_str[0])
-		(*i)++;
-}
-
-static void	ft_strcmp_array_space_2_1(char **l, int *i, int *j,
-	const char **cmp_arr)
-{
-	(*i) += 2;
-	while ((*l)[*i] && (*l)[*i] == ' ')
-		(*i)++;
-	while (cmp_arr[*j] && cmp_arr[*j][0] != (*l)[*i])
-		(*j)++;
-}
-
-/*
-	This function is used to compare the following string cmp_str 
-	(if cmp_str exists in str l) with the array cmp_arr
- */
-int	ft_strcmp_array_space_2(char *l, const char **cmp_arr, char *cmp_str)
+int	compare_one_char_to_str(char needle, char *h,
+	const char **forbiden_consec)
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	j = 0;
-	while (l[++i])
+	while (h[++i] != '\0')
 	{
-		ft_ignore_quotes(l, &i);
-		if (l[i] != '\0' && l[i + 1] != '\0' && ft_strlen(cmp_str) == 2
-			&& l[i] == cmp_str[0] && l[i + 1] == cmp_str[1])
+		j = -1;
+		if (h[i] == '\'' || h[i] == '\"')
+			ft_ignore_quotes(h, &i);
+		if (h[i] == '\0')
+			return (SUCCESS);
+		if (h[i] == needle && h[i] != '\0')
 		{
-			if (!l[i + 2])
-				break ;
-			ft_strcmp_array_space_2_1(&l, &i, &j, cmp_arr);
-			if (!l[i])
-				break ;
-			if (ft_strcmp_array_space_2_4(cmp_arr, j, i, l) != SUCCESS)
-				return (ft_strcmp_array_space_2_4(cmp_arr, j, i, l));
-			j = 0;
+			i++;
+			while (h[i] != '\0' && (h[i] == ' '
+					|| h[i] == '\t' || h[i] == '\n'))
+				i++;
+			while (forbiden_consec[++j] != NULL)
+				if (h[i] != '\0' && h[i] == forbiden_consec[j][0])
+					return (j + 1);
 		}
-		else if (l[i] != '\0' && l[i + 1] != '\0'
-			&& l[i] == cmp_str[0] && ft_strlen(cmp_str) == 1)
+	}
+	return (SUCCESS);
+}
+
+int	compare_two_chars_to_str(char n, char *h,
+	const char **forbiden_consec)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (h[++i] != '\0')
+	{
+		j = -1;
+		if (h[i] == '\'' || h[i] == '\"')
+			ft_ignore_quotes(h, &i);
+		if (h[i] == '\0' || h[i + 1] == '\0')
+			return (SUCCESS);
+		if (h[i] == n && h[i + 1] == n)
 		{
-			if (!l[i + 1])
-				break ;
-			ft_strcmp_array_space_2_2(&l, &i, cmp_str);
-			if (!l[i])
-				break ;
-			ft_strcmp_array_space_2_3(&l, &i, &j, cmp_arr);
-			if (ft_strcmp_array_space_2_4(cmp_arr, j, i, l) != SUCCESS)
-				return (ft_strcmp_array_space_2_4(cmp_arr, j, i, l));
-			j = 0;
+			i += 2;
+			while (h[i] != '\0' && (h[i] == ' '
+					|| h[i] == '\t' || h[i] == '\n'))
+				i++;
+			while (forbiden_consec[++j] != NULL)
+				if (h[i] != '\0' && h[i] == forbiden_consec[j][0])
+					return (j + 1);
+		}
+	}
+	return (SUCCESS);
+}
+
+int	compare_one_doublechar_to_str(char needle, char *h,
+	const char **forbiden_consec)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (h[++i] != '\0')
+	{
+		j = -1;
+		if (h[i] == '\'' || h[i] == '\"')
+			ft_ignore_quotes(h, &i);
+		if (h[i] == '\0')
+			return (SUCCESS);
+		if (h[i] == needle)
+		{
+			i++;
+			while (h[i] != '\0' && (h[i] == ' '
+					|| h[i] == '\t' || h[i] == '\n'))
+				i++;
+			while (forbiden_consec[++j] != NULL)
+				if (h[i] != '\0' && h[i] == forbiden_consec[j][0]
+					&& h[i + 1] != '\0' && h[i + 1] == forbiden_consec[j][0])
+					return (j + 1);
+		}
+	}
+	return (SUCCESS);
+}
+
+int	compare_two_doublechars_to_str(char needle,
+	char *h, const char **forbiden_c)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (h[++i] != '\0')
+	{
+		j = -1;
+		if (h[i] == '\'' || h[i] == '\"')
+			ft_ignore_quotes(h, &i);
+		if (h[i] == '\0' || h[i + 1] == '\0')
+			return (SUCCESS);
+		if (h[i] == needle && h[i + 1] == needle)
+		{
+			i += 2;
+			while (h[i] && (h[i] == ' ' || h[i] == '\t' || h[i] == '\n'))
+				i++;
+			while (forbiden_c[++j] != NULL)
+				if (h[i] != '\0' && h[i] == forbiden_c[j][0]
+					&& h[i + 1] != '\0' && h[i + 1] == forbiden_c[j][0])
+					return (j + 1);
 		}
 	}
 	return (SUCCESS);

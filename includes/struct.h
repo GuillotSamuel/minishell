@@ -3,48 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */ 
-/*   Updated: 2024/02/27 18:09:38 by sguillot         ###   ########.fr       */
+/*   Created: 2024/02/08 16:13:05 by sguillot          #+#    #+#             */
+/*   Updated: 2024/03/20 15:14:49 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-
 typedef enum type
 {
 	NON,
-	ARG, // word 
-	BUILTIN, // builtin
-	OPEN_FILE, //  word following '<'
-	HERE_DOC, // word == '<<'
-	LIMITOR, // word following '<<'
-	CREAT_FILE, // word following '>'
-	WRITE_FILE, // word following '>>'
-	FILE_IN, //word == '<'
-	FILE_OUT, //word == '>'
-	FILE_OUT_OVER, //word == '>>'
+	ARG,
+	BUILTIN,
+	OPEN_FILE,
+	HERE_DOC,
+	LIMITOR,
+	CREAT_FILE,
+	WRITE_FILE,
+	FILE_IN,
+	FILE_OUT,
+	FILE_OUT_OVER,
 	ENDS
-} enum_type;
+}						t_enum_type;
 
 typedef struct s_token
 {
-	char			*token;
-	enum_type		type;
-	struct s_token	*next;
-} t_token;
+	char				*token;
+	t_enum_type			type;
+	struct s_token		*next;
+}						t_token;
+
+typedef struct s_redir
+{
+	int					fd_in;
+	int					fd_out;
+	char				*file_here_doc;
+}						t_redir;
 
 typedef struct s_cmd_line
 {
 	char				*cmd;
 	t_token				*token_list;
+	struct s_redir		*redir;
 	char				**args;
 	struct s_cmd_line	*next;
-	struct s_cmd_line	*prev;
-} t_cmd_line;
+}						t_cmd_line;
 
 typedef struct s_env
 {
@@ -52,15 +58,17 @@ typedef struct s_env
 	char				*key;
 	char				*value;
 	struct s_env		*next;
-} t_env;
+}						t_env;
 
 typedef struct s_data
 {
-	t_cmd_line	*cmd_list;
-	t_env		**env;
-	char		**env_array;
-	char		**args_array;
-	t_env		**secret_env;
-} t_data;
+	t_cmd_line			*cmd_list;
+	char				*line_free;
+	struct s_env		**env;
+	struct s_env		**secret_env;
+	int					**pipes_fd;
+	int					*pids;
+	char				**env_array;
+}						t_data;
 
 #endif

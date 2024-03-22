@@ -6,23 +6,50 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:20:25 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/22 17:15:32 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:16:18 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-t_env **dup_secret_env(t_env **env)
+void	ft_print_env(t_env **env)
 {
-	t_env **secret_env;
-	t_env *current;
+	t_env	*cur;
+
+	cur = *env;
+	while (cur)
+	{
+		printf("%s\n", cur->str);
+		cur = cur->next;
+	}
+}
+
+void	ft_print_secret_env(t_env **env)
+{
+	t_env	*cur;
+
+	cur = *env;
+	while (cur)
+	{
+		printf("declare -x ");
+		printf("%s=", cur->key);
+		printf("\"%s\"\n", cur->value);
+		cur = cur->next;
+	}
+}
+
+t_env	**dup_secret_env(t_env **env)
+{
+	t_env	**secret_env;
+	t_env	*current;
 
 	current = *env;
-	secret_env = malloc(sizeof(t_env*));
+	secret_env = malloc(sizeof(t_env *));
 	*secret_env = NULL;
 	while (current)
 	{
-		ft_lst_env(current->str, secret_env);
+		if (ft_lst_env(current->str, secret_env) == ERROR)
+			return (NULL);
 		current = current->next;
 	}
 	return (secret_env);
@@ -40,10 +67,6 @@ bool	ft_init_baby_env(t_env **env)
 	if (ft_lst_env(str, env) == 0)
 	{
 		free(str);
-		return (ERROR);
-	}
-	if (ft_init_shlvl(env) == 0)
-	{
 		return (ERROR);
 	}
 	return (OK);
@@ -69,7 +92,10 @@ bool	ft_init_lst_env(const char **envp)
 	{
 		ft_lst_env(envp[len], env);
 		if ((*env)->str == NULL || (*env)->key == NULL)
+		{
+			ft_free_env_singletone(env);
 			return (ERROR);
+		}
 		len--;
 	}
 	return (OK);

@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:48:33 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/26 15:03:01 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:17:17 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static size_t	count_args(t_cmd_line *cmd)
 	token_lst = cmd->token_list;
 	while (token_lst)
 	{
-		if (token_lst->type == ARG)
+		if (token_lst->type == ARG || token_lst->type == BUILTIN)
 			count++;
 		token_lst = token_lst->next;
 	}
@@ -42,7 +42,7 @@ static bool	init_tab_args(t_cmd_line *command)
 		token_lst = cmd->token_list;
 		while (token_lst)
 		{
-			if (token_lst->type == ARG)
+			if (token_lst->type == ARG || token_lst->type == BUILTIN)
 			{
 				cmd->args[i] = ft_strdup(token_lst->token);
 				if (cmd->args[i] == NULL)
@@ -65,8 +65,11 @@ bool	prepare_execution(t_data *data)
 	if (init_tab_args(command) == ERROR)
 	{
 		ft_free_commands(command);
+		data->cmd_list->args = NULL;
 		data->cmd_list = NULL;
 		return (ERROR);
 	}
+	if (check_args_array_after_expands(data->cmd_list) - 1)
+		return (ERROR);
 	return (OK);
 }

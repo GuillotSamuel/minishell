@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:32:31 by emauduit          #+#    #+#             */
-/*   Updated: 2024/02/28 14:17:44 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:03:15 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static bool	start_expand(t_token **lst_token, char *line, char *str_expand,
 	return (OK);
 }
 
-static bool	expand_token(t_token **lst_token, char *line, enum_type type)
+static bool	expand_token(t_token **lst_token, char *line, t_enum_type type)
 {
 	int		i;
 	char	*str_expand;
@@ -75,6 +75,19 @@ static bool	expand_token(t_token **lst_token, char *line, enum_type type)
 	return (OK);
 }
 
+static t_redir	*init_redir(void)
+{
+	t_redir	*new;
+
+	new = malloc(sizeof(t_redir));
+	if (new == NULL)
+		return (NULL);
+	new->fd_in = 0;
+	new->fd_out = 1;
+	new->file_here_doc = NULL;
+	return (new);
+}
+
 bool	expand_all_tokens(t_data *data)
 {
 	t_cmd_line	*command;
@@ -85,6 +98,9 @@ bool	expand_all_tokens(t_data *data)
 	{
 		while (command)
 		{
+			command->redir = init_redir();
+			if (command->redir == NULL)
+				return (ERROR);
 			token_list = command->token_list;
 			while (token_list)
 			{

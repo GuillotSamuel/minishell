@@ -6,23 +6,20 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 10:20:25 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/03 16:43:42 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/13 11:24:57 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-size_t ft_len_env(const char **envp)
+size_t	ft_len_env(const char **envp)
 {
-    size_t i;
-    
-    i = 0;
-    if (!envp)
-        return (0);
-    while (envp[i])
-        i++;
-    return (i);
+	size_t	i;
+
+	i = 0;
+	if (!envp)
+		return (0);
+	while (envp[i])
+		i++;
+	return (i);
 }
-
-
-
