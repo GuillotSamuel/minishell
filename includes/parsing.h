@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/20 15:07:48 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/22 11:17:36 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,9 @@ int			compare_one_doublechar_to_str(char needle, char *haystack,
 				const char **forbiden_consec);
 int			compare_two_doublechars_to_str(char needle, char *haystack,
 				const char **forbiden_consec);
+
+/* two_same_redirections */
+int			two_same_redirections(char *line);
 
 /* token_assign_1 */
 void		create_token_1(t_cmd_line **cmd_list, t_data **data);

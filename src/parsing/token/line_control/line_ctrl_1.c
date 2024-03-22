@@ -3,16 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   line_ctrl_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:31:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/21 11:22:52 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/22 11:35:18 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/minishell.h"
 
 extern int	g_exit_status;
+
+static int	forbiden_newline(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] != '\0')
+	{
+		if ((line[i] == '>' || line[i] == '<') && line[i + 1] != '\0')
+		{
+			i++;
+			while (line[i] == '\n' || line[i] == ' ' || line[i] == '\t')
+			{
+				if (line[i] == '\n')
+				{
+					ft_printf("bash: syntax error near unexpected token `newline'\n");
+					return (ERROR_SYNTAX);
+				}
+				i++;
+			}
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
 
 static int	empty_line(char *line)
 {
@@ -70,7 +95,9 @@ int	line_ctrl(char *line)
 	else if (first_char_ctrl(line) == ERROR_SYNTAX
 		|| last_char_ctrl(line) == ERROR_SYNTAX
 		|| consecutive_pipes_ctrl(line) == ERROR_SYNTAX
+		|| forbiden_newline(line) == ERROR_SYNTAX
 		|| forbiden_consecutive(line) == ERROR_SYNTAX
+		|| two_same_redirections(line) == ERROR_SYNTAX
 		|| forbiden_char(line) == ERROR_SYNTAX)
 	{
 		g_exit_status = 2;
