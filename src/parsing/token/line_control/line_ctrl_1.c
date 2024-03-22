@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:31:19 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/22 11:35:18 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:24:26 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,17 @@ static int	forbiden_newline(char *line)
 	i = 0;
 	while (line[i] != '\0')
 	{
+		ft_ignore_quotes(line, &i);
 		if ((line[i] == '>' || line[i] == '<') && line[i + 1] != '\0')
 		{
 			i++;
 			while (line[i] == '\n' || line[i] == ' ' || line[i] == '\t')
 			{
+				ft_ignore_quotes(line, &i);
 				if (line[i] == '\n')
 				{
-					ft_printf("bash: syntax error near unexpected token `newline'\n");
+					ft_printf("bash: syntax error near"
+						"unexpected token `newline'\n");
 					return (ERROR_SYNTAX);
 				}
 				i++;
