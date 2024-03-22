@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 16:29:48 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/20 12:19:41 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/22 10:30:37 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,8 @@ int	ft_is_positive_llong(char *str)
 
 int	ft_is_negative_llong(char *str)
 {
-	unsigned long long	nb;
 	int					i;
 
-	nb = 0;
 	i = -1;
 	if (str[0] == '-')
 		i++;
