@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:25:59 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/20 12:21:57 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:33:32 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		ft_pwd_exist(t_env **env, char *key, char *pwd);
 int		ft_change_pwd(t_env **env);
 int		check_oldpwd(t_env **env, char *pwd);
 size_t	ft_len_tab(char **tab);
+int		check_cd_option(char **args);
 
 /* -------------------------------------------------------------------------- */
 /*                                    ECHO                                    */
@@ -77,6 +78,8 @@ void	exit_no_num_arg(char **args, t_data *data);
 /* check_export.c */
 int		is_plus_equal(char *str);
 int		ft_export_is_incorrect(char *str);
+int		arg_with_egal(char *arg);
+void	ft_export_no_value_with_egal(char *key, t_data *data);
 
 /* export_tools */
 char	*ft_is_key_in_env(char *key, t_env **env);
