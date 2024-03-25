@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/22 20:25:02 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:48:48 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int ac, char **av, char **envp)
 	t_data	*data;
 
 	if (ac == 0 || !av || ac > 1)
-		return (printf("No args required\n"), 0);
+		return (printf("No args required\n"), 1);
 	g_exit_status = 0;
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);

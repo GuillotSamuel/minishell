@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:04:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/19 15:17:22 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:57:18 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define ERROR_SYNTAX -2
 # define ERROR_MALLOC -3
 # define ERROR 0
+# define ERROR_HERE_DOC -2
 # define OK 1
 # define FAIL -1
 
@@ -82,6 +83,7 @@ void		ft_free_env_singletone(t_env **env);
 
 /* signal.c */
 void		handle_sigint(int sig);
+void		handle_sigint_here(int sig);
 
 /* singletone */
 t_env		**ft_singletone_env(void);
