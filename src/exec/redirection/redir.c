@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 14:49:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/18 16:01:30 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:52:17 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ int	open_all_redirections(t_cmd_line *cmd)
 	{
 		if (token->type == LIMITOR)
 		{
-			if (start_here_doc(cmd->redir, token) == -1)
-				return (FAIL);
+			if (start_here_doc(cmd->redir, token) == -2)
+				return (ERROR_HERE_DOC);
 		}
 		else if (token->type == OPEN_FILE)
 		{

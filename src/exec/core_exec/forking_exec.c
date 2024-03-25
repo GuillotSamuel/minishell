@@ -52,6 +52,13 @@ static void	handle_sigint_child(int sig)
 		rl_replace_line("", 0);
 		rl_redisplay();
 	}
+	if (sig == 3)
+	{
+		g_exit_status = 131;
+		printf("Quit (core dumped)\n");
+		rl_replace_line("", 0);
+		rl_redisplay();
+	}
 }
 
 static void	ft_wait_children(int num_children, pid_t *pids)
@@ -60,8 +67,8 @@ static void	ft_wait_children(int num_children, pid_t *pids)
 	int	status;
 
 	i = 0;
+	signal(SIGQUIT, handle_sigint_child);
 	signal(SIGINT, handle_sigint_child);
-	signal(SIGQUIT, SIG_IGN);
 	while (i < num_children)
 	{
 		waitpid(pids[i], &status, 0);
@@ -70,6 +77,7 @@ static void	ft_wait_children(int num_children, pid_t *pids)
 		i++;
 	}
 	signal(SIGINT, handle_sigint);
+	signal(SIGQUIT, SIG_IGN);
 }
 
 static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid)
@@ -84,6 +92,7 @@ static void	create_and_manage_child(t_data *data, t_cmd_line *cmd, pid_t *pid)
 	}
 	else if (*pid == 0)
 	{
+		signal(SIGQUIT, SIG_DFL);
 		if (cmd->redir->fd_in != 0)
 			dup2(cmd->redir->fd_in, STDIN_FILENO);
 		if (cmd->redir->fd_out != 1)
