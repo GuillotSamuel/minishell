@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:29:14 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/21 12:24:29 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:33:39 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,11 @@ static void	exec_export_argument(char *arg, t_data *data)
 	{
 		ft_export_plus_equal(key, value, data);
 	}
+	else if ((value == NULL || ft_strlen(value) == 0)
+		&& arg_with_egal(arg) == 1)
+		ft_export_no_value_with_egal(key, data);
 	else if (value == NULL || ft_strlen(value) == 0)
-	{
 		ft_export_no_value(key, data);
-	}
 	else
 		ft_export_value(key, value, data);
 	free(key);
@@ -121,11 +122,9 @@ void	ft_export(char **args, t_data *data)
 	while (args[i])
 	{
 		exec_export_argument(args[i], data);
-		if (g_exit_status == 1)
-		{
-			return ;
-		}
 		i++;
 	}
+	if (g_exit_status == 1)
+		return ;
 	g_exit_status = 0;
 }

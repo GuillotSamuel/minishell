@@ -6,7 +6,7 @@
 /*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:14:10 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/17 18:05:12 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/22 11:52:36 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,33 @@ static char	*find_path_in_env(t_env **env, char **args, char *path)
 	return (path);
 }
 
+int	check_cd_option(char **args)
+{
+	int	i;
+
+	i = 1;
+	if (args[0][0] != '\0')
+	{
+		if (args[0][0] == '-')
+		{
+			if (args[0][1] == '-')
+				return (OK);
+			while (args[0][i])
+			{
+				if (args[0][i] != '\0')
+				{
+					ft_putstr_fd("Minishell: cd: ", 2);
+					ft_putstr_fd(args[0], 2);
+					ft_putstr_fd(": invalid option\n", 2);
+					return (-1);
+				}
+				i++;
+			}
+		}
+	}
+	return (OK);
+}
+
 static char	*prepare_path(char **args, t_env **env)
 {
 	char	*path;
@@ -48,6 +75,14 @@ static char	*prepare_path(char **args, t_env **env)
 	path = NULL;
 	if (args[0] == NULL || args[0][0] == '~' || args[0][0] == '-')
 	{
+		if (args[0])
+		{
+			if (check_cd_option(args) == -1)
+			{
+				g_exit_status = 1;
+				return (NULL);
+			}
+		}
 		return (find_path_in_env(env, args, path));
 	}
 	else
@@ -67,7 +102,9 @@ static int	execute_cd_and_update_env(char *path, t_env **env,
 		return (FAIL);
 	if (chdir(path) == -1)
 	{
-		ft_putstr_fd("Minishell: cd: %s: No such file or directory\n", 2);
+		ft_putstr_fd("Minishell: cd: ", 2);
+		ft_putstr_fd(path, 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
 		g_exit_status = 1;
 		free(pwd);
 		free(path);
@@ -99,7 +136,7 @@ int	ft_cd(char **args, t_data *data)
 	secret_env = data->secret_env;
 	if (ft_len_tab(args) > 1)
 	{
-		ft_putstr_fd("Minishell: cd: too many arguments", 2);
+		ft_putstr_fd("Minishell: cd: too many arguments\n", 2);
 		g_exit_status = 1;
 		return (FAIL);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_is_directory.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 14:59:05 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/21 13:23:08 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/22 11:08:57 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,24 @@ extern int	g_exit_status;
 
 void	check_empty_token(t_cmd_line *cmd_list, t_data *data)
 {
-	t_token	*token;
+	char	**tab;
+	int		i;
 
-	token = cmd_list->token_list;
+	i = 0;
+	tab = cmd_list->args;
 	if (!cmd_list->args[0])
 	{
 		free(data->pids);
 		free_all(data);
 		exit(0);
 	}
-	while (token)
+	while (tab[i])
 	{
-		if (token->token[0] != '\0')
+		if (tab[i][0] != '\0')
 		{
 			return ;
 		}
-		token = token->next;
+		i++;
 	}
 	free(data->pids);
 	free_all(data);

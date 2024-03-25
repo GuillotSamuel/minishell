@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forking_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 15:41:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/25 11:59:40 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:40:49 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	command_or_builtin(t_data *data, t_cmd_line *cmd_list)
 		exit(g_exit_status);
 	}
 	ft_check_is_directory(data, cmd_list_dup->args[0]);
-	path = ft_cmd_exist(cmd_list_dup->token_list->token, data);
+	path = ft_cmd_exist(cmd_list_dup->args[0], data);
 	if (path != NULL)
 		ft_execve_exec(path, cmd_list_dup, data);
 	free(data->pids);
@@ -111,11 +111,12 @@ void	forking_exec(t_data *data)
 
 	cmd_list = data->cmd_list;
 	num_children = cmd_nb(data->cmd_list);
-	data->pids = (pid_t *)malloc(sizeof(pid_t) * num_children);
+	data->pids = malloc(sizeof(pid_t) * num_children);
 	if (!data->pids)
 	{
-		perror("malloc");
-		exit(EXIT_FAILURE);
+		close_fd(data);
+		free_here_doc(data);
+		return ;
 	}
 	i = 0;
 	while (cmd_list)

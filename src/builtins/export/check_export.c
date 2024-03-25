@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_export.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:56:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/21 12:14:44 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:33:27 by azbk             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,31 @@ int	ft_export_is_incorrect(char *str)
 			return (FAIL);
 	}
 	return (OK);
+}
+int	arg_with_egal(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if (arg[i] == '=')
+			return (1);
+		i++;
+	}
+	return (-1);
+}
+
+void	ft_export_no_value_with_egal(char *key, t_data *data)
+{
+	char	*tmp;
+
+	tmp = ft_is_key_in_env(key, data->secret_env);
+	if (tmp)
+	{
+		free(tmp);
+		ft_change_value_in_env(key, "\0", data->secret_env);
+		return ;
+	}
+	ft_create_var_env(key, "", data->secret_env);
 }
