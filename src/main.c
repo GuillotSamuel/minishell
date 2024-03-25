@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:13:28 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/21 11:06:05 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/22 20:25:02 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	minishell(t_data *data)
 {
 	while (true)
 	{
-		data->line_free = readline("\001\033[1;33m\002MonMinishell>\001\033[0m\002 ");
+		data->line_free
+			= readline("\001\033[1;33m\002MonMinishell>\001\033[0m\002 ");
 		if (data->line_free == NULL)
 		{
 			ft_printf("exit\n");

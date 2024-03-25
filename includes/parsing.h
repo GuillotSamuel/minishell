@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 18:36:51 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/20 15:07:48 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/22 20:19:51 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,9 @@ void		ft_stackaddback_token(t_token **lst, t_token *new);
 int			check_token_list(t_cmd_line **cmd_list, t_data **data);
 void		empty_token_ctrl(char *token, t_token **token_list_dup,
 				t_token **token_list_dup_prev);
+
+/* two_same_redirections */
+int			two_same_redirections(char *line);
 
 /* type_assign_1 */
 void		put_type_1(t_cmd_line **cmd_list);
