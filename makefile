@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+         #
+#    By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/26 16:12:37 by azbk              #+#    #+#              #
-#    Updated: 2024/03/22 20:20:35 by sguillot         ###   ########.fr        #
+#    Updated: 2024/03/28 12:03:18 by emauduit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC_DIR = ./src
 SRC :=	main.c \
 		\
 		builtins/cd/cd.c \
+		builtins/cd/check_cd.c \
 		builtins/cd/update_pwd.c \
 		builtins/echo/echo.c \
 		builtins/env/env.c \
