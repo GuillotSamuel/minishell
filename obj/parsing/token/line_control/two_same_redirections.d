@@ -1,5 +1,5 @@
-obj/parsing/token/line_control/line_ctrl_2inferior.o: \
-  src/parsing/token/line_control/line_ctrl_2inferior.c \
+obj/parsing/token/line_control/two_same_redirections.o: \
+  src/parsing/token/line_control/two_same_redirections.c \
   src/parsing/token/line_control/../../../../includes/minishell.h \
   src/parsing/token/line_control/../../../../includes/../libft/libft.h \
   src/parsing/token/line_control/../../../../includes/../libft/GNL/get_next_line.h \

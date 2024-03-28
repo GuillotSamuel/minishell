@@ -1,17 +1,25 @@
 obj/builtins/env/lst_env.o: src/builtins/env/lst_env.c \
- src/builtins/env/../../../includes/minishell.h \
- src/builtins/env/../../../includes/../libft/libft.h \
- src/builtins/env/../../../includes/../libft/GNL/get_next_line.h \
- src/builtins/env/../../../includes/../libft/ft_printf/ft_printf.h \
- src/builtins/env/../../../includes/struct.h \
- src/builtins/env/../../../includes/builtin.h \
- src/builtins/env/../../../includes/exec.h \
- src/builtins/env/../../../includes/parsing.h
+  src/builtins/env/../../../includes/minishell.h \
+  src/builtins/env/../../../includes/../libft/libft.h \
+  src/builtins/env/../../../includes/../libft/GNL/get_next_line.h \
+  src/builtins/env/../../../includes/../libft/ft_printf/ft_printf.h \
+  src/builtins/env/../../../includes/struct.h \
+  src/builtins/env/../../../includes/builtin.h \
+  src/builtins/env/../../../includes/exec.h \
+  src/builtins/env/../../../includes/parsing.h
+
 src/builtins/env/../../../includes/minishell.h:
+
 src/builtins/env/../../../includes/../libft/libft.h:
+
 src/builtins/env/../../../includes/../libft/GNL/get_next_line.h:
+
 src/builtins/env/../../../includes/../libft/ft_printf/ft_printf.h:
+
 src/builtins/env/../../../includes/struct.h:
+
 src/builtins/env/../../../includes/builtin.h:
+
 src/builtins/env/../../../includes/exec.h:
+
 src/builtins/env/../../../includes/parsing.h:
