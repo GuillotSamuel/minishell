@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 15:12:58 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/25 11:59:05 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/03/28 11:59:14 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ static int	fill_here_doc(int fd, char *token)
 		if (g_exit_status == 130)
 		{
 			free(line);
+			ft_printf("\n");
 			return (ERROR_HERE_DOC);
-		}
+		}	
 		if (line == NULL)
-		{
+		{	
 			return (print_end_of_file(token));
 		}
 		if (ft_strcmp(line, token) == 0)
@@ -87,7 +88,7 @@ int	start_here_doc(t_redir *redir, t_token *token_list)
 	fd = open(file, O_CREAT | O_EXCL | O_RDWR, 0644);
 	if (fd == -1)
 		return (FAIL);
-	dup_fd = dup(0);
+	dup_fd = dup(STDIN_FILENO);
 	signal(SIGINT, handle_sigint_here);
 	if (fill_here_doc(fd, token_list->token) == -2)
 	{

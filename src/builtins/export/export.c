@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:29:14 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/22 12:33:39 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/28 12:04:28 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,7 @@ static void	exec_export_argument(char *arg, t_data *data)
 	key = ft_dup_key(arg);
 	value = ft_dup_value(arg);
 	if (is_plus_equal(arg) == 1)
-	{
 		ft_export_plus_equal(key, value, data);
-	}
 	else if ((value == NULL || ft_strlen(value) == 0)
 		&& arg_with_egal(arg) == 1)
 		ft_export_no_value_with_egal(key, data);

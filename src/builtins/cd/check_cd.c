@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal.c                                           :+:      :+:    :+:   */
+/*   check_cd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 17:10:14 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/28 11:55:49 by emauduit         ###   ########.fr       */
+/*   Created: 2024/03/28 12:02:24 by emauduit          #+#    #+#             */
+/*   Updated: 2024/03/28 12:57:29 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
-void	handle_sigint(int sig)
+static int	error_cd(char *arg)
 {
-	if (sig == SIGINT)
-	{
-		g_exit_status = 130;
-		ft_printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-	}
+	ft_putstr_fd("Minishell: cd: ", 2);
+	ft_putstr_fd(arg, 2);
+	ft_putstr_fd(": invalid option\n", 2);
+	return (FAIL);
 }
 
-void	handle_sigint_here(int sig)
+int	check_cd_option(char **args)
 {
-	if (sig == SIGINT)
+	int	i;
+
+	i = 1;
+	if (args[0][0] != '\0')
 	{
-		g_exit_status = 130;
-		close(0);
+		if (args[0][0] == '-' && args[0][1] == '\0')
+			return (OK);
+		if (args[0][0] == '-' && args[0][1] != '\0')
+			return (error_cd(args[0]));
 	}
+	return (OK);
 }

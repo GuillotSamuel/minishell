@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 15:25:59 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/22 12:33:32 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/28 12:03:54 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	ft_pwd(void);
 
 /* cd */
 int		ft_cd(char **args, t_data *data);
+
+/* check_cd */
+int		check_cd_option(char **args);
 
 /* update_pwd */
 int		ft_pwd_exist(t_env **env, char *key, char *pwd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:14:10 by emauduit          #+#    #+#             */
-/*   Updated: 2024/03/22 11:52:36 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/28 12:03:42 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,33 +39,6 @@ static char	*find_path_in_env(t_env **env, char **args, char *path)
 			ft_printf("%s\n", path);
 	}
 	return (path);
-}
-
-int	check_cd_option(char **args)
-{
-	int	i;
-
-	i = 1;
-	if (args[0][0] != '\0')
-	{
-		if (args[0][0] == '-')
-		{
-			if (args[0][1] == '-')
-				return (OK);
-			while (args[0][i])
-			{
-				if (args[0][i] != '\0')
-				{
-					ft_putstr_fd("Minishell: cd: ", 2);
-					ft_putstr_fd(args[0], 2);
-					ft_putstr_fd(": invalid option\n", 2);
-					return (-1);
-				}
-				i++;
-			}
-		}
-	}
-	return (OK);
 }
 
 static char	*prepare_path(char **args, t_env **env)

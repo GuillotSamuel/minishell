@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_export.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 22:56:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/03/22 12:33:27 by azbk             ###   ########.fr       */
+/*   Updated: 2024/03/28 12:04:09 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	ft_export_is_incorrect(char *str)
 	}
 	return (OK);
 }
+
 int	arg_with_egal(char *arg)
 {
 	int	i;
