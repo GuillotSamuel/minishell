@@ -6,7 +6,7 @@
 /*   By: sguillot <sguillot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 10:56:20 by sguillot          #+#    #+#             */
-/*   Updated: 2024/03/22 12:25:25 by sguillot         ###   ########.fr       */
+/*   Updated: 2024/03/28 11:46:15 by sguillot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	two_same_redirections(char *line)
 					return (return_two_same_directions_error(redirection));
 			}
 		}
-		i++;
+		if (line[i] != '\0')
+			i++;
 	}
 	return (SUCCESS);
 }
